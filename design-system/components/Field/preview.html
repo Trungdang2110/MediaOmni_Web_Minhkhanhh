@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../bundle.css"><meta charset="utf-8"><title>Field — preview</title></head>
+<body style="margin:0">
+<div class="pr-root" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+  <div>
+    <label class="pr-label">Họ và tên</label>
+    <div class="pr-field-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+      <input class="pr-input" value="Nguyễn Thị Hoa">
+    </div>
+    <div style="margin-top:14px">
+      <label class="pr-label">Ngày sinh</label>
+      <div class="pr-date"><input class="pr-input" value="21"><input class="pr-input" value="10"><input class="pr-input" value="2003"></div>
+    </div>
+  </div>
+  <div>
+    <label class="pr-label">Ngày sinh</label>
+    <div class="pr-date"><input class="pr-input pr-input--error" value="31"><input class="pr-input pr-input--error" value="02"><input class="pr-input pr-input--error" value="2003"></div>
+    <div class="pr-error"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>Ngày 31/02 không tồn tại. Mời bạn kiểm tra lại.</div>
+  </div>
+</div>
+</body>
+</html>

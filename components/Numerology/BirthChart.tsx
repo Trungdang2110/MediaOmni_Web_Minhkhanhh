@@ -6,7 +6,6 @@ import {
   HStack,
   Badge,
   Icon,
-  useColorModeValue,
   Tooltip,
   MdArrowForward
 } from '@/components';
@@ -59,15 +58,10 @@ const BirthChartComponent: FC<BirthChartProps> = ({ birthDate, onCellClick }) =>
     return () => observer.disconnect();
   }, []);
 
-  // Colors
-  const titleColor = useColorModeValue('gray.700', 'gray.200');
-  const planeLabelColor = useColorModeValue('gray.500', 'gray.400');
-  const containerBg = useColorModeValue('white', 'gray.800');
-  const containerBorder = useColorModeValue('gray.100', 'gray.700');
-  const strengthBadgeBg = useColorModeValue('green.50', 'green.900');
-  const strengthBadgeColor = useColorModeValue('green.600', 'green.300');
-  const emptyBadgeBg = useColorModeValue('red.50', 'red.900');
-  const emptyBadgeColor = useColorModeValue('red.500', 'red.300');
+  // Màu lấy từ token Pyra Rococo (khung giấy viền vàng như khung tranh)
+  const planeLabelColor = 'inkMuted';
+  const strengthBadgeColor = 'success';
+  const emptyBadgeColor = 'danger';
 
   // Sort grid by row (top first) then col (left first) for rendering
   const sortedGrid = [...grid].sort((a, b) => {
@@ -90,35 +84,18 @@ const BirthChartComponent: FC<BirthChartProps> = ({ birthDate, onCellClick }) =>
           hasArrow
           fontSize="xs"
         >
-          <Badge
-            bg={isStrength ? strengthBadgeBg : emptyBadgeBg}
-            color={isStrength ? strengthBadgeColor : emptyBadgeColor}
-            borderRadius="full"
-            px={2}
-            py={0.5}
-            fontSize="2xs"
-            fontWeight={600}
-            cursor="default"
-          >
+          <span className="pr-tag" tabIndex={0}>
+            <span className={isStrength ? 'pr-dot' : 'pr-dot pr-dot--err'} />
             {arrow.numbers.join('-')}
-          </Badge>
+          </span>
         </Tooltip>
       );
     },
-    [tChart, strengthBadgeBg, emptyBadgeBg, strengthBadgeColor, emptyBadgeColor]
+    [tChart]
   );
 
   return (
-    <Box
-      bg={containerBg}
-      borderWidth="1px"
-      borderColor={containerBorder}
-      borderRadius="xl"
-      p={{ base: 4, md: 6 }}
-      shadow="sm"
-      transition="all 0.3s"
-      _hover={{ shadow: 'md' }}
-    >
+    <Box className="pyra-chart-frame" p={{ base: 4, md: 6 }} maxW="420px" mx="auto" w="100%">
       {/* Grid Container */}
       <Box
         ref={gridRef}
@@ -138,11 +115,11 @@ const BirthChartComponent: FC<BirthChartProps> = ({ birthDate, onCellClick }) =>
           {[2, 1, 0].map((rowIndex) => (
             <Text
               key={rowIndex}
-              fontSize="2xs"
+              fontSize="14px"
+              fontFamily="var(--font-caps)"
               color={planeLabelColor}
-              fontWeight={600}
-              textTransform="uppercase"
-              letterSpacing="wider"
+              fontWeight={700}
+              letterSpacing=".06em"
               whiteSpace="nowrap"
               textAlign="right"
             >
@@ -164,6 +141,7 @@ const BirthChartComponent: FC<BirthChartProps> = ({ birthDate, onCellClick }) =>
               <BirthChartCell
                 key={cell.number}
                 cell={cell}
+                inArrow={strengthArrows.some((a) => a.numbers.includes(cell.number))}
                 onClick={onCellClick}
                 animationIndex={index}
               />
@@ -206,7 +184,7 @@ const BirthChartComponent: FC<BirthChartProps> = ({ birthDate, onCellClick }) =>
               flexWrap="wrap"
               gap={1}
             >
-              <Text fontSize="xs" color={strengthBadgeColor} fontWeight={600}>
+              <Text fontSize="13px" fontFamily="var(--font-ui)" color={strengthBadgeColor} fontWeight={600} m={0}>
                 {tChart('strengthArrow')}:
               </Text>
               {strengthArrows.map(renderArrowBadge)}
@@ -220,7 +198,7 @@ const BirthChartComponent: FC<BirthChartProps> = ({ birthDate, onCellClick }) =>
               flexWrap="wrap"
               gap={1}
             >
-              <Text fontSize="xs" color={emptyBadgeColor} fontWeight={600}>
+              <Text fontSize="13px" fontFamily="var(--font-ui)" color={emptyBadgeColor} fontWeight={600} m={0}>
                 {tChart('emptyArrow')}:
               </Text>
               {emptyArrows.map(renderArrowBadge)}

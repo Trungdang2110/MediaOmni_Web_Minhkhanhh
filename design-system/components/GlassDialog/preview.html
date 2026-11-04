@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../bundle.css"><meta charset="utf-8"><title>GlassDialog — preview</title>
+<style>
+  body{margin:0}
+  .stage{position:relative;height:520px;overflow:hidden;padding:20px;
+    background:
+      radial-gradient(40% 55% at 18% 30%,var(--peach),transparent 70%),
+      radial-gradient(35% 50% at 80% 25%,var(--powder),transparent 70%),
+      radial-gradient(45% 60% at 60% 90%,var(--claret-fill),transparent 70%),
+      radial-gradient(30% 40% at 30% 85%,var(--gold),transparent 70%),
+      var(--paper)}
+  .hint{font-family:"Be Vietnam Pro",sans-serif;font-size:13px;color:var(--ink);margin:0 0 12px}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .dlg{position:absolute;left:50%;top:44px;width:440px;margin-left:-220px;padding:22px;display:flex;flex-direction:column;gap:14px}
+  .dlg h3{margin:0;font-family:"Playfair Display",serif;font-size:30px;line-height:1.1;font-weight:700;color:var(--on-glass)}
+  .dlg .eyebrow{font-family:"Cormorant SC",serif;font-weight:700;letter-spacing:.08em;font-size:15px}
+  .num{width:64px;height:80px;border-radius:50%;display:grid;place-items:center;font-family:"Playfair Display",serif;font-weight:900;font-size:40px;color:var(--on-glass);
+    box-shadow:0 0 0 1.5px var(--gold),0 0 0 6px transparent,0 0 0 7px rgba(212,176,122,.6);background:var(--glass-chip);flex:none}
+  .step{font-family:"EB Garamond",serif;font-size:16px;line-height:23px;margin:0}
+  .actions{display:flex;gap:10px;flex-wrap:wrap}
+  .close{position:absolute;top:14px;right:14px;z-index:2}
+  .bar{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;gap:8px;padding:8px;border-radius:999px}
+</style></head>
+<body>
+<div class="pr-root stage" style="padding:20px">
+  <p class="hint">Bấm vào một thẻ chỉ số để thấy hộp thoại kính bật ra.</p>
+  <div class="cards">
+    <div class="pr-card pr-card--personal" data-name="Đường đời" data-n="7"><div class="pr-card__title">Đường đời</div><div class="pr-card__oval">7</div></div>
+    <div class="pr-card pr-card--potential" data-name="Đam mê" data-n="3"><div class="pr-card__title">Đam mê</div><div class="pr-card__oval">3</div></div>
+    <div class="pr-card pr-card--support" data-name="Cân bằng" data-n="5"><div class="pr-card__title">Cân bằng</div><div class="pr-card__oval">5</div></div>
+    <div class="pr-card pr-card--cycle" data-name="Năm cá nhân" data-n="9"><div class="pr-card__title">Năm cá nhân</div><div class="pr-card__oval">9</div></div>
+  </div>
+
+  <div class="pr-scrim" id="scrim"></div>
+  <div class="pr-glass pr-pop dlg" id="dlg" role="dialog" aria-modal="true" aria-labelledby="dlgTitle">
+    <button class="pr-gbtn pr-gbtn--round close" id="close" aria-label="Đóng"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div style="display:flex;gap:16px;align-items:center">
+      <div class="num" id="dlgNum">7</div>
+      <div><div class="eyebrow pr-glass__muted">Chỉ số cá nhân</div><h3 id="dlgTitle">Đường đời</h3></div>
+    </div>
+    <div class="pr-glass__item"><p class="step"><b>I.</b> Cộng ngày, tháng, năm sinh: 2+1 · 1+0 · 2+0+0+3</p></div>
+    <div class="pr-glass__item"><p class="step"><b>II.</b> Rút gọn tổng về một chữ số (trừ 11, 22, 33)</p></div>
+    <div class="actions">
+      <button class="pr-gbtn pr-gbtn--accent">✦ Nhờ Pyra giải thích</button>
+      <button class="pr-gbtn">Lưu hồ sơ</button>
+    </div>
+  </div>
+
+  <div class="pr-glass pr-glass--strong bar" aria-label="Thanh công cụ">
+    <button class="pr-gbtn pr-gbtn--round" aria-label="Tiếng Việt">VI</button>
+    <button class="pr-gbtn pr-gbtn--round" aria-label="Giao diện tối"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
+    <button class="pr-gbtn pr-gbtn--round" aria-label="Ủng hộ"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></button>
+    <button class="pr-gbtn" aria-label="Góp ý">Góp ý</button>
+  </div>
+</div>
+<script>
+  (function(){
+    var dlg=document.getElementById('dlg'),scrim=document.getElementById('scrim');
+    function open(card,e){
+      document.getElementById('dlgTitle').textContent=card.dataset.name;
+      document.getElementById('dlgNum').textContent=card.dataset.n;
+      var r=dlg.offsetParent.getBoundingClientRect(),d={left:dlg.offsetLeft,top:dlg.offsetTop};
+      dlg.style.transformOrigin=(e.clientX-r.left-d.left)+'px '+(e.clientY-r.top-d.top)+'px';
+      scrim.classList.add('is-open');dlg.classList.add('is-open');
+      document.getElementById('close').focus();
+    }
+    function close(){scrim.classList.remove('is-open');dlg.classList.remove('is-open');}
+    document.querySelectorAll('.pr-card').forEach(function(c){c.addEventListener('click',function(e){open(c,e)});});
+    scrim.addEventListener('click',close);
+    document.getElementById('close').addEventListener('click',close);
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  })();
+</script>
+</body>
+</html>

@@ -8,7 +8,7 @@ import {
   HStack,
   Link,
   Icon,
-  useColorModeValue,
+
 } from "@chakra-ui/react";
 import { MdExpandMore, MdExpandLess, MdMenuBook } from "react-icons/md";
 import type { RetrievalSourceInfo } from "hooks/chat-types";
@@ -33,10 +33,10 @@ const COLLECTION_COLORS: Record<string, string> = {
 export function SourceReferences({ sources, t }: SourceReferencesProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const cardBg = useColorModeValue("gray.50", "gray.750");
-  const borderColor = useColorModeValue("gray.200", "gray.600");
-  const textColor = useColorModeValue("gray.600", "gray.400");
-  const hoverBg = useColorModeValue("gray.100", "gray.700");
+  const cardBg = 'paperDeep';
+  const borderColor = 'line';
+  const textColor = 'inkMuted';
+  const hoverBg = 'line';
 
   if (sources.length === 0) return null;
 
@@ -59,7 +59,7 @@ export function SourceReferences({ sources, t }: SourceReferencesProps) {
         transition="background 0.15s"
         spacing={2}
       >
-        <Icon as={MdMenuBook} color="brand.500" boxSize={3.5} />
+        <Icon as={MdMenuBook} color="claret" boxSize={3.5} />
         <Text fontWeight={600} color={textColor} flex={1}>
           {t("sourcesTitle")} ({sources.length})
         </Text>
@@ -96,7 +96,7 @@ export function SourceReferences({ sources, t }: SourceReferencesProps) {
                   <Link
                     href={source.refLink}
                     isExternal
-                    color="brand.500"
+                    color="claret"
                     _hover={{ textDecoration: "underline" }}
                   >
                     {source.title}

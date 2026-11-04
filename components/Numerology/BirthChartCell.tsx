@@ -3,8 +3,7 @@ import { FC, useMemo } from 'react';
 import {
   Box,
   Text,
-  Tooltip,
-  useColorModeValue
+  Tooltip
 } from '@/components';
 import type { BirthChartGrid } from '@/hooks/useBirthChart';
 import { useTranslations } from 'next-intl';
@@ -14,37 +13,28 @@ interface BirthChartCellProps {
   onClick?: (number: number) => void;
   /** Stagger delay index for animation */
   animationIndex: number;
+  /** Ô nằm trên một mũi tên đủ số → thêm viền trong màu vàng */
+  inArrow?: boolean;
 }
 
 export const BirthChartCell: FC<BirthChartCellProps> = ({
   cell,
   onClick,
-  animationIndex
+  animationIndex,
+  inArrow
 }) => {
   const tChart = useTranslations('BirthChart');
   const isPresent = cell.frequency > 0;
 
-  // Color tokens
-  const presentBg = useColorModeValue(
-    'linear(to-br, brand.50, orange.50)',
-    'linear(to-br, whiteAlpha.100, brand.900)'
-  );
-  const absentBg = useColorModeValue('gray.50', 'whiteAlpha.50');
-  const presentBorder = useColorModeValue('brand.300', 'brand.600');
-  const absentBorder = useColorModeValue('gray.200', 'whiteAlpha.200');
-  const numberColor = useColorModeValue('brand.600', 'brand.300');
-  const absentNumberColor = useColorModeValue('gray.300', 'whiteAlpha.300');
-  const glowColor = useColorModeValue(
-    '0 0 12px rgba(221, 107, 32, 0.25)',
-    '0 0 12px rgba(237, 137, 54, 0.2)'
-  );
-  
-  const isolatedBorder = useColorModeValue('red.400', 'red.500');
-  const isolatedGlow = useColorModeValue(
-    '0 0 12px rgba(229, 62, 62, 0.4)',
-    '0 0 12px rgba(252, 129, 129, 0.3)'
-  );
-  const frequencyBadgeBg = useColorModeValue('brand.500', 'brand.400');
+  // Màu theo design system: ô có số = nền giấy + số đỏ rượu; ô trống = nét đứt
+  const presentBg = 'paper';
+  const absentBg = 'transparent';
+  const presentBorder = 'line';
+  const absentBorder = 'line';
+  const numberColor = 'claret';
+  const absentNumberColor = 'inkMuted';
+  const isolatedBorder = 'danger';
+  const frequencyBadgeBg = 'claretFill';
 
   const displayContent = useMemo(() => {
     if (!isPresent) return String(cell.number);
@@ -90,32 +80,27 @@ export const BirthChartCell: FC<BirthChartCellProps> = ({
           flexDirection="column"
           alignItems="center"
           justifyContent="center"
-          bgGradient={isPresent ? presentBg : undefined}
-          bg={isPresent ? undefined : absentBg}
+          bg={isPresent ? presentBg : absentBg}
           borderWidth={cell.isIsolated ? '2px' : '1.5px'}
           borderColor={cell.isIsolated ? isolatedBorder : (isPresent ? presentBorder : absentBorder)}
           borderStyle={isPresent ? 'solid' : 'dashed'}
-          borderRadius={{ base: 'lg', md: 'xl' }}
-          shadow={cell.isIsolated ? isolatedGlow : (isPresent ? glowColor : 'none')}
+          borderRadius="var(--radius-sm)"
+          boxShadow={inArrow ? 'inset 0 0 0 2px var(--gold)' : 'none'}
           transition="all 0.25s cubic-bezier(0.4, 0, 0.2, 1)"
           _hover={{
-            transform: 'scale(1.06)',
-            shadow: isPresent ? 'lg' : 'md',
-            borderColor: 'brand.400'
+            transform: 'scale(1.04)',
+            borderColor: 'gold'
           }}
           _active={{
             transform: 'scale(0.97)'
           }}
-          sx={
-            isPresent
-              ? { animation: 'cellPulse 3s ease-in-out infinite' }
-              : undefined
-          }
         >
           {/* Number display */}
           <Text
-            fontSize={{ base: 'lg', sm: 'xl', md: '2xl' }}
-            fontWeight={800}
+            fontSize={isPresent ? { base: '20px', md: '26px' } : '15px'}
+            fontFamily={isPresent ? 'var(--font-display)' : 'var(--font-ui)'}
+            fontWeight={isPresent ? 700 : 500}
+            m={0}
             color={isPresent ? numberColor : absentNumberColor}
             lineHeight={1}
             letterSpacing={cell.frequency > 1 ? '2px' : 'normal'}
@@ -130,7 +115,7 @@ export const BirthChartCell: FC<BirthChartCellProps> = ({
               top={{ base: '2px', md: '4px' }}
               right={{ base: '2px', md: '4px' }}
               bg={frequencyBadgeBg}
-              color="white"
+              color="onClaret"
               borderRadius="full"
               w={{ base: '14px', md: '18px' }}
               h={{ base: '14px', md: '18px' }}

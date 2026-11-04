@@ -13,7 +13,7 @@ import {
   Icon,
   Text,
   Box,
-  useColorModeValue
+
 } from '@chakra-ui/react';
 import {
   MdOutlineAutoAwesome,
@@ -36,8 +36,8 @@ interface ChatGuideModalProps {
 }
 
 export function ChatGuideModal({ isOpen, onClose, t }: ChatGuideModalProps) {
-  const iconBg = useColorModeValue('brand.100', 'brand.900');
-  const iconColor = useColorModeValue('brand.600', 'brand.200');
+  const iconBg = 'paperDeep';
+  const iconColor = 'claret';
 
   const guides: Array<{
     icon: any;
@@ -59,10 +59,10 @@ export function ChatGuideModal({ isOpen, onClose, t }: ChatGuideModalProps) {
         <HStack
           mt={1}
           p={3}
-          bg={useColorModeValue('gray.50', 'whiteAlpha.50')}
+          bg={'paperDeep'}
           borderRadius="md"
           border="1px dashed"
-          borderColor={useColorModeValue('gray.200', 'whiteAlpha.300')}
+          borderColor={'line'}
           w="full"
           justify="flex-start"
           flexWrap="wrap"
@@ -71,7 +71,7 @@ export function ChatGuideModal({ isOpen, onClose, t }: ChatGuideModalProps) {
           <Button size="xs" variant="outline" leftIcon={<Icon as={MdMenu} />} flexShrink={0}>
             {t('chatHistory')}
           </Button>
-          <Icon as={MdArrowForward} color="gray.500" flexShrink={0} />
+          <Icon as={MdArrowForward} color="inkMuted" flexShrink={0} />
           <Button size="xs" colorScheme="brand" leftIcon={<Icon as={MdAdd} />} whiteSpace="normal" h="auto" py={1} textAlign="left">
             {t('newChat')}
           </Button>
@@ -86,10 +86,10 @@ export function ChatGuideModal({ isOpen, onClose, t }: ChatGuideModalProps) {
         <HStack
           mt={1}
           p={3}
-          bg={useColorModeValue('gray.50', 'whiteAlpha.50')}
+          bg={'paperDeep'}
           borderRadius="md"
           border="1px dashed"
-          borderColor={useColorModeValue('gray.200', 'whiteAlpha.300')}
+          borderColor={'line'}
           w="full"
           justify="flex-start"
           flexWrap="wrap"
@@ -98,12 +98,12 @@ export function ChatGuideModal({ isOpen, onClose, t }: ChatGuideModalProps) {
           <Button size="xs" variant="outline" leftIcon={<Icon as={MdMenu} />} flexShrink={0}>
             {t('chatHistory')}
           </Button>
-          <Icon as={MdArrowDownward} color="gray.500" flexShrink={0} />
+          <Icon as={MdArrowDownward} color="inkMuted" flexShrink={0} />
           <Button
             size="xs"
             variant="ghost"
             border="1px solid"
-            borderColor={useColorModeValue('gray.300', 'gray.600')}
+            borderColor={'line'}
             leftIcon={<Icon as={MdFileDownload} />}
             whiteSpace="normal"
             h="auto"
@@ -122,10 +122,10 @@ export function ChatGuideModal({ isOpen, onClose, t }: ChatGuideModalProps) {
         <HStack
           mt={1}
           p={3}
-          bg={useColorModeValue('gray.50', 'whiteAlpha.50')}
+          bg={'paperDeep'}
           borderRadius="md"
           border="1px dashed"
-          borderColor={useColorModeValue('gray.200', 'whiteAlpha.300')}
+          borderColor={'line'}
           w="full"
           justify="flex-start"
           flexWrap="wrap"
@@ -134,7 +134,7 @@ export function ChatGuideModal({ isOpen, onClose, t }: ChatGuideModalProps) {
           <Button size="xs" variant="outline" leftIcon={<Icon as={MdMenu} />} flexShrink={0}>
             {t('chatHistory')}
           </Button>
-          <Icon as={MdArrowDownward} color="gray.500" flexShrink={0} />
+          <Icon as={MdArrowDownward} color="inkMuted" flexShrink={0} />
           <Button
             size="xs"
             colorScheme="brand"
@@ -156,7 +156,7 @@ export function ChatGuideModal({ isOpen, onClose, t }: ChatGuideModalProps) {
       <ModalOverlay backdropFilter="blur(3px)" />
       <ModalContent
         border="1px solid"
-        borderColor={useColorModeValue('gray.200', 'gray.700')}
+        borderColor={'line'}
       >
         <ModalHeader>{t('guideTitle')}</ModalHeader>
         <ModalCloseButton />

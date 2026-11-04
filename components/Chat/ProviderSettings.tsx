@@ -340,10 +340,10 @@ export function ProviderSettings({ providerHook, t }: ProviderSettingsProps) {
           px={3}
           py={2}
           borderRadius="md"
-          _hover={{ bg: 'blackAlpha.50', _dark: { bg: 'whiteAlpha.100' } }}
+          _hover={{ bg: 'paperDeep',  }}
         >
           <HStack flex={1} spacing={2} overflow="hidden">
-            <Icon as={MdSettings} color="brand.500" flexShrink={0} />
+            <Icon as={MdSettings} color="claret" flexShrink={0} />
             <Text fontSize="sm" fontWeight="medium" whiteSpace="nowrap" isTruncated>
               {t('providerSettings')}
             </Text>
@@ -386,8 +386,8 @@ export function ProviderSettings({ providerHook, t }: ProviderSettingsProps) {
                   borderRadius="md"
                   align="center"
                   _hover={{
-                    bg: 'blackAlpha.50',
-                    _dark: { bg: 'whiteAlpha.50' }
+                    bg: 'paperDeep',
+                    
                   }}
                 >
                   <Radio value="system" size="sm" colorScheme="brand">
@@ -404,17 +404,17 @@ export function ProviderSettings({ providerHook, t }: ProviderSettingsProps) {
                     align="center"
                     bg={
                       provider.isActive
-                        ? 'brand.50'
+                        ? 'paperDeep'
                         : 'transparent'
                     }
                     _dark={{
                       bg: provider.isActive
-                        ? 'whiteAlpha.100'
+                        ? 'paperDeep'
                         : 'transparent'
                     }}
                     _hover={{
-                      bg: 'blackAlpha.50',
-                      _dark: { bg: 'whiteAlpha.50' }
+                      bg: 'paperDeep',
+                      
                     }}
                   >
                     <Radio
@@ -489,11 +489,10 @@ export function ProviderSettings({ providerHook, t }: ProviderSettingsProps) {
                   p={3}
                   borderRadius="md"
                   borderWidth={1}
-                  borderColor="brand.200"
-                  _dark={{ borderColor: 'whiteAlpha.200' }}
+                  borderColor="line"
                   borderStyle="dashed"
                 >
-                  <Text fontSize="sm" fontWeight="bold" color="brand.500">
+                  <Text fontSize="sm" fontWeight="bold" color="claret">
                     {editingProviderId
                       ? t('providerEdit')
                       : t('providerAdd')}
@@ -551,7 +550,7 @@ export function ProviderSettings({ providerHook, t }: ProviderSettingsProps) {
                       {t('providerApiKeys')}
                       <Tooltip label={t('providerMultiKeyHint')} placement="top" hasArrow>
                         <Box as="span" ml={1} display="inline-flex" alignItems="center">
-                          <Icon as={MdInfoOutline} boxSize={3.5} color="gray.400" _dark={{ color: 'gray.500' }} cursor="help" />
+                          <Icon as={MdInfoOutline} boxSize={3.5} color="inkMuted" cursor="help" />
                         </Box>
                       </Tooltip>
                       {formState.apiKeys.length > 1 && (

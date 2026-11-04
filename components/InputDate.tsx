@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { type FC, useRef, useState, useEffect, useCallback, type ChangeEvent } from "react";
-import { Input, InputGroup, useToast } from "./";
+import { Input, Box, useToast } from "./";
 import { InputProps } from "../utils/types";
 
 type PropTypes = InputProps & {
@@ -66,7 +66,8 @@ export const InputDate: FC<PropTypes> = (props) => {
    }, [defaultValue]);
 
    return (
-      <InputGroup>
+      // 3 ô ngày / tháng / năm xếp cạnh nhau (bộ "pr-date" trong design system)
+      <Box display="grid" gridTemplateColumns="1fr 1fr 1.5fr" gap={3}>
          <Input
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
                const value = e.target.value;
@@ -86,6 +87,10 @@ export const InputDate: FC<PropTypes> = (props) => {
             min={1}
             max={31}
             placeholder={t("datePlaceholder")}
+            aria-label={t("datePlaceholder")}
+            fontFamily="var(--font-display)"
+            fontWeight={700}
+            fontSize="20px"
             {...rest}
          />
          <Input
@@ -105,6 +110,10 @@ export const InputDate: FC<PropTypes> = (props) => {
             defaultValue={month}
             textAlign="center"
             placeholder={t("monthPlaceholder")}
+            aria-label={t("monthPlaceholder")}
+            fontFamily="var(--font-display)"
+            fontWeight={700}
+            fontSize="20px"
             min={1}
             max={12}
             {...rest}
@@ -122,8 +131,12 @@ export const InputDate: FC<PropTypes> = (props) => {
             textAlign="center"
             type="number"
             placeholder={t("yearPlaceholder")}
+            aria-label={t("yearPlaceholder")}
+            fontFamily="var(--font-display)"
+            fontWeight={700}
+            fontSize="20px"
             {...rest}
          />
-      </InputGroup>
+      </Box>
    );
 };

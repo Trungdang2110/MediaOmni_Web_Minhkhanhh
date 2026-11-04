@@ -4,14 +4,16 @@
     "chat": "AI Chat"
   },
   "Home": {
-    "title": "Numerology Application",
+    "title": "Numerology",
     "subtitle": "Explore your number map through your birth date and name — decode life path, mission, and hidden potential.",
     "chatNotice": "Experience Numerology with Pyra Mascot - AI",
     "chatBadgeLabel": "NEW",
     "logoAlt": "Numerology Logo",
     "videoTitle": "Decoding Numerology",
     "videoCaption": "Watch the guide on how to read and understand your numerology indices",
-    "videoToggleLabel": "Show/hide tutorial video"
+    "videoToggleLabel": "Show/hide tutorial video",
+    "eyebrow": "A salon of numbers",
+    "heroFrameAlt": "Pyra, your gallery guide"
   },
   "Numerology": {
     "namePlaceholder": "Your full name, ex: 'Nguyen Van A'",
@@ -39,7 +41,30 @@
       "monthIndividual": "**Personal Month** shows the priority for this specific month.\n\n**FORMULA:**\n*   Personal Month = Root(Personal Year + Current Month).\n\n> 💡 **Example (Checking for April):**\n> Personal Year = 9.\n> Current Month = 4.\n> 9 + 4 = 13 -> 1+3 = 4.\n> => **Personal Month: 4**.",
       "way": "In standard Pythagoras numerology, \"Pinnacles\" are exactly referred to as **The Four Peaks of Life** or **Pyramid Cycles**.\n\nTo calculate these, you need to identify 2 parts: **The age you reach the pinnacle** and **The value (energy) of that pinnacle**.\n\n### ⏳ 1. FORMULA FOR THE PINNACLE AGES\nThe number 36 is a mystical constant taken from the structure of ancient Egyptian pyramids.\n*   **Age of Peak 1:** = **36 - Life Path Number**.\n*   **Age of Peak 2:** = Age of Peak 1 + 9 years.\n*   **Age of Peak 3:** = Age of Peak 2 + 9 years.\n*   **Age of Peak 4:** = Age of Peak 3 + 9 years.\n\n### 🌟 2. FORMULA FOR THE 4 PEAK VALUES\n\n**📍 Preparation: Create 3 \"Bases\"**\nIndividually reduce your Birth Date, Month, and Year to a single digit (from 1 to 9).\n*   **Base 1 (Left):** Reduced birth month.\n*   **Base 2 (Middle):** Reduced birth day.\n*   **Base 3 (Right):** Reduced birth year.\n\n**📍 Calculating the 4 Peaks:**\n*   **Peak 1:** = Base 1 + Base 2 *(Month + Day)*.\n*   **Peak 2:** = Base 2 + Base 3 *(Day + Year)*.\n    👉 *Note for Peak 1 & 2: Keep reducing the sum strictly to a single digit (1 to 9).*\n*   **Peak 3:** = Peak 1 + Peak 2 *(Sum of first two peaks)*.\n*   **Peak 4:** = Base 1 + Base 3 *(Month + Year - sum of outer bases)*.\n    👉 *SPECIAL Note for Peak 3 & 4: If the sum is exactly **10** or **11**, KEEP IT AS IS.*\n\n> 💡 **Example (Duong Van Nghia - Life Path 4, DOB 11/06/1976):**\n> **Ages:** Peak 1 = 36 - 4 = 32. Age levels: **32t - 41t - 50t - 59t**.\n> **Bases:** Month(6), Day(11->2), Year(1976->5).\n> - Peak 1 = 6 + 2 = 8.\n> - Peak 2 = 2 + 5 = 7.\n> - Peak 3 = 8 + 7 = 15 -> **6**.\n> - Peak 4 = 6 + 5 = **11** (Kept).\n> => **4 Pinnacles: 8 - 7 - 6 - 11**.",
       "challenges": "**The 4 Challenges** provide balance against the Pinnacles.\n\n**FORMULA:**\n*   **Challenge 1:** |Month - Day|.\n*   **Challenge 2:** |Day - Year|.\n*   **Challenge 3:** |C1 - C2|.\n*   **Challenge 4:** |Month - Year|.\n\n> 💡 **Example:**\n> *Base numbers: Month=6, Day=11(retained), Year=5*\n> C1: |6 - 11| = 5.\n> C2: |11 - 5| = 6.\n> C3: |5 - 6| = 1.\n> C4: |6 - 5| = 1.\n> => **Challenges: 5 - 6 - 1 - 1**."
-    }
+    },
+    "nameLabel": "Full name",
+    "birthLabel": "Date of birth",
+    "featuredHint": "Your most important number — tap to explore",
+    "tapHint": "Tap a card to see its formula",
+    "askClose": "Close",
+    "openFormula": "View the formula for {name}",
+    "group": {
+      "personal": "Personal",
+      "potential": "Potential",
+      "support": "Support",
+      "cycle": "Cycles"
+    },
+    "groupLegend": {
+      "personal": "Personal numbers",
+      "potential": "Potential & tendencies",
+      "support": "Supporting numbers",
+      "cycle": "Time & cycles"
+    },
+    "collectionEyebrow": "Your collection",
+    "askPyra": "Ask Pyra to explain {metric} {value}",
+    "askDeeper": "Ask Pyra in depth",
+    "formulaEyebrow": "Formula",
+    "reference": "Results are for reference and entertainment only."
   },
   "InputDate": {
     "datePlaceholder": "Date...",
@@ -54,12 +79,13 @@
     "yearRange": "Birth year must be between {min} and {max}"
   },
   "Disclaimer": {
-    "title": "📌 Disclaimer",
+    "title": "Disclaimer",
     "content": "This application is for reference and entertainment purposes only. It is not intended for fortune telling, superstition, or any purpose contrary to good morals and customs."
   },
   "Donate": {
     "buyCoffee": "Buy me a coffee",
-    "copySuccess": "Copied successfully {name} address"
+    "copySuccess": "Copied successfully {name} address",
+    "support": "Support"
   },
   "Feedback": {
     "tooltip": "Feedback & Survey (Email: {email})"
@@ -138,7 +164,9 @@
   "Footer": {
     "logoAlt": "numerology logo",
     "sourceCode": "Source code",
-    "mode": "{mode} mode"
+    "mode": "{mode} mode",
+    "tagline": "A salon of numbers",
+    "toolbar": "Toolbar"
   },
   "LanguageSwitcher": {
     "switchLocaleVi": "Switch to Vietnamese",
@@ -182,7 +210,16 @@
     "arrowWill": "Will (4-5-6)",
     "arrowAction": "Action (7-8-9)",
     "arrowDetermination": "Determination (1-5-9)",
-    "arrowSpirituality": "Spirituality (3-5-7)"
+    "arrowSpirituality": "Spirituality (3-5-7)",
+    "arrowComplete": "complete",
+    "arrowEmptyLabel": "empty",
+    "collapse": "Collapse",
+    "expand": "Expand",
+    "regenerate": "Regenerate",
+    "retry": "Try again",
+    "savedAt": "Saved at {time}",
+    "showChart": "Show chart",
+    "hideChart": "Collapse chart"
   },
   "Profile": {
     "savedProfiles": "Profiles",
@@ -199,7 +236,7 @@
     "loading": "Analyzing meaning...",
     "error": "Unable to load meaning. Please try again.",
     "retry": "Retry",
-    "cachedBadge": "From cache",
+    "cachedBadge": "Saved · 7 days",
     "cachedTooltip": "Results cached for 7 days"
   },
   "Admin": {
@@ -297,5 +334,11 @@
     "thankYouTitle": "Thank you sincerely!",
     "thankYouMessage": "Every piece of feedback provides immense motivation for us to grow and serve you better.",
     "dismissTooltip": "Dismiss survey"
+  },
+  "NumerologyGroups": {
+    "personal": "Personal numbers",
+    "potential": "Potential & tendencies",
+    "support": "Supporting",
+    "cycle": "Time & cycles"
   }
 }

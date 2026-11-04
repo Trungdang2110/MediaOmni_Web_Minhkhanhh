@@ -17,7 +17,7 @@ import {
   useToast,
   Text,
   Badge,
-  useColorModeValue,
+
   Divider,
   Progress
 } from '@/components';
@@ -32,7 +32,7 @@ export default function AdminMilvusPage() {
   const toast = useToast();
   const t = useTranslations('Admin');
 
-  const cardBg = useColorModeValue('white', 'gray.800');
+  const cardBg = 'paper';
 
   // Form state
   const [formData, setFormData] = useState<Record<string, string>>({
@@ -308,16 +308,15 @@ export default function AdminMilvusPage() {
           }}
         >
           <VStack spacing={2}>
-            <Heading size="lg" textAlign="center" color="brand.500">
+            <Heading size="lg" textAlign="center" color="claret">
               {t('pageTitle')}
             </Heading>
-            <Text textAlign="center" color="gray.500" fontSize="sm">
+            <Text textAlign="center" color="inkMuted" fontSize="sm">
               {t('pageSubtitle')}
             </Text>
 
             <HStack
               bg="gray.50"
-              _dark={{ bg: 'gray.700' }}
               p={3}
               borderRadius="lg"
               mt={2}
@@ -412,7 +411,7 @@ export default function AdminMilvusPage() {
                   <Text
                     fontSize="sm"
                     mb={1}
-                    color={progress >= totalItemsRef.current ? "green.500" : "brand.500"}
+                    color={progress >= totalItemsRef.current ? "green.500" : "claret"}
                     fontWeight="bold"
                   >
                     {t('progressLabel')}: {progress} / {totalItemsRef.current} (

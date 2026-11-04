@@ -1,5 +1,6 @@
 'use client';
 import ReactMarkdown from 'react-markdown';
+import NextLink from 'next/link';
 import {
   type FC,
   useId,
@@ -24,7 +25,6 @@ import {
   Text,
   FormControl,
   FormErrorMessage,
-  useColorModeValue,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -32,7 +32,6 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Badge,
   Tooltip,
   Icon,
   IconButton,
@@ -40,11 +39,16 @@ import {
   FaSave,
   MdExpandMore,
   MdExpandLess,
-  MdArrowForward,
+  MdAutoAwesome,
   MdErrorOutline,
   Spinner
 } from '@/components';
 import { RenderItem } from './RenderItem';
+import {
+  METRIC_GROUP,
+  GROUP_ORDER,
+  FEATURED_METRIC
+} from './metricGroups';
 import { BirthChart } from './BirthChart';
 import { ProfileManager } from './ProfileManager';
 import { useProcessNumerology } from 'hooks';
@@ -135,10 +139,7 @@ const NumerologyComponent: FC<NumerologyComponentProps> = ({ onCalculate }) => {
   } = useAnalytics();
   const { saveProfile, deleteProfile, maxProfiles, profiles, isLoaded: profilesLoaded } = useProfiles();
   const id = useId();
-  const color = useColorModeValue('black', 'white');
-  const contentBg = useColorModeValue('white', 'gray.800');
-  const cachedBadgeBg = useColorModeValue('gray.50', 'whiteAlpha.50');
-  const cachedBadgeBorder = useColorModeValue('gray.100', 'whiteAlpha.100');
+  const color = 'var(--ink)';
   const refInputName = useRef<HTMLInputElement>(null);
   const [localName, setLocalName] = useState<string>('Dương Văn Nghĩa');
   const [localBirth, setLocalBirth] = useState<string>('1976-06-11');
@@ -599,19 +600,37 @@ ${birthChartData.grid
     );
   }, [profiles, localName, localBirth]);
 
-  // Colors
-  const cacheBadgeBg = useColorModeValue('blue.50', 'blue.900');
-  const cacheBadgeColor = useColorModeValue('blue.600', 'blue.300');
-  const chartToggleColor = useColorModeValue('gray.600', 'gray.400');
-  const dividerColor = useColorModeValue('brand.100', 'brand.800');
-  const chartToggleHoverBg = useColorModeValue('gray.50', 'whiteAlpha.100');
-  const meaningDividerColor = useColorModeValue('gray.200', 'whiteAlpha.200');
+  const featuredItem = data.find((d: any) => d.key === FEATURED_METRIC);
+  const gridItems = data.filter((d: any) => d.key !== FEATURED_METRIC);
+
+  const openItem = (item: any) => {
+    setSelectedItem(item);
+    setMeaningContent('');
+    setIsMeaningFromCache(false);
+    setMeaningError(false);
+    trackFormulaView(item.key);
+    onOpen();
+  };
+
+  const selectedGroup = selectedItem
+    ? METRIC_GROUP[selectedItem.key] ?? 'support'
+    : 'support';
 
   return (
     <Box>
-      <Box as="form" onSubmit={handleSubmit} mt={8}>
-        <VStack spacing={3} align="stretch">
-          <Box h="40px" w={{ md: '50%', xs: '100%' }}>
+      {/* ───── Ô nhập họ tên + ngày sinh ───── */}
+      <Box
+        as="form"
+        onSubmit={handleSubmit}
+        maxW="640px"
+        mx="auto"
+        className="pyra-form"
+      >
+        <VStack spacing={4} align="stretch">
+          <Box>
+            <Text as="label" className="pr-label" display="block">
+              {tNum('nameLabel')}
+            </Text>
             <ProfileManager
               currentName={localName}
               currentBirthDate={localBirth}
@@ -628,438 +647,306 @@ ${birthChartData.grid
           </Box>
 
           <FormControl isInvalid={!!birthError}>
-            <Box>
-              <InputDate
-                rounded={50}
-                getValue={(date) => {
-                  setLocalBirth(date);
-                }}
-                defaultValue={localBirth}
-                color={color}
-              />
-            </Box>
+            <Text as="span" className="pr-label" display="block">
+              {tNum('birthLabel')}
+            </Text>
+            <InputDate
+              getValue={(date) => {
+                setLocalBirth(date);
+              }}
+              defaultValue={localBirth}
+              color={color}
+            />
             {birthError && (
-              <FormErrorMessage
-                mt={1}
-                fontSize="sm"
-                textAlign="center"
-                justifyContent="center"
-              >
+              <FormErrorMessage mt={2} justifyContent="center">
                 {birthError}
               </FormErrorMessage>
             )}
           </FormControl>
 
-          {/* Submit + Save Profile — compact inline */}
-          <Box textAlign="center" py={2}>
-            <Box display="inline-flex" alignItems="center" gap={2}>
-              <Button
-                type="submit"
-                colorScheme="orange"
-                size="sm"
-                borderRadius="full"
-                fontSize="sm"
-                fontWeight={700}
-                px={6}
-                isLoading={isLoading}
-                loadingText={tNum('processing')}
-                _hover={{
-                  transform: 'translateY(-2px)',
-                  boxShadow: 'lg'
-                }}
-                _active={{
-                  transform: 'translateY(0)'
-                }}
-                transition="all 0.2s"
-              >
-                {tNum('viewResult')}
-              </Button>
+          {/* Nút chính (Primary) + nút icon Lưu hồ sơ */}
+          <Box display="flex" justifyContent="center" alignItems="center" gap={3} pt={1}>
+            <Button
+              type="submit"
+              size="lg"
+              isLoading={isLoading}
+              loadingText={tNum('processing')}
+            >
+              {tNum('viewResult')}
+            </Button>
 
-              {!isProfileAlreadySaved && (
-                <Tooltip label={tProfile('saveProfile')} hasArrow fontSize="xs">
-                  <IconButton
-                    aria-label={tProfile('saveProfile')}
-                    icon={<Icon as={FaSave} />}
-                    colorScheme="orange"
-                    variant="outline"
-                    size="sm"
-                    borderRadius="full"
-                    onClick={handleSaveProfile}
-                    isDisabled={!localName.trim() || !localBirth}
-                    _hover={{
-                      transform: 'translateY(-2px)',
-                      boxShadow: 'md'
-                    }}
-                    transition="all 0.2s"
-                  />
-                </Tooltip>
-              )}
-            </Box>
+            {!isProfileAlreadySaved && (
+              <Tooltip label={tProfile('saveProfile')} hasArrow>
+                <IconButton
+                  aria-label={tProfile('saveProfile')}
+                  icon={<Icon as={FaSave} />}
+                  variant="icon"
+                  onClick={handleSaveProfile}
+                  isDisabled={!localName.trim() || !localBirth}
+                />
+              </Tooltip>
+            )}
           </Box>
         </VStack>
       </Box>
 
-      {/* Birth Chart — collapsible with localStorage toggle */}
+      {/* ───── Biểu đồ ngày sinh (thu gọn được) ───── */}
       {submittedBirth && (
-        <Box mt={6} mb={6} maxW="400px" mx="auto">
-          {/* Toggle Header */}
-          <HStack
-            spacing={2}
-            cursor="pointer"
-            onClick={toggleBirthChart}
-            justify="center"
-            mb={isBirthChartVisible ? 3 : 0}
-            px={3}
-            py={1.5}
-            borderRadius="full"
-            transition="all 0.2s"
-            _hover={{
-              bg: chartToggleHoverBg
-            }}
-            userSelect="none"
-          >
-            <Box
-              fontSize={{ base: 'sm', md: 'md' }}
-              fontWeight={700}
-              color={chartToggleColor}
+        <Box as="section" mt={{ base: 10, md: 14 }} mb={6} mx="auto">
+          <VStack spacing={2} mb={4}>
+            <Text className="pyra-eyebrow" m={0}>
+              ‹ {tChart('title')} ›
+            </Text>
+            <Button
+              variant="link"
+              size="sm"
+              onClick={toggleBirthChart}
+              aria-expanded={isBirthChartVisible}
+              rightIcon={
+                <Icon
+                  as={isBirthChartVisible ? MdExpandLess : MdExpandMore}
+                  boxSize={5}
+                />
+              }
             >
-              {tChart('title')}
-            </Box>
-            <Icon
-              as={isBirthChartVisible ? MdExpandLess : MdExpandMore}
-              color={chartToggleColor}
-              boxSize={5}
-              transition="transform 0.2s"
-            />
-          </HStack>
+              {isBirthChartVisible ? tChart('hideChart') : tChart('showChart')}
+            </Button>
+          </VStack>
 
           {isMounted && (
             <Collapse in={isBirthChartVisible} animateOpacity>
-              <Box pb={4}>
+              <VStack spacing={5} pb={4} px={2}>
                 <BirthChart
                   birthDate={submittedBirth}
                   onCellClick={handleBirthChartCellClick}
                 />
-                {/* Action Analyze Birth Chart Button */}
-                <Box mt={-4} textAlign="center" position="relative" zIndex={2}>
-                  <Button
-                    variant="outline"
-                    bg={contentBg}
-                    _hover={{ bg: chartToggleHoverBg, transform: 'translateY(-2px)' }}
-                    _active={{ transform: 'translateY(0)' }}
-                    colorScheme="red"
-                    size="sm"
-                    borderRadius="full"
-                    boxShadow="md"
-                    px={6}
-                    transition="all 0.2s"
-                    onClick={handleAnalyzeBirthChart}
-                    leftIcon={<Icon as={MdArrowForward} />}
-                    isLoading={isAnalysisLoading}
-                    loadingText={tNum('processing')}
-                  >
-                    {tChart('analyzeChart') || 'Giải mã Biểu đồ'}
-                  </Button>
-                </Box>
-              </Box>
+                <Button
+                  variant="ticket"
+                  onClick={handleAnalyzeBirthChart}
+                  isLoading={isAnalysisLoading}
+                  loadingText={tNum('processing')}
+                >
+                  {tChart('analyzeChart')}
+                </Button>
+              </VStack>
             </Collapse>
           )}
         </Box>
       )}
 
-      {/* Divider */}
       {submittedBirth && (
-        <Box
-          h="1px"
-          bgGradient={`linear(to-r, transparent, ${dividerColor}, transparent)`}
-          mx="auto"
-          w="60%"
-          mb={6}
-        />
+        <Box className="pyra-ornament" my={{ base: 8, md: 10 }} aria-hidden>
+          ✦
+        </Box>
       )}
 
-      {!!submittedBirth && (
-        <Box mt={4}>
-          {data && data.length > 0 && (
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              gap={4}
-              mb={6}
-            >
-              <Box w={{ base: '40px', md: '80px' }} h="1px" bgGradient="linear(to-r, transparent, red.500)" opacity={0.8} />
-              <Box fontSize={20} fontWeight={800} color="red.400" whiteSpace="nowrap">
-                {tNum('indexTitle')}
-              </Box>
-              <Box w={{ base: '40px', md: '80px' }} h="1px" bgGradient="linear(to-l, transparent, red.500)" opacity={0.8} />
+      {/* ───── 16 thẻ chỉ số ───── */}
+      {!!submittedBirth && data && data.length > 0 && (
+        <Box as="section" aria-labelledby="pyra-index-title">
+          <VStack spacing={2} mb={{ base: 6, md: 8 }}>
+            <Text className="pyra-eyebrow" m={0}>
+              ‹ {tNum('collectionEyebrow')} ›
+            </Text>
+            <h2 id="pyra-index-title" className="pyra-section-title">
+              {tNum('indexTitle')}
+            </h2>
+          </VStack>
+
+          {featuredItem && (
+            <Box textAlign="center">
+              <RenderItem
+                item={featuredItem}
+                featured
+                onClick={() => openItem(featuredItem)}
+              />
             </Box>
           )}
 
-          <Box display="flex" flexWrap="wrap" justifyContent="center" gap="12px">
-            {data.map((item: any, index: number) => (
-              <Box
+          <div className="pyra-cards">
+            {gridItems.map((item: any, index: number) => (
+              <RenderItem
                 key={id + index}
-                w={{
-                  base: 'calc(50% - 6px)',
-                  sm: 'calc(33.333% - 8px)',
-                  md: 'calc(25% - 9px)',
-                  xl: 'calc(20% - 9.6px)'
-                }}
-              >
-                <RenderItem
-                  item={item}
-                  onClick={() => {
-                    setSelectedItem(item);
-                    setMeaningContent('');
-                    setIsMeaningFromCache(false);
-                    setMeaningError(false);
-                    trackFormulaView(item.key);
-                    onOpen();
-                  }}
-                />
-              </Box>
+                item={item}
+                onClick={() => openItem(item)}
+              />
+            ))}
+          </div>
+
+          <Box className="pyra-legend" aria-label={tNum('indexTitle')}>
+            {GROUP_ORDER.map((g) => (
+              <span key={g} className="pyra-legend__item">
+                <span className={`pyra-legend__swatch pr-card--${g}`} />
+                {tNum(`groupLegend.${g}` as any)}
+              </span>
             ))}
           </Box>
         </Box>
       )}
 
-        <Modal
-          isOpen={isOpen}
-          onClose={() => {
-            meaningAbortRef.current?.abort();
-            onClose();
-          }}
-          isCentered={{ base: false, md: true }}
-          motionPreset="slideInBottom"
-          size="2xl"
-        >
-          <ModalOverlay backdropFilter="blur(3px)" />
-          <ModalContent mx={4} rounded={20}>
-            <ModalHeader>
-              {selectedItem
-                ? tNum('formulaTitle', {
-                    name: tMetrics(selectedItem.key as any)
-                  })
-                : ''}
-            </ModalHeader>
-            <ModalCloseButton />
-            <ModalBody pb={6}>
-              <Box
-                fontSize="sm"
-                lineHeight="tall"
-                className="formula-markdown"
-                css={{
-                  '& strong, & b': {
-                    color: 'var(--chakra-colors-red-400)',
-                    fontWeight: 700
-                  },
-                  '& ul, & ol': {
-                    paddingLeft: '20px',
-                    marginBottom: '8px'
-                  },
-                  '& li': {
-                    marginBottom: '6px'
-                  },
-                  '& p': {
-                    marginBottom: '10px'
-                  }
-                }}
-              >
-                <ReactMarkdown>{contentFormula}</ReactMarkdown>
-              </Box>
-
-              {selectedItem && selectedItem.value !== undefined && (
-                <Box mt={6}>
-                  {/* AI Meaning Button — only show if no content yet */}
-                  {!meaningContent && !isMeaningLoading && !meaningError && (
-                    <Box display="flex" justifyContent="center">
-                      <Button
-                        colorScheme="orange"
-                        borderRadius="full"
-                        w="full"
-                        px={8}
-                        py={{ base: 2, md: 3 }}
-                        height="auto"
-                        whiteSpace="normal"
-                        fontSize={{ base: 'sm', md: 'md' }}
-                        lineHeight="shorter"
-                        onClick={handleMeaningClick}
-                        _hover={{
-                          transform: 'translateY(-2px)',
-                          boxShadow: 'md'
-                        }}
-                        transition="all 0.2s"
-                      >
-                        {tNum('viewMeaning', {
-                          metric: tMetrics(selectedItem.key as any),
-                          value: selectedItem.value
-                        })}
-                      </Button>
-                    </Box>
-                  )}
-
-                  {/* Loading State */}
-                  {isMeaningLoading && (
-                    <Box textAlign="center" py={3}>
-                      <Button
-                        isLoading
-                        loadingText={tMeaning('loading')}
-                        colorScheme="orange"
-                        variant="ghost"
-                        borderRadius="full"
-                        w="full"
-                        isDisabled
-                      />
-                    </Box>
-                  )}
-
-                  {/* Error State */}
-                  {meaningError && (
-                    <Box textAlign="center" py={3}>
-                      <Box fontSize="sm" color="red.400" mb={2}>
-                        {tMeaning('error')}
-                      </Box>
-                      <Button
-                        size="sm"
-                        colorScheme="orange"
-                        variant="outline"
-                        borderRadius="full"
-                        onClick={handleMeaningClick}
-                      >
-                        {tMeaning('retry')}
-                      </Button>
-                    </Box>
-                  )}
-
-                  {/* Meaning Content (streamed/cached) */}
-                  {meaningContent && (
-                    <Box mt={4}>
-                      {/* Cache badge */}
-                      {isMeaningFromCache && (
-                        <Box display="flex" justifyContent="center" mb={3}>
-                          <Tooltip
-                            label={tMeaning('cachedTooltip')}
-                            hasArrow
-                            fontSize="xs"
-                          >
-                            <Badge
-                              bg={cacheBadgeBg}
-                              color={cacheBadgeColor}
-                              borderRadius="full"
-                              px={3}
-                              py={1}
-                              fontSize="2xs"
-                              fontWeight={600}
-                            >
-                              💾 {tMeaning('cachedBadge')}
-                            </Badge>
-                          </Tooltip>
-                        </Box>
-                      )}
-
-                      {/* Divider before meaning */}
-                      <Box
-                        h="1px"
-                        bg={meaningDividerColor}
-                        mb={4}
-                      />
-
-                      <Box
-                        fontSize="sm"
-                        lineHeight="tall"
-                        className="formula-markdown"
-                        css={{
-                          '& strong, & b': {
-                            color: 'var(--chakra-colors-brand-500)',
-                            fontWeight: 700
-                          },
-                          '& ul, & ol': {
-                            paddingLeft: '20px',
-                            marginBottom: '8px'
-                          },
-                          '& li': {
-                            marginBottom: '6px'
-                          },
-                          '& p': {
-                            marginBottom: '10px'
-                          }
-                        }}
-                      >
-                        <ReactMarkdown>{meaningContent}</ReactMarkdown>
-                      </Box>
-                    </Box>
-                  )}
-                </Box>
+      {/* ───── Hộp thoại kính: công thức + AI giải thích ───── */}
+      <Modal
+        isOpen={isOpen}
+        onClose={closeModal}
+        isCentered
+        size="2xl"
+        scrollBehavior="inside"
+      >
+        <ModalOverlay />
+        <ModalContent mx={4} my={{ base: 4, md: 16 }} maxH="calc(100dvh - 32px)">
+          <ModalHeader pb={2}>
+            <HStack spacing={4} align="center">
+              {selectedItem && (
+                <span
+                  className={`pyra-dialog-oval pyra-dialog-oval--${selectedGroup}`}
+                  aria-hidden
+                >
+                  {String(selectedItem.value ?? '')}
+                </span>
               )}
-            </ModalBody>
-          </ModalContent>
-        </Modal>
+              <Box>
+                <Text className="pyra-eyebrow pyra-eyebrow--glass" m={0} fontSize="14px">
+                  {tNum('formulaEyebrow')}
+                </Text>
+                <Box as="span" display="block">
+                  {selectedItem ? tMetrics(selectedItem.key as any) : ''}
+                </Box>
+              </Box>
+            </HStack>
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            <Box className="pyra-prose pyra-prose--glass pyra-glass-step">
+              <ReactMarkdown>{contentFormula}</ReactMarkdown>
+            </Box>
 
-        {/* Birth Chart Analysis Modal */}
-        <Modal isOpen={isAnalysisOpen} onClose={closeAnalysisModal} size="xl" scrollBehavior="inside">
-          <ModalOverlay backdropFilter="blur(4px)" />
-          <ModalContent
-            bg={contentBg}
-            mx={4}
-            mt={{ base: 16, md: 24 }}
-            maxH={{ base: '80vh', md: '75vh' }}
-            pb={4}
-          >
-            <ModalHeader
-              color="red.500"
-              pb={2}
-              borderBottomWidth="1px"
-              borderColor={useColorModeValue('gray.100', 'whiteAlpha.100')}
-            >
-              {tChart('analyzeChart') || 'Giải mã Biểu đồ Ngày Sinh'}
-            </ModalHeader>
-            <ModalCloseButton />
-            <ModalBody pt={4} className="markdown-body">
-              {isAnalysisLoading && !analysisContent ? (
-                <Box py={8} textAlign="center">
-                  <Spinner color="red.500" />
-                  <Text mt={4} color="gray.500" fontSize="sm">
-                    {tNum('processing')}
-                  </Text>
-                </Box>
-              ) : analysisError ? (
-                <Box py={6} textAlign="center">
-                  <Icon as={MdErrorOutline} color="red.400" boxSize={8} mb={3} />
-                  <Text color="red.500">{tVal('genericError')}</Text>
-                  <Button mt={4} size="sm" onClick={handleAnalyzeBirthChart}>
-                    Thử lại
-                  </Button>
-                </Box>
-              ) : analysisContent ? (
-                <Box>
-                  {isAnalysisFromCache && analysisCachedAt && (
-                    <HStack mb={4} justify="space-between" align="center" bg={cachedBadgeBg} p={2} borderRadius="md" borderWidth="1px" borderColor={cachedBadgeBorder}>
-                      <Text fontSize="xs" color="gray.500" fontStyle="italic">
-                        {tMeaning('cachedBadge')} - {dayjs(analysisCachedAt).format('DD/MM/YYYY HH:mm')}
-                      </Text>
-                      <Button size="xs" variant="outline" colorScheme="gray" onClick={() => handleAnalyzeBirthChart(true)}>
-                        Phân tích lại
-                      </Button>
-                    </HStack>
-                  )}
-                  <Box
-                    sx={{
-                      'h3': { fontSize: '1.25rem', mt: 4, mb: 2, color: 'brand.500' },
-                      'h4': { fontSize: '1.1rem', mt: 3, mb: 2, color: 'gray.700' },
-                      'p': { mb: 3 },
-                      'ul': { pl: 5, mb: 3 },
-                      'li': { mb: 1, listStyleType: 'disc' }
-                    }}
-                  >
-                    <ReactMarkdown>{analysisContent}</ReactMarkdown>
+            {selectedItem && selectedItem.value !== undefined && (
+              <Box mt={5}>
+                {!meaningContent && !isMeaningLoading && !meaningError && (
+                  <Box display="flex" justifyContent="center">
+                    <Button
+                      variant="glassAccent"
+                      onClick={handleMeaningClick}
+                      whiteSpace="normal"
+                      h="auto"
+                      py={3}
+                      px={6}
+                      leftIcon={<Icon as={MdAutoAwesome} />}
+                    >
+                      {tNum('askPyra', {
+                        metric: tMetrics(selectedItem.key as any),
+                        value: String(selectedItem.value)
+                      })}
+                    </Button>
                   </Box>
+                )}
+
+                {isMeaningLoading && !meaningContent && (
+                  <HStack justify="center" py={3} spacing={3} color="onGlassMuted">
+                    <Spinner size="sm" color="gold" />
+                    <Text fontFamily="var(--font-ui)" fontSize="14px" m={0}>
+                      {tMeaning('loading')}
+                    </Text>
+                  </HStack>
+                )}
+
+                {meaningError && (
+                  <VStack py={3} spacing={3}>
+                    <Text fontFamily="var(--font-ui)" fontSize="14px" m={0}>
+                      {tMeaning('error')}
+                    </Text>
+                    <Button variant="glass" onClick={handleMeaningClick}>
+                      {tMeaning('retry')}
+                    </Button>
+                  </VStack>
+                )}
+
+                {meaningContent && (
+                  <Box mt={2}>
+                    {isMeaningFromCache && (
+                      <Box display="flex" justifyContent="center" mb={3}>
+                        <Tooltip label={tMeaning('cachedTooltip')} hasArrow>
+                          <span className="pyra-saved-tag">
+                            {tMeaning('cachedBadge')}
+                          </span>
+                        </Tooltip>
+                      </Box>
+                    )}
+                    <Box className="pyra-prose pyra-prose--glass">
+                      <Text className="pr-msg__who pyra-who--glass" m={0} mb={2}>
+                        Pyra
+                      </Text>
+                      <ReactMarkdown>{meaningContent}</ReactMarkdown>
+                    </Box>
+                  </Box>
+                )}
+
+                <Box display="flex" justifyContent="center" mt={5}>
+                  <NextLink href={`/${locale}/chat`} className="pr-gbtn">
+                    {tNum('askDeeper')} →
+                  </NextLink>
                 </Box>
-              ) : null}
-            </ModalBody>
-          </ModalContent>
-        </Modal>
-      </Box>
+              </Box>
+            )}
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+
+      {/* ───── Hộp thoại kính lớn: AI giải mã biểu đồ ───── */}
+      <Modal
+        isOpen={isAnalysisOpen}
+        onClose={closeAnalysisModal}
+        size="2xl"
+        isCentered
+        scrollBehavior="inside"
+      >
+        <ModalOverlay />
+        <ModalContent mx={4} my={{ base: 4, md: 16 }} maxH="calc(100dvh - 32px)">
+          <ModalHeader pb={2}>
+            <Text className="pyra-eyebrow pyra-eyebrow--glass" m={0} fontSize="14px">
+              ‹ {tChart('title')} ›
+            </Text>
+            {tChart('analyzeChart')}
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pt={2} pb={6}>
+            {isAnalysisLoading && !analysisContent ? (
+              <VStack py={8} spacing={3}>
+                <Spinner color="gold" />
+                <Text fontFamily="var(--font-ui)" fontSize="14px" m={0}>
+                  {tNum('processing')}
+                </Text>
+              </VStack>
+            ) : analysisError ? (
+              <VStack py={6} spacing={3}>
+                <Icon as={MdErrorOutline} boxSize={8} />
+                <Text m={0}>{tVal('genericError')}</Text>
+                <Button variant="glass" onClick={handleAnalyzeBirthChart}>
+                  {tChart('retry')}
+                </Button>
+              </VStack>
+            ) : analysisContent ? (
+              <Box>
+                {isAnalysisFromCache && analysisCachedAt && (
+                  <HStack mb={4} justify="space-between" align="center" className="pyra-glass-step" flexWrap="wrap">
+                    <span className="pyra-saved-tag">
+                      {tChart('savedAt', {
+                        time: dayjs(analysisCachedAt).format('DD/MM/YYYY HH:mm')
+                      })}
+                    </span>
+                    <Button variant="glass" size="sm" onClick={() => handleAnalyzeBirthChart(true)}>
+                      {tChart('regenerate')}
+                    </Button>
+                  </HStack>
+                )}
+                <Box className="pyra-prose pyra-prose--glass">
+                  <ReactMarkdown>{analysisContent}</ReactMarkdown>
+                </Box>
+              </Box>
+            ) : null}
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </Box>
   );
 };
 

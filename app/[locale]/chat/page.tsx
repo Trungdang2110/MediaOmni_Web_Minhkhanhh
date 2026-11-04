@@ -11,8 +11,7 @@ import {
   Button,
   Heading,
   Container,
-  useColorModeValue,
-  MdHome,
+    MdHome,
   MdDeleteOutline,
   LanguageSwitcher,
   useColorMode,
@@ -158,28 +157,18 @@ export default function Chat() {
     }
   }, [messages]);
 
-  // Color tokens — brand palette
-  const bgGradient = useColorModeValue(
-    'linear(to-b, orange.50, gray.50)',
-    'linear(to-b, gray.900, gray.850)'
-  );
-  // Clean, transparent glassmorphism for header
-  const headerBg = useColorModeValue('whiteAlpha.800', 'blackAlpha.600');
-  const headerBorder = useColorModeValue('blackAlpha.100', 'whiteAlpha.100');
-  const emptyBg = useColorModeValue('whiteAlpha.800', 'gray.800');
-  const emptyBorder = useColorModeValue('brand.200', 'brand.700');
-  const scrollbarThumbBg = useColorModeValue('#DD6B20', '#ED8936');
-  const scrollbarThumbHoverBg = useColorModeValue('#C05621', '#F6AD55');
+  // Màu theo design system Pyra Rococo:
+  // nền giấy có mảng màu loang (để kính phía trên có cái để "nhìn xuyên"),
+  // thanh trên cùng + ngăn kéo lịch sử = kính lỏng (chữ on-glass).
+  const headerBorder = 'glassStroke';
+  const scrollbarThumbBg = 'var(--line)';
+  const scrollbarThumbHoverBg = 'var(--gold)';
 
-  const drawerBg = useColorModeValue('white', 'gray.900');
-  const sessionItemBgHover = useColorModeValue(
-    'blackAlpha.50',
-    'whiteAlpha.100'
-  );
-  const sessionActiveBg = useColorModeValue('blackAlpha.50', 'whiteAlpha.100');
-  const drawerFooterBg = useColorModeValue('gray.50', 'whiteAlpha.50');
-  const textMuted = useColorModeValue('gray.600', 'gray.300');
-  const textHint = useColorModeValue('gray.500', 'gray.400');
+  const sessionItemBgHover = 'glassChip';
+  const sessionActiveBg = 'glassChip';
+  const drawerFooterBg = 'transparent';
+  const textMuted = 'onGlassMuted';
+  const textHint = 'onGlassMuted';
 
   const hasMessages = messages.length > 0;
 
@@ -187,7 +176,7 @@ export default function Chat() {
     <Box
       h="100dvh"
       overflow="hidden"
-      bgGradient={bgGradient}
+      className="pyra-chat-bg"
       display="flex"
       flexDir="column"
     >
@@ -196,12 +185,8 @@ export default function Chat() {
         pos="sticky"
         top={0}
         w="100%"
-        bg={headerBg}
-        borderBottom="1px solid"
-        borderColor={headerBorder}
-        shadow="sm"
+        className="pr-glass pr-glass--strong pyra-chat-header"
         zIndex={10}
-        backdropFilter="blur(20px)"
       >
         <Flex p={2} align="center" justify="space-between" flex={1}>
           <Box flex={1} display="flex" justifyContent="flex-start">
@@ -211,37 +196,38 @@ export default function Chat() {
                 variant="ghost"
                 size="sm"
                 rounded="full"
-                color="gray.700"
-                _dark={{ color: 'whiteAlpha.900' }}
+                color="onGlass"
                 onClick={onOpen}
                 aria-label="Menu"
-                _hover={{
-                  bg: 'blackAlpha.100',
-                  _dark: { bg: 'whiteAlpha.200' }
-                }}
+                _hover={{ bg: 'glassChip' }}
               />
             </Tooltip>
           </Box>
 
-          <Box flex={1} display="flex" justifyContent="center">
+          <Box flex={1} display="flex" justifyContent="center" alignItems="center" gap={2}>
             <Tooltip label={tHeader('home')} hasArrow>
               <IconButton
                 icon={<Icon as={MdHome} boxSize={5} />}
                 variant="ghost"
                 size="sm"
                 rounded="full"
-                color="gray.700"
-                _dark={{ color: 'whiteAlpha.900' }}
+                color="onGlass"
                 onClick={() => router.push('/')}
                 aria-label="Home"
-                _hover={{
-                  bg: 'blackAlpha.100',
-                  _dark: { bg: 'whiteAlpha.200' },
-                  transform: 'scale(1.1)'
-                }}
+                _hover={{ bg: 'glassChip', transform: 'scale(1.1)' }}
                 transition="all 0.2s"
               />
             </Tooltip>
+            <Box
+              as="span"
+              fontFamily="var(--font-display)"
+              fontWeight={900}
+              fontSize="20px"
+              color="onGlass"
+              letterSpacing=".02em"
+            >
+              Pyra
+            </Box>
           </Box>
 
           <Box flex={1} display="flex" justifyContent="flex-end">
@@ -268,7 +254,7 @@ export default function Chat() {
           size={{ base: 'full', md: 'sm' }}
         >
           <DrawerOverlay />
-          <DrawerContent bg={drawerBg}>
+          <DrawerContent>
             <DrawerCloseButton mt={1} />
             <DrawerHeader borderBottomWidth="1px" borderColor={headerBorder}>
               {t('chatHistory')}
@@ -277,7 +263,7 @@ export default function Chat() {
               <Box p={3}>
                 <Button
                   w="100%"
-                  colorScheme="brand"
+                  variant="glassAccent"
                   leftIcon={<Icon as={MdAdd} />}
                   onClick={() => {
                     createNewSession();
@@ -314,7 +300,7 @@ export default function Chat() {
                       onClose();
                     }}
                   >
-                    <Icon as={MdOutlineChat} mr={3} color="gray.500" />
+                    <Icon as={MdOutlineChat} mr={3} color="gold" />
                     <Box flex={1} overflow="hidden">
                       {editingSessionId === s.id ? (
                         <HStack flex={1} onClick={(e) => e.stopPropagation()}>
@@ -360,7 +346,7 @@ export default function Chat() {
                           >
                             {s.title}
                           </Text>
-                          <Text fontSize="xs" color="gray.500">
+                          <Text fontSize="xs" color={textMuted}>
                             {new Date(s.updatedAt).toLocaleTimeString()} -{' '}
                             {new Date(s.updatedAt).toLocaleDateString()}
                           </Text>
@@ -374,7 +360,7 @@ export default function Chat() {
                           size="xs"
                           aria-label={t('renameSession')}
                           variant="ghost"
-                          colorScheme="blue"
+                          color="onGlass"
                           onClick={(e) => {
                             e.stopPropagation();
                             setEditingSessionId(s.id);
@@ -386,7 +372,7 @@ export default function Chat() {
                           size="xs"
                           aria-label="Delete"
                           variant="ghost"
-                          colorScheme="red"
+                          color="peach"
                           onClick={(e) => {
                             e.stopPropagation();
                             setDeleteTarget(s.id);
@@ -409,6 +395,7 @@ export default function Chat() {
                 <Button
                   size="sm"
                   variant="ghost"
+                  color="onGlass"
                   justifyContent="flex-start"
                   leftIcon={<Icon as={MdFileUpload} />}
                   onClick={handleImportClick}
@@ -418,6 +405,7 @@ export default function Chat() {
                 <Button
                   size="sm"
                   variant="ghost"
+                  color="onGlass"
                   justifyContent="flex-start"
                   leftIcon={<Icon as={MdFileDownload} />}
                   onClick={() => {
@@ -446,7 +434,7 @@ export default function Chat() {
                 <HStack px={2} pt={2} pb={1} spacing={2} align="flex-start">
                   <Icon
                     as={MdLockOutline}
-                    color="green.500"
+                    color="gold"
                     mt={0.5}
                     boxSize={3.5}
                   />
@@ -467,7 +455,7 @@ export default function Chat() {
           isCentered
         >
           <AlertDialogOverlay>
-            <AlertDialogContent bg={drawerBg}>
+            <AlertDialogContent mx={4}>
               <AlertDialogHeader fontSize="lg" fontWeight="bold">
                 {t('confirmDeleteTitle')}
               </AlertDialogHeader>
@@ -477,11 +465,11 @@ export default function Chat() {
                   : t('confirmDeleteMsg')}
               </AlertDialogBody>
               <AlertDialogFooter>
-                <Button ref={cancelRef} onClick={() => setDeleteTarget(null)}>
+                <Button ref={cancelRef} variant="glass" onClick={() => setDeleteTarget(null)}>
                   {t('cancel')}
                 </Button>
                 <Button
-                  colorScheme="red"
+                  variant="glassAccent"
                   onClick={() => {
                     if (deleteTarget === 'all') {
                       clearAllSessions();
@@ -545,12 +533,7 @@ export default function Chat() {
                 textAlign="center"
                 py={{ base: 10, md: 12 }}
                 px={6}
-                borderRadius="2xl"
-                bg={emptyBg}
-                backdropFilter="blur(10px)"
-                shadow="md"
-                borderWidth={1}
-                borderColor={emptyBorder}
+                className="pyra-chat-empty"
                 display="flex"
                 flexDir="column"
                 alignItems="center"
@@ -568,18 +551,23 @@ export default function Chat() {
                 >
                   <PyraMascot size={150} state="playful" />
                 </motion.div>
+                <Text className="pyra-eyebrow" m={0} mb={2}>
+                  ‹ Pyra ›
+                </Text>
                 <Heading
-                  size="lg"
-                  bgGradient="linear(to-r, brand.500, brand.300)"
-                  bgClip="text"
+                  as="h1"
+                  fontSize={{ base: '30px', md: '44px' }}
+                  color="claret"
+                  textTransform="uppercase"
+                  fontWeight={900}
+                  lineHeight={1.05}
                   mb={4}
-                  fontFamily="fantasy"
                 >
                   {t('emptyStateTitle')}
                 </Heading>
                 <Text
-                  color={useColorModeValue('gray.600', 'gray.300')}
-                  fontSize="sm"
+                  color={'ink'}
+                  fontSize="17px"
                   maxW="md"
                   mx="auto"
                   mb={3}
@@ -587,8 +575,8 @@ export default function Chat() {
                   {t('emptyStateSubtitle')}
                 </Text>
                 <Text
-                  color={useColorModeValue('gray.500', 'gray.400')}
-                  fontSize="xs"
+                  color={'inkMuted'}
+                  fontSize="15px"
                   fontStyle="italic"
                 >
                   {t('emptyStateExample')}
@@ -624,10 +612,7 @@ export default function Chat() {
                 <HStack justify="center" py={2}>
                   <Button
                     onClick={retryLastMessage}
-                    size="sm"
-                    colorScheme="brand"
                     variant="outline"
-                    borderRadius="full"
                   >
                     {t('retryButton')}
                   </Button>
@@ -652,29 +637,30 @@ export default function Chat() {
             placeholder={`${t('inputPlaceholder')} - ${t('tip')}`}
           />
           <Text
-            fontSize={{ base: 'xx-small', md: 'xs' }}
-            color={useColorModeValue('gray.500', 'gray.400')}
+            fontSize="13px"
+            fontFamily="var(--font-text)"
+            fontStyle="italic"
+            color={'inkMuted'}
             textAlign="center"
             mt={2}
           >
             {t('reminder')}
           </Text>
-          {/* Bottom Utility Tools */}
-          <HStack justify="center" spacing={4}>
+          {/* Thanh công cụ kính nhỏ dưới ô chat */}
+          <HStack justify="center" mt={2} mb={2}>
+          <HStack className="pr-glass pr-glass--strong pyra-chat-tools" spacing={1}>
             <Tooltip label={t('guideTitle')} hasArrow>
               <Flex
                 as="button"
                 onClick={onGuideOpen}
                 aria-label="Guide"
-                boxSize={10}
+                boxSize="44px"
                 align="center"
                 justify="center"
                 rounded="full"
-                color="gray.700"
-                _dark={{ color: 'whiteAlpha.900' }}
+                color="onGlass"
                 _hover={{
-                  bg: 'blackAlpha.100',
-                  _dark: { bg: 'whiteAlpha.200' }
+                  bg: 'glassChip'
                 }}
                 transition="all 0.2s"
               >
@@ -687,15 +673,13 @@ export default function Chat() {
                 as="a"
                 href="https://github.com/minhphuc010194/NumerologyWebApp"
                 target="_blank"
-                boxSize={10}
+                boxSize="44px"
                 align="center"
                 justify="center"
                 rounded="full"
-                color="gray.700"
-                _dark={{ color: 'whiteAlpha.900' }}
+                color="onGlass"
                 _hover={{
-                  bg: 'blackAlpha.100',
-                  _dark: { bg: 'whiteAlpha.200' }
+                  bg: 'glassChip'
                 }}
                 transition="all 0.2s"
               >
@@ -711,30 +695,30 @@ export default function Chat() {
               <Flex
                 as="button"
                 onClick={toggleColorMode}
-                boxSize={10}
+                boxSize="44px"
                 align="center"
                 justify="center"
                 rounded="full"
                 _hover={{
-                  bg: 'blackAlpha.100',
-                  _dark: { bg: 'whiteAlpha.200' }
+                  bg: 'glassChip'
                 }}
                 transition="all 0.2s"
               >
                 {colorMode === 'light' ? (
-                  <Icon as={MoonIcon} boxSize={5} color="gray.600" />
+                  <Icon as={MoonIcon} boxSize={5} color="onGlass" />
                 ) : (
-                  <Icon as={SunIcon} boxSize={5} color="yellow.400" />
+                  <Icon as={SunIcon} boxSize={5} color="gold" />
                 )}
               </Flex>
             </Tooltip>
+          </HStack>
           </HStack>
         </Container>
       </Box>
 
       {/* Floating Pyra Mascot when chatting (Idle) */}
       {hasMessages && !isStreaming && (
-        <Tooltip label="Scroll to Top" placement="left" hasArrow bg="brand.500">
+        <Tooltip label="Scroll to Top" placement="left" hasArrow bg="claret">
           <Box
             as={motion.div}
             layoutId="shared-pyra"

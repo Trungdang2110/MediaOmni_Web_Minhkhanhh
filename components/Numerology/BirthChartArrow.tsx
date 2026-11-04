@@ -1,6 +1,6 @@
 'use client';
 import { FC } from 'react';
-import { Box, useColorModeValue } from '@/components';
+import { Box } from '@/components';
 import type { BirthChartArrow as ArrowData } from '@/hooks/useBirthChart';
 
 interface BirthChartArrowProps {
@@ -20,8 +20,9 @@ export const BirthChartArrow: FC<BirthChartArrowProps> = ({
   cellSize,
   gap
 }) => {
-  const strengthColor = useColorModeValue('#DD6B20', '#ED8936');
-  const emptyColor = useColorModeValue('#CBD5E0', '#4A5568');
+  // Mũi tên đủ số = đường vàng đồng; mũi tên trống = nét đứt màu đỏ nhạt
+  const strengthColor = 'var(--gold)';
+  const emptyColor = 'var(--danger)';
   const color = arrow.type === 'strength' ? strengthColor : emptyColor;
   const strokeWidth = arrow.type === 'strength' ? 2.5 : 1.5;
   const dashArray = arrow.type === 'empty' ? '6,4' : 'none';

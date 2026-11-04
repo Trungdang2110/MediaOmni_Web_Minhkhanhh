@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, useColorModeValue } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { motion, Variants } from 'framer-motion';
 
 interface PyraMascotProps {
@@ -10,11 +10,8 @@ interface PyraMascotProps {
 
 export function PyraMascot({ state = 'idle', size = 150 }: PyraMascotProps) {
   // Orange theme Numerology
-  const primaryColor = useColorModeValue('#DD6B20', '#C05621');
-  const glowColor = useColorModeValue(
-    'rgba(221,107,32,0.4)',
-    'rgba(237,137,54,0.6)'
-  );
+  const primaryColor = 'var(--claret-fill)';
+  const glowColor = 'var(--gold)';
 
   const floatAnimation: Variants = {
     idle: {
@@ -174,7 +171,7 @@ export function PyraMascot({ state = 'idle', size = 150 }: PyraMascotProps) {
               x2="100%"
               y2="100%"
             >
-              <stop offset="0%" stopColor="#FBD38D" />
+              <stop offset="0%" stopColor="var(--peach)" />
               <stop offset="100%" stopColor={primaryColor} />
             </linearGradient>
             <linearGradient
@@ -184,12 +181,12 @@ export function PyraMascot({ state = 'idle', size = 150 }: PyraMascotProps) {
               x2="100%"
               y2="100%"
             >
-              <stop offset="0%" stopColor="#F6AD55" />
-              <stop offset="100%" stopColor="#C05621" />
+              <stop offset="0%" stopColor="var(--peach)" />
+              <stop offset="100%" stopColor="var(--claret-deep)" />
             </linearGradient>
             <linearGradient id="wingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#F6E05E" />
-              <stop offset="100%" stopColor="#DD6B20" />
+              <stop offset="0%" stopColor="var(--gold)" />
+              <stop offset="100%" stopColor="var(--claret-fill)" />
             </linearGradient>
           </defs>
 
@@ -239,7 +236,7 @@ export function PyraMascot({ state = 'idle', size = 150 }: PyraMascotProps) {
           <polygon
             points="50,30 75,75 25,75"
             fill="none"
-            stroke="#FFF5F5"
+            stroke="var(--on-claret)"
             strokeWidth="1"
             opacity="0.5"
           />
@@ -248,7 +245,7 @@ export function PyraMascot({ state = 'idle', size = 150 }: PyraMascotProps) {
             cy="55"
             r="20"
             fill="none"
-            stroke="#FFF5F5"
+            stroke="var(--on-claret)"
             strokeWidth="1"
             opacity="0.3"
           />
@@ -259,7 +256,7 @@ export function PyraMascot({ state = 'idle', size = 150 }: PyraMascotProps) {
             cy="73"
             rx="6"
             ry="3.5"
-            fill="#FC8181"
+            fill="var(--peach)"
             opacity="0.8"
           />
 
@@ -269,7 +266,7 @@ export function PyraMascot({ state = 'idle', size = 150 }: PyraMascotProps) {
             cy="73"
             rx="6"
             ry="3.5"
-            fill="#FC8181"
+            fill="var(--peach)"
             opacity="0.8"
           />
 
@@ -282,7 +279,7 @@ export function PyraMascot({ state = 'idle', size = 150 }: PyraMascotProps) {
               cy="65"
               rx="5"
               ry="8"
-              fill="#2D3748"
+              fill="var(--claret-deep)"
               style={{ transformOrigin: '40px 65px' }}
             />
             {/* Eye highlights (don't blink separately, just blink with parent) */}
@@ -292,7 +289,7 @@ export function PyraMascot({ state = 'idle', size = 150 }: PyraMascotProps) {
               cx="38"
               cy="62"
               r="2.5"
-              fill="white"
+              fill="var(--on-claret)"
               style={{ transformOrigin: '40px 65px' }}
             />
             <motion.circle
@@ -301,7 +298,7 @@ export function PyraMascot({ state = 'idle', size = 150 }: PyraMascotProps) {
               cx="42"
               cy="67"
               r="1"
-              fill="white"
+              fill="var(--on-claret)"
               style={{ transformOrigin: '40px 65px' }}
             />
           </g>
@@ -315,7 +312,7 @@ export function PyraMascot({ state = 'idle', size = 150 }: PyraMascotProps) {
               cy="65"
               rx="5"
               ry="8"
-              fill="#2D3748"
+              fill="var(--claret-deep)"
               style={{ transformOrigin: '60px 65px' }}
             />
             <motion.circle
@@ -324,7 +321,7 @@ export function PyraMascot({ state = 'idle', size = 150 }: PyraMascotProps) {
               cx="58"
               cy="62"
               r="2.5"
-              fill="white"
+              fill="var(--on-claret)"
               style={{ transformOrigin: '60px 65px' }}
             />
             <motion.circle
@@ -333,7 +330,7 @@ export function PyraMascot({ state = 'idle', size = 150 }: PyraMascotProps) {
               cx="62"
               cy="67"
               r="1"
-              fill="white"
+              fill="var(--on-claret)"
               style={{ transformOrigin: '60px 65px' }}
             />
           </g>
@@ -348,9 +345,9 @@ export function PyraMascot({ state = 'idle', size = 150 }: PyraMascotProps) {
                   : 'M 46 76 Q 50 80 54 76'
             }
             fill={
-              state === 'speaking' || state === 'playful' ? '#FC8181' : 'none'
+              state === 'speaking' || state === 'playful' ? 'var(--peach)' : 'none'
             }
-            stroke="#2D3748"
+            stroke="var(--claret-deep)"
             strokeWidth="2"
             strokeLinecap="round"
           />
@@ -380,7 +377,7 @@ export function PyraMascot({ state = 'idle', size = 150 }: PyraMascotProps) {
             }}
             animate={state}
             points="50,-2 55,5 50,12 45,5"
-            fill="#F6E05E"
+            fill="var(--gold)"
             style={{ transformOrigin: '50px 5px' }}
           />
         </motion.svg>

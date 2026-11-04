@@ -1,0 +1,484 @@
+/* ==========================================================================
+   Pyra Rococo — phần CSS riêng của ứng dụng (đặt trên nền tokens + components).
+   Màu / chữ / khoảng cách đều lấy từ token (var(--...)), không gõ mã màu rời.
+   ========================================================================== */
+
+/* Bridge: bundle.css dùng --f-*, tokens.css đặt tên --font-* */
+:root {
+  --f-display: var(--font-display);
+  --f-caps: var(--font-caps);
+  --f-text: var(--font-text);
+  --f-ui: var(--font-ui);
+  --spring: cubic-bezier(0.2, 0.9, 0.25, 1.15);
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+body {
+  font-family: var(--font-text);
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+* {
+  box-sizing: border-box;
+}
+::selection {
+  background: var(--claret-fill);
+  color: var(--on-claret);
+}
+
+/* ---------- Hoa văn & nhãn ---------- */
+.pyra-eyebrow {
+  font-family: var(--font-caps);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  font-size: 16px;
+  color: var(--claret);
+  text-transform: uppercase;
+}
+.pyra-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--gold);
+}
+.pyra-ornament::before,
+.pyra-ornament::after {
+  content: "";
+  height: 1px;
+  width: clamp(36px, 10vw, 96px);
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+.pyra-ornament::after {
+  background: linear-gradient(270deg, transparent, var(--gold));
+}
+.pyra-section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(24px, 4vw, 30px);
+  line-height: 1.15;
+  color: var(--claret);
+  text-align: center;
+  margin: 0;
+}
+
+/* Khung oval vàng đôi (khung tranh nhỏ) */
+.pyra-oval {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--gold), 0 0 0 6px transparent, 0 0 0 7px var(--gold);
+}
+
+/* ---------- HERO: tranh loang màu + chữ khổng lồ ---------- */
+.pyra-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gold);
+  padding: clamp(28px, 6vw, 56px) clamp(16px, 4vw, 40px) clamp(28px, 5vw, 44px);
+  background:
+    radial-gradient(40% 55% at 14% 28%, var(--peach), transparent 70%),
+    radial-gradient(34% 50% at 86% 22%, var(--powder), transparent 70%),
+    radial-gradient(46% 60% at 62% 100%, var(--claret-fill), transparent 72%),
+    radial-gradient(28% 40% at 22% 96%, var(--gold), transparent 70%),
+    var(--paper);
+}
+.pyra-hero__title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--claret);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  font-size: clamp(44px, 11vw, 104px);
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 2px 0 rgba(243, 234, 219, 0.35);
+}
+:root[data-theme="dark"] .pyra-hero__title {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+}
+.pyra-hero__sub {
+  font-family: var(--font-text);
+  font-size: clamp(17px, 2.4vw, 20px);
+  line-height: 1.55;
+  max-width: 560px;
+  text-align: center;
+  color: var(--ink);
+  margin: 0;
+}
+.pyra-hero__mascot {
+  width: 128px;
+  height: 156px;
+  background: var(--paper);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s var(--spring);
+}
+.pyra-hero__mascot:hover {
+  transform: scale(1.05) rotate(-1.5deg);
+}
+.pyra-hero__mascot-wrap {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Thẻ chỉ số (IndexCard) ---------- */
+.pyra-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+@media (min-width: 30em) {
+  .pyra-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 48em) {
+  .pyra-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-6); }
+}
+@media (min-width: 80em) {
+  .pyra-cards { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+.pr-card {
+  position: relative;
+  width: 100%;
+  border: 0;
+  font: inherit;
+  transition: transform 0.25s var(--spring), box-shadow 0.25s ease;
+}
+.pr-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card), 0 10px 24px rgba(46, 26, 20, 0.14);
+}
+.pr-card:active { transform: translateY(0) scale(0.98); }
+.pr-card:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.pr-card--support { border: 1px solid var(--gold); }
+.pr-card__title { text-wrap: balance; }
+.pr-card__oval--wide {
+  width: auto;
+  min-width: 84px;
+  padding: 0 18px;
+  border-radius: 52px;
+  height: 78px;
+}
+.pr-card__oval--master { font-size: 40px; }
+.pr-card__oval--multi { font-size: 24px; letter-spacing: 0.04em; }
+.pr-card__oval--long { font-size: 17px; letter-spacing: 0.02em; }
+.pr-card__hint {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  opacity: 0.7;
+}
+/* Thẻ nổi bật "Đường đời": đỉnh vòm */
+.pr-card--featured {
+  max-width: 280px;
+  margin: 0 auto var(--space-6);
+  border-radius: var(--radius-arch) var(--radius-arch) var(--radius-md) var(--radius-md);
+  padding-top: 40px;
+}
+.pr-card--featured .pr-card__oval { width: 108px; height: 132px; font-size: 64px; }
+.pr-card--featured .pr-card__oval--master { font-size: 52px; }
+
+/* Nhóm chỉ số: chú thích màu */
+.pyra-legend { display: flex; flex-wrap: wrap; gap: 8px 14px; justify-content: center; margin-top: var(--space-6); }
+.pyra-legend__item { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 13px; color: var(--ink-muted); }
+.pyra-legend__swatch { width: 14px; height: 14px; border-radius: 2px; border: 1px solid var(--gold); }
+
+/* Thẻ chỉ số: chi tiết bổ sung */
+.pr-card { min-height: 100%; }
+.pr-card__meta { opacity: 0.85; font-style: italic; }
+.pr-card--featured { width: 100%; }
+.pyra-legend__swatch.pr-card--support { border: 1px solid var(--gold); }
+
+/* Ô nhập: nhãn và khối form */
+.pyra-form .pr-label { text-align: left; }
+.pyra-form input::-webkit-outer-spin-button,
+.pyra-form input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.pyra-form input[type="number"] { -moz-appearance: textfield; }
+
+/* Hộp thoại: con số trong khung oval nhỏ ở đầu */
+.pyra-dialog-oval {
+  flex: none;
+  display: grid;
+  place-items: center;
+  min-width: 60px;
+  height: 74px;
+  padding: 0 12px;
+  border-radius: 40px / 50%;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 1;
+  background: var(--paper);
+  color: var(--claret);
+  box-shadow: 0 0 0 2px var(--gold), 0 0 0 5px transparent, 0 0 0 6px var(--gold);
+  margin: 6px;
+}
+.pyra-eyebrow--glass { color: var(--gold); letter-spacing: 0.12em; }
+:root:not([data-theme="dark"]) .pyra-eyebrow--glass { color: var(--peach); }
+.pyra-who--glass { color: var(--peach) !important; }
+.pyra-saved-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-caps);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--gold);
+  color: var(--on-glass);
+}
+.pyra-saved-tag::before { content: "✓"; color: var(--success); font-family: var(--font-ui); }
+.chakra-modal__content .pr-gbtn { color: var(--on-glass); text-decoration: none; }
+
+/* ---------- Biểu đồ ngày sinh ---------- */
+.pyra-chart-frame {
+  background: var(--paper-deep);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  box-shadow: var(--shadow-card);
+  outline: 1px solid var(--gold);
+  outline-offset: 4px;
+}
+
+/* ---------- Kính lỏng cho hộp thoại Chakra ---------- */
+.chakra-modal__content-container { perspective: 1200px; }
+.chakra-modal__content,
+.chakra-modal__content-container .chakra-modal__content {
+  animation: pyra-pop-in 0.42s var(--spring) both;
+}
+.chakra-modal__content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(120% 60% at 15% 0%, rgba(255, 248, 238, 0.18), transparent 55%);
+}
+.chakra-modal__content > * { animation: pyra-fade-up 0.4s var(--spring) both; }
+.chakra-modal__content > *:nth-child(2) { animation-delay: 0.05s; }
+.chakra-modal__content > *:nth-child(3) { animation-delay: 0.1s; }
+.chakra-modal__content > *:nth-child(4) { animation-delay: 0.15s; }
+.chakra-modal__content > *:nth-child(5) { animation-delay: 0.2s; }
+.chakra-modal__overlay { animation: pyra-scrim-in 0.25s ease both; }
+
+@keyframes pyra-pop-in {
+  from { opacity: 0; transform: scale(0.86) translateY(12px); filter: blur(6px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+@keyframes pyra-fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pyra-scrim-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* Chữ trong khối kính (giải thích công thức / AI) */
+.pyra-prose { font-family: var(--font-text); font-size: 17px; line-height: 1.65; }
+.pyra-prose p { margin: 0 0 10px; }
+.pyra-prose ul, .pyra-prose ol { padding-left: 22px; margin: 0 0 10px; }
+.pyra-prose li { margin-bottom: 6px; }
+.pyra-prose strong, .pyra-prose b { font-weight: 600; }
+.pyra-prose h1, .pyra-prose h2, .pyra-prose h3, .pyra-prose h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 16px 0 8px;
+}
+.pyra-prose h3 { font-size: 20px; }
+.pyra-prose h4 { font-size: 18px; }
+.pyra-prose--glass { color: var(--on-glass); }
+.pyra-prose--glass strong, .pyra-prose--glass b { color: var(--on-glass); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.pyra-prose--glass h1, .pyra-prose--glass h2, .pyra-prose--glass h3, .pyra-prose--glass h4 { color: var(--on-glass); }
+.pyra-prose--paper { color: var(--ink); }
+.pyra-prose--paper strong, .pyra-prose--paper b { color: var(--claret); }
+.pyra-prose--paper h1, .pyra-prose--paper h2, .pyra-prose--paper h3, .pyra-prose--paper h4 { color: var(--claret); }
+.pyra-prose code { font-family: var(--font-ui); font-size: 0.9em; background: var(--glass-chip); padding: 1px 6px; border-radius: 4px; }
+
+/* Bước công thức đánh số La Mã */
+.pyra-glass-step {
+  background: var(--glass-chip);
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-glass-inner);
+  padding: 12px 14px;
+}
+
+/* ---------- Thanh công cụ kính nổi ---------- */
+.pyra-dock {
+  position: fixed;
+  left: 50%;
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  border-radius: var(--radius-pill);
+  max-width: calc(100vw - 24px);
+}
+.pyra-dock .pr-gbtn { color: var(--on-glass); text-decoration: none; }
+.pyra-dock .pr-gbtn--round { font-size: 13px; font-weight: 600; }
+.pyra-dock__sep { width: 1px; height: 24px; background: var(--glass-stroke); margin: 0 2px; }
+
+/* Chân trang đỏ rượu */
+.pyra-footer {
+  background: var(--claret-deep);
+  color: var(--on-claret);
+  margin-top: var(--space-16);
+  padding: var(--space-8) var(--space-4) 120px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  font-family: var(--font-ui);
+}
+.pyra-footer__mark { font-family: var(--font-display); font-weight: 900; font-size: 24px; color: var(--on-claret); }
+.pyra-footer__note { font-family: var(--font-text); font-size: 15px; line-height: 1.6; color: var(--on-claret); opacity: 0.9; max-width: 640px; margin: 0 auto; text-align: center; }
+
+/* Monogram "P" trong khung oval vàng (logo Pyra) */
+.pyra-monogram {
+  display: inline-grid;
+  place-items: center;
+  width: 56px;
+  height: 70px;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 34px;
+  color: var(--on-claret);
+  box-shadow: 0 0 0 2px var(--gold), 0 0 0 6px transparent, 0 0 0 7px var(--gold);
+}
+:root:not([data-theme="dark"]) .pyra-footer .pyra-monogram { box-shadow: 0 0 0 2px var(--peach), 0 0 0 6px transparent, 0 0 0 7px var(--peach); }
+.pyra-footer__note strong { font-weight: 600; }
+
+/* Khung vòm (thẻ Fragonard) cho ảnh QR ủng hộ */
+.pyra-arch-frame {
+  border-radius: var(--radius-arch) var(--radius-arch) var(--radius-md) var(--radius-md);
+  border: 2px solid var(--gold);
+  outline: 1px solid var(--gold);
+  outline-offset: 4px;
+  background: var(--paper);
+}
+
+/* Thông báo (Notice) */
+.pyra-note {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--paper-deep);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* ---------- Cuộn đẹp ---------- */
+* { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+
+/* ---------- Hoạt họa dùng lại ---------- */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes heroFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes heroPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.85; transform: scale(1.05); } }
+@keyframes cellPulse { 0%, 100% { box-shadow: 0 0 0 transparent; } 50% { box-shadow: 0 0 10px var(--line); } }
+@keyframes fadeInCell { from { opacity: 0; transform: scale(0.8) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+@keyframes drawArrow { from { stroke-dashoffset: 500; opacity: 0; } to { stroke-dashoffset: 0; opacity: 1; } }
+
+/* ---------- Tôn trọng cài đặt máy người dùng ---------- */
+@media (prefers-reduced-transparency: reduce) {
+  .chakra-modal__content,
+  .chakra-drawer__content,
+  .chakra-menu__menu-list,
+  .chakra-popover__content {
+    background: #2e1a14 !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chakra-modal__content,
+  .chakra-modal__content > *,
+  .chakra-modal__overlay,
+  .pr-card,
+  .pyra-hero__mascot {
+    animation: none !important;
+    transition: opacity 0.15s ease !important;
+    transform: none !important;
+  }
+  .pr-card:hover { transform: none; }
+}
+
+/* Nút kính trên hero: "MỚI" + lời mời trò chuyện với Pyra */
+.pyra-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 18px 8px 8px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  transition: transform 0.25s var(--spring);
+}
+.pyra-hero__cta:hover { transform: translateY(-2px); }
+.pyra-hero__badge {
+  font-family: var(--font-caps);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: 14px;
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--claret-fill);
+  color: var(--on-claret);
+  box-shadow: inset 0 0 0 1px var(--gold);
+}
+@media (max-width: 30em) {
+  .pyra-hero__cta { font-size: 14px; padding-right: 14px; }
+}
+
+/* ---------- Trang Chat AI ---------- */
+.pyra-chat-bg {
+  background:
+    radial-gradient(40% 40% at 8% 4%, var(--peach), transparent 70%),
+    radial-gradient(36% 40% at 96% 10%, var(--powder), transparent 70%),
+    radial-gradient(50% 40% at 50% 110%, var(--paper-deep), transparent 70%),
+    var(--paper);
+}
+.pyra-chat-header {
+  position: sticky;
+  border-radius: 0 0 var(--radius-glass-inner) var(--radius-glass-inner) !important;
+  border-top: none !important;
+}
+.pyra-chat-empty {
+  background: var(--paper);
+  border: 1px solid var(--gold);
+  outline: 1px solid var(--gold);
+  outline-offset: 4px;
+  border-radius: var(--radius-arch) var(--radius-arch) var(--radius-md) var(--radius-md);
+  box-shadow: var(--shadow-card);
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+}
+.pyra-chat-tools { padding: 4px 6px; border-radius: var(--radius-pill) !important; }
+.pyra-chat-tools .pr-gbtn { background: transparent; border-color: transparent; }

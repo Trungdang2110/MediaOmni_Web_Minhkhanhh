@@ -22,7 +22,6 @@ import {
   HStack,
   useToast,
   RiBnbFill,
-  Divider,
   Flex,
   Text,
   IconButton,
@@ -90,80 +89,72 @@ export const Donate = ({ isHeader = false }: { isHeader?: boolean }) => {
           <ModalCloseButton />
           <ModalBody p={[2, 3]}>
             <VStack
-              divider={<StackDivider borderColor="gray.200" />}
+              divider={<StackDivider borderColor="glassStroke" />}
               spacing={4}
               align="stretch"
             >
               <Box>
-                <Image src="/Images/MomoQR.jpeg" alt="Mobile Money QR Code" />
+                <Image
+                  src="/Images/MomoQR.jpeg"
+                  alt="Mobile Money QR Code"
+                  className="pyra-arch-frame"
+                  mx="auto"
+                  maxW="320px"
+                />
               </Box>
               <Box>
                 {address.map((item, index) => (
                   <Box key={item.address + index} py={2}>
-                    <CustomCard p={3} borderWidth="1px" shadow="sm" borderRadius="xl">
+                    <CustomCard p={3} className="pyra-glass-step">
                       <Flex align="center" justify="space-between" mb={2}>
                         <HStack spacing={2}>
-                          <Icon as={item.icon} color={item.color} boxSize={5} />
-                          <Text fontWeight="600" fontSize="sm">{item.name}</Text>
+                          <Icon as={item.icon} color="gold" boxSize={5} />
+                          <Text fontWeight="600" fontSize="15px" fontFamily="var(--font-ui)" m={0}>{item.name}</Text>
                         </HStack>
                         <Tooltip label={t('copySuccess', { name: item.name }).replace(' thành công', '')} hasArrow>
                           <IconButton
                             aria-label="Copy Address"
                             icon={<Icon as={MdContentCopy} />}
                             onClick={() => copyAddress(item)}
-                            size="sm"
-                            variant="ghost"
-                            rounded="full"
-                            color="gray.500"
-                            _dark={{ color: 'whiteAlpha.700' }}
-                            _hover={{ bg: 'blackAlpha.100', _dark: { bg: 'whiteAlpha.200' } }}
+                            variant="glass"
+                            w="44px"
+                            p={0}
                           />
                         </Tooltip>
                       </Flex>
                       <Box
                         p={2}
-                        bg="blackAlpha.50"
-                        _dark={{ bg: 'whiteAlpha.100' }}
+                        bg="glassChip"
                         rounded="md"
                         overflowX="auto"
                         whiteSpace="nowrap"
                         cursor="pointer"
                         onClick={() => copyAddress(item)}
-                        _hover={{ bg: 'blackAlpha.100', _dark: { bg: 'whiteAlpha.200' } }}
                         transition="all 0.2s"
                       >
-                        <Code fontSize="xs" bg="transparent" borderRadius="0">{item.address}</Code>
+                        <Code fontSize="13px" bg="transparent" color="onGlass" borderRadius="0">{item.address}</Code>
                       </Box>
                     </CustomCard>
                   </Box>
                 ))}
               </Box>
             </VStack>
-            <Divider my={4} />
           </ModalBody>
         </ModalContent>
       </Modal>
 
       <Tooltip label={t('buyCoffee')} hasArrow>
-        <Flex
-          as="button"
+        <button
+          type="button"
           onClick={onOpen}
-          boxSize={10}
-          align="center"
-          justify="center"
-          rounded="full"
-          bgGradient="linear(to-r, orange.400, yellow.500)"
-          color="white"
-          shadow="sm"
-          _hover={{
-            transform: 'scale(1.1)',
-            shadow: 'md',
-            bgGradient: 'linear(to-r, orange.500, yellow.600)'
-          }}
-          transition="all 0.2s"
+          className="pr-gbtn pr-gbtn--accent"
+          aria-label={t('buyCoffee')}
         >
           <Icon as={PiCoffeeBold} boxSize={5} />
-        </Flex>
+          <Box as="span" display={{ base: 'none', sm: 'inline' }}>
+            {t('support')}
+          </Box>
+        </button>
       </Tooltip>
     </Box>
   );

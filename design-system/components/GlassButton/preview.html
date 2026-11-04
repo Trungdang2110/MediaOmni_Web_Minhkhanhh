@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../bundle.css"><meta charset="utf-8"><title>GlassButton — preview</title>
+<style>
+  body{margin:0}
+  .stage{position:relative;height:340px;overflow:hidden;
+    background:
+      radial-gradient(50% 70% at 25% 40%,#C98A6E,transparent 70%),
+      radial-gradient(45% 60% at 85% 30%,#6E8F99,transparent 70%),
+      radial-gradient(60% 70% at 55% 100%,#5A1A10,transparent 70%),
+      #2E1A14}
+  .anchor{position:relative;display:inline-block}
+  .menu{position:absolute;top:54px;left:0;width:280px;padding:8px;display:flex;flex-direction:column;gap:6px;transform-origin:22px 0;z-index:3}
+  .menu .pr-glass__item{padding:10px 12px;cursor:pointer}
+  .who{font-weight:600;font-size:14px}
+  .date{font-size:12px}
+  .oval{width:30px;height:38px;border-radius:50%;display:grid;place-items:center;font-family:"Playfair Display",serif;font-weight:900;font-size:17px;box-shadow:0 0 0 1.5px #D4B07A;flex:none}
+</style></head>
+<body>
+<div class="pr-root stage">
+  <div class="pr-row" style="gap:10px">
+    <div class="anchor">
+      <button class="pr-gbtn" id="profBtn" aria-expanded="false" aria-controls="menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+        Hồ sơ đã lưu
+      </button>
+      <div class="pr-glass pr-pop menu" id="menu" role="menu">
+        <div class="pr-glass__item" role="menuitem"><span class="oval">7</span><div><div class="who">Nguyễn Thị Hoa</div><div class="date pr-glass__muted">21/10/2003</div></div></div>
+        <div class="pr-glass__item" role="menuitem"><span class="oval">4</span><div><div class="who">Trần Minh Đức</div><div class="date pr-glass__muted">05/03/1998</div></div></div>
+        <div class="pr-glass__item" role="menuitem"><span class="oval">11</span><div><div class="who">Lê Ngọc Anh</div><div class="date pr-glass__muted">29/11/2001</div></div></div>
+      </div>
+    </div>
+    <button class="pr-gbtn pr-gbtn--accent">✦ Xem kết quả</button>
+    <button class="pr-gbtn">Giải mã biểu đồ</button>
+    <button class="pr-gbtn pr-gbtn--round" aria-label="Yêu thích"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></button>
+    <button class="pr-gbtn pr-gbtn--round" aria-label="Lưu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h12v18l-6-4-6 4z"/></svg></button>
+  </div>
+  <p style="position:absolute;left:20px;bottom:16px;margin:0;font-family:'Be Vietnam Pro',sans-serif;font-size:13px;color:#E6D3C2">Bấm "Hồ sơ đã lưu" để menu kính bật ra · bấm giữ nút để thấy hiệu ứng lún</p>
+</div>
+<script>
+  (function(){
+    var b=document.getElementById('profBtn'),m=document.getElementById('menu');
+    b.addEventListener('click',function(e){e.stopPropagation();var o=m.classList.toggle('is-open');b.setAttribute('aria-expanded',o);});
+    document.addEventListener('click',function(e){if(!m.contains(e.target)){m.classList.remove('is-open');b.setAttribute('aria-expanded','false');}});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'){m.classList.remove('is-open');b.focus();}});
+  })();
+</script>
+</body>
+</html>

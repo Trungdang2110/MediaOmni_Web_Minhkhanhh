@@ -11,90 +11,83 @@ import {
   LanguageSwitcher,
   SunIcon,
   MoonIcon,
-  Flex,
   Box
 } from 'components';
 import { useTranslations } from 'next-intl';
 
+/**
+ * Chân trang gồm 2 phần:
+ * 1. Khối chân trang đỏ rượu (claret-deep): monogram "P", lời nhắc tham khảo.
+ * 2. Thanh công cụ KÍNH NỔI ở đáy màn hình (liquid glass): ngôn ngữ, sáng/tối,
+ *    ủng hộ, mã nguồn, góp ý. Nó luôn nổi trên nội dung nên dùng kính.
+ */
 export const Footer: FC = () => {
   const t = useTranslations('Footer');
   const { toggleColorMode, colorMode } = useColorMode();
-
   const isLight = colorMode === 'light';
-  const bg = isLight ? 'rgba(255, 255, 255, 0.85)' : 'rgba(26, 32, 44, 0.85)';
-  const borderColor = isLight
-    ? 'rgba(0, 0, 0, 0.1)'
-    : 'rgba(255, 255, 255, 0.1)';
-  const hoverBg = isLight ? 'blackAlpha.100' : 'whiteAlpha.200';
 
   return (
-    <Box as="footer" pb="120px">
-      <Disclaimer />
-
-      <Box
-        position="fixed"
-        bottom={0}
-        left={0}
-        right={0}
-        zIndex={100}
-        bg={bg}
-        backdropFilter="blur(16px)"
-        borderTopWidth="1px"
-        borderColor={borderColor}
-        boxShadow="0 -4px 10px rgba(0, 0, 0, 0.05)"
-        pb="env(safe-area-inset-bottom)"
-      >
-        <Flex
-          justify="center"
-          align="center"
-          py={2}
-          px={4}
-          gap={{ base: 2, md: 4 }}
-          maxW="container.md"
-          mx="auto"
-        >
-          <LanguageSwitcher />
-
-          <Tooltip label={t('mode', { mode: colorMode })} hasArrow>
-            <Flex
-              as="button"
-              onClick={toggleColorMode}
-              boxSize={10}
-              align="center"
-              justify="center"
-              rounded="full"
-              _hover={{ bg: hoverBg }}
-              transition="all 0.2s"
-            >
-              <Icon
-                as={isLight ? MoonIcon : SunIcon}
-                boxSize={5}
-                color={isLight ? 'gray.600' : 'yellow.400'}
-              />
-            </Flex>
-          </Tooltip>
-
-          <Donate />
-
-          <Tooltip label={t('sourceCode')} hasArrow>
-            <Flex
-              as="a"
-              href="https://github.com/minhphuc010194/NumerologyWebApp"
-              target="_blank"
-              boxSize={10}
-              align="center"
-              justify="center"
-              rounded="full"
-              _hover={{ bg: hoverBg }}
-              transition="all 0.2s"
-            >
-              <Icon as={AiFillGithub} boxSize={5} />
-            </Flex>
-          </Tooltip>
-
-          <Feeacback />
-        </Flex>
+    <>
+      <Box as="footer" className="pyra-footer">
+        <Box textAlign="center" mb={4}>
+          <span className="pyra-monogram" aria-hidden>
+            P
+          </span>
+          <Box className="pyra-footer__mark" mt={3}>
+            Pyra
+          </Box>
+          <Box
+            fontFamily="var(--font-caps)"
+            fontWeight={700}
+            letterSpacing=".14em"
+            fontSize="14px"
+            textTransform="uppercase"
+            opacity={0.85}
+          >
+            ‹ {t('tagline')} ›
+          </Box>
+        </Box>
+        <Disclaimer />
       </Box>
-    </Box>
+
+      {/* Thanh công cụ kính nổi */}
+      <nav
+        className="pr-glass pr-glass--strong pyra-dock"
+        aria-label={t('toolbar')}
+      >
+        <LanguageSwitcher />
+
+        <Tooltip label={t('mode', { mode: colorMode })} hasArrow>
+          <button
+            type="button"
+            className="pr-gbtn pr-gbtn--round"
+            onClick={toggleColorMode}
+            aria-label={t('mode', { mode: colorMode })}
+          >
+            <Icon as={isLight ? MoonIcon : SunIcon} boxSize={4} />
+          </button>
+        </Tooltip>
+
+        <span className="pyra-dock__sep" aria-hidden />
+
+        <Donate />
+
+        <span className="pyra-dock__sep" aria-hidden />
+
+        <Tooltip label={t('sourceCode')} hasArrow>
+          <a
+            href="https://github.com/minhphuc010194/NumerologyWebApp"
+            target="_blank"
+            rel="noreferrer"
+            className="pr-gbtn pr-gbtn--round"
+            aria-label={t('sourceCode')}
+          >
+            <Icon as={AiFillGithub} boxSize={5} />
+          </a>
+        </Tooltip>
+
+        <Feeacback />
+      </nav>
+    </>
   );
 };

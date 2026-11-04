@@ -6,8 +6,7 @@ import {
   Textarea,
   Button,
   Icon,
-  HStack,
-  useColorModeValue
+  HStack
 } from '@chakra-ui/react';
 import { AiOutlineSend } from 'react-icons/ai';
 
@@ -20,10 +19,9 @@ interface ChatInputProps {
 export function ChatInput({ onSend, isDisabled, placeholder }: ChatInputProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const inputBg = useColorModeValue('white', 'gray.800');
-  const inputBorder = useColorModeValue('gray.300', 'gray.600');
-  const sendBg = useColorModeValue('brand.500', 'brand.600');
-  const sendHoverBg = useColorModeValue('brand.600', 'brand.500');
+  // Ô nhập: nền giấy đậm, gạch chân đỏ rượu; nút Gửi = nút chính (Primary)
+  const inputBg = 'paperDeep';
+  const inputBorder = 'line';
 
   const handleSend = useCallback(() => {
     const value = textareaRef.current?.value?.trim();
@@ -60,17 +58,17 @@ export function ChatInput({ onSend, isDisabled, placeholder }: ChatInputProps) {
   return (
     <Flex
       bg={inputBg}
-      borderRadius="3xl"
+      borderRadius="var(--radius-md)"
       borderWidth={1}
       borderColor={inputBorder}
-      shadow="sm"
+      borderBottom="2px solid var(--claret)"
       alignItems="flex-end"
-      pl={6}
+      pl={4}
       pr={2}
       py={2}
       _focusWithin={{
-        borderColor: 'brand.300',
-        boxShadow: '0 0 0 1px var(--chakra-colors-brand-300)'
+        outline: '2px solid var(--gold)',
+        outlineOffset: '2px'
       }}
       transition="all 0.2s"
       w="100%"
@@ -82,11 +80,15 @@ export function ChatInput({ onSend, isDisabled, placeholder }: ChatInputProps) {
         placeholder={placeholder}
         bg="transparent"
         border="none"
+        borderBottom="none"
+        color="ink"
+        fontFamily="var(--font-text)"
         _focus={{ boxShadow: 'none' }}
+        _focusVisible={{ outline: 'none', boxShadow: 'none' }}
         _hover={{ border: 'none' }}
         onKeyDown={handleKeyDown}
         onInput={handleAutoResize}
-        fontSize="md"
+        fontSize="17px"
         p={0}
         py={2}
         mr={2}
@@ -113,27 +115,12 @@ export function ChatInput({ onSend, isDisabled, placeholder }: ChatInputProps) {
       <Box>
         <Button
           onClick={handleSend}
-          rounded="full"
-          bg={sendBg}
-          color="white"
+          aria-label="Send"
           isDisabled={isDisabled}
-          w="40px"
-          h="40px"
-          minW="40px"
+          w="44px"
+          h="44px"
+          minW="44px"
           p={0}
-          _hover={{
-            bg: sendHoverBg,
-            transform: 'scale(1.05)'
-          }}
-          _active={{
-            transform: 'scale(0.95)'
-          }}
-          _disabled={{
-            opacity: 0.5,
-            cursor: 'not-allowed',
-            bg: useColorModeValue('gray.400', 'gray.600')
-          }}
-          transition="all 0.2s"
           flexShrink={0}
         >
           <Icon as={AiOutlineSend} boxSize={5} />

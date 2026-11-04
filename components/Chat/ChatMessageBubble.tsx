@@ -1,7 +1,7 @@
 'use client';
 import { memo, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Box, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import type { ChatMessage } from 'hooks/chat-types';
 import { SourceReferences } from './SourceReferences';
 import { motion } from 'framer-motion';
@@ -31,12 +31,12 @@ interface ChatMessageBubbleProps {
 function ChatMessageBubbleInner({ message, t }: ChatMessageBubbleProps) {
   const isUser = message.role === 'user';
 
-  // Color tokens using brand palette
-  const userBubbleBg = useColorModeValue('brand.500', 'brand.600');
-  const aiBubbleBg = useColorModeValue('white', 'gray.800');
-  const aiBubbleBorder = useColorModeValue('brand.200', 'brand.700');
-  const aiTextColor = useColorModeValue('gray.700', 'gray.200');
-  const strongColor = useColorModeValue('brand.600', 'brand.300');
+  // Design system: tin của bạn = bong bóng xanh phấn; tin của Pyra = giấy + chữ ký "Pyra"
+  const userBubbleBg = 'powder';
+  const aiBubbleBg = 'paperDeep';
+  const aiBubbleBorder = 'line';
+  const aiTextColor = 'ink';
+  const strongColor = 'claret';
 
   const markdownContent = useMemo(() => {
     if (isUser) return null;
@@ -66,13 +66,12 @@ function ChatMessageBubbleInner({ message, t }: ChatMessageBubbleProps) {
           maxW={{ base: '85%', md: '70%' }}
           p={3}
           bg={userBubbleBg}
-          color="white"
-          borderRadius="xl"
-          borderTopRightRadius="sm"
-          shadow="lg"
+          color="onPowder"
+          px={4}
+          borderRadius="var(--radius-md)"
           wordBreak="break-word"
         >
-          <Text fontSize="sm" fontWeight={500} whiteSpace="pre-wrap">
+          <Text fontSize="17px" lineHeight="26px" m={0} whiteSpace="pre-wrap">
             {message.content}
           </Text>
         </Box>
@@ -111,16 +110,15 @@ function ChatMessageBubbleInner({ message, t }: ChatMessageBubbleProps) {
         <Box
           p={4}
           bg={aiBubbleBg}
-          borderRadius="xl"
-          borderTopLeftRadius="sm"
+          borderRadius="var(--radius-md)"
           borderWidth={1}
           borderColor={aiBubbleBorder}
-          shadow="md"
           wordBreak="break-word"
         >
+          <span className="pr-msg__who">Pyra</span>
           <Box
-            fontSize="sm"
-            lineHeight="tall"
+            fontSize="17px"
+            lineHeight="1.6"
             color={aiTextColor}
             className="markdown-content"
             css={{
@@ -130,6 +128,7 @@ function ChatMessageBubbleInner({ message, t }: ChatMessageBubbleProps) {
               },
               '& h1, & h2, & h3, & h4': {
                 color: strongColor,
+                fontFamily: 'var(--font-display)',
                 fontWeight: 700,
                 marginTop: '12px',
                 marginBottom: '6px'
@@ -145,13 +144,13 @@ function ChatMessageBubbleInner({ message, t }: ChatMessageBubbleProps) {
                 marginBottom: '8px'
               },
               '& code': {
-                background: 'rgba(0,0,0,0.06)',
+                background: 'var(--paper)',
                 padding: '2px 6px',
                 borderRadius: '4px',
                 fontSize: '0.85em'
               },
               '& pre': {
-                background: 'rgba(0,0,0,0.06)',
+                background: 'var(--paper)',
                 padding: '12px',
                 borderRadius: '8px',
                 overflow: 'auto',

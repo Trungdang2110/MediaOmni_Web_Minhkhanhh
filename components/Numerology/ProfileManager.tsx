@@ -18,8 +18,7 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  useColorModeValue,
-  useToast,
+    useToast,
   Tooltip,
   FaUser,
   FaTrash,
@@ -76,25 +75,6 @@ function formatBirthDateDisplay(birthDate: string): string {
   return `${parts[2]}/${parts[1]}/${parts[0]}`;
 }
 
-/** Deterministic avatar gradient based on name */
-function getAvatarGradient(name: string): string {
-  const GRADIENTS = [
-    'linear(to-br, orange.400, red.400)',
-    'linear(to-br, teal.400, blue.400)',
-    'linear(to-br, purple.400, pink.400)',
-    'linear(to-br, cyan.400, teal.400)',
-    'linear(to-br, brand.400, orange.300)',
-    'linear(to-br, blue.400, purple.400)',
-    'linear(to-br, pink.400, orange.400)',
-    'linear(to-br, green.400, teal.400)',
-  ];
-  let hash = 0;
-  for (let i = 0; i < name.length; i++) {
-    hash = name.charCodeAt(i) + ((hash << 5) - hash);
-  }
-  return GRADIENTS[Math.abs(hash) % GRADIENTS.length];
-}
-
 const ProfileManagerComponent: FC<ProfileManagerProps> = ({
   currentName,
   currentBirthDate,
@@ -116,25 +96,24 @@ const ProfileManagerComponent: FC<ProfileManagerProps> = ({
   const searchInputRef = useRef<HTMLInputElement>(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // --- Colors ---
-  const popoverBg = useColorModeValue('white', 'gray.800');
-  const popoverBorder = useColorModeValue('gray.200', 'gray.600');
-  const labelColor = useColorModeValue('gray.500', 'gray.400');
-  const chipBorder = useColorModeValue('gray.100', 'gray.600');
-  const chipActiveBg = useColorModeValue('brand.50', 'brand.900');
-  const chipActiveBorder = useColorModeValue('brand.400', 'brand.500');
-  const chipHoverBg = useColorModeValue('gray.50', 'whiteAlpha.100');
-  const chipNameColor = useColorModeValue('gray.800', 'white');
-  const chipDateColor = useColorModeValue('gray.500', 'gray.400');
-  const deleteHoverBg = useColorModeValue('red.50', 'red.900');
-  const searchBg = useColorModeValue('gray.50', 'gray.700');
-  const searchBorder = useColorModeValue('gray.200', 'gray.600');
-  const emptyColor = useColorModeValue('gray.400', 'gray.500');
-  const scrollTrackBg = useColorModeValue('gray.100', 'gray.700');
-  const scrollThumbBg = useColorModeValue('gray.300', 'gray.500');
-  const iconColor = useColorModeValue('brand.400', 'brand.300');
-  const iconHoverBg = useColorModeValue('brand.50', 'whiteAlpha.100');
-  const badgeBg = useColorModeValue('brand.500', 'brand.400');
+  // --- Màu: menu bật ra là "kính lỏng" nên chữ dùng on-glass ---
+  const labelColor = 'onGlassMuted';
+  const chipBorder = 'glassStroke';
+  const chipActiveBg = 'glassChip';
+  const chipActiveBorder = 'gold';
+  const chipHoverBg = 'glassChip';
+  const chipNameColor = 'onGlass';
+  const chipDateColor = 'onGlassMuted';
+  const deleteHoverBg = 'glassChip';
+  const searchBg = 'glassChip';
+  const searchBorder = 'glassStroke';
+  const emptyColor = 'onGlassMuted';
+  const scrollTrackBg = 'transparent';
+  const scrollThumbBg = 'glassStroke';
+  const iconColor = 'claret';
+  const iconOffColor = 'inkMuted';
+  const iconHoverBg = 'line';
+  const badgeBg = 'claretFill';
 
   // Clear search when popover closes
   useEffect(() => {
@@ -246,7 +225,7 @@ const ProfileManagerComponent: FC<ProfileManagerProps> = ({
                 variant="ghost"
                 size="sm"
                 borderRadius="full"
-                color={hasProfiles ? iconColor : labelColor}
+                color={hasProfiles ? iconColor : iconOffColor}
                 opacity={hasProfiles ? 1 : 0.4}
                 cursor={hasProfiles ? 'pointer' : 'default'}
                 _hover={hasProfiles ? { bg: iconHoverBg } : {}}
@@ -270,7 +249,7 @@ const ProfileManagerComponent: FC<ProfileManagerProps> = ({
                   <Text
                     fontSize="8px"
                     fontWeight={800}
-                    color="white"
+                    color="onClaret"
                     lineHeight={1}
                   >
                     {profiles.length > 99 ? '99' : profiles.length}
@@ -282,10 +261,6 @@ const ProfileManagerComponent: FC<ProfileManagerProps> = ({
 
           <PopoverContent
             w={{ base: '300px', md: '360px' }}
-            bg={popoverBg}
-            borderColor={popoverBorder}
-            borderRadius="xl"
-            shadow="2xl"
             zIndex={20}
             _focus={{ outline: 'none' }}
           >
@@ -295,7 +270,7 @@ const ProfileManagerComponent: FC<ProfileManagerProps> = ({
                 px={3.5}
                 py={2.5}
                 borderBottomWidth="1px"
-                borderColor={popoverBorder}
+                borderColor="glassStroke"
               >
                 <Icon as={FaUser} color={iconColor} boxSize={3} />
                 <Text
@@ -342,10 +317,9 @@ const ProfileManagerComponent: FC<ProfileManagerProps> = ({
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                         setSearchQuery(e.target.value)
                       }
-                      _focus={{
-                        borderColor: 'brand.400',
-                        boxShadow: '0 0 0 1px var(--chakra-colors-brand-400)'
-                      }}
+                      color="onGlass"
+                      borderBottomColor="gold"
+                      _placeholder={{ color: 'onGlassMuted' }}
                     />
                     {searchQuery && (
                       <IconButton
@@ -408,7 +382,7 @@ const ProfileManagerComponent: FC<ProfileManagerProps> = ({
                           bg: isActive ? chipActiveBg : chipHoverBg,
                           borderColor: isActive
                             ? chipActiveBorder
-                            : 'brand.300'
+                            : 'gold'
                         }}
                         onClick={() => handleSelectProfile(profile)}
                         role="button"
@@ -421,10 +395,11 @@ const ProfileManagerComponent: FC<ProfileManagerProps> = ({
                       >
                         {/* Avatar */}
                         <Box
-                          w="28px"
-                          h="28px"
+                          w="34px"
+                          h="34px"
                           borderRadius="full"
-                          bgGradient={getAvatarGradient(profile.name)}
+                          bg="claretFill"
+                          boxShadow="0 0 0 1px var(--gold)"
                           display="flex"
                           alignItems="center"
                           justifyContent="center"
@@ -432,9 +407,9 @@ const ProfileManagerComponent: FC<ProfileManagerProps> = ({
                           shadow="sm"
                         >
                           <Text
-                            fontSize="9px"
+                            fontSize="11px"
                             fontWeight={800}
-                            color="white"
+                            color="onClaret"
                             lineHeight={1}
                           >
                             {getInitials(profile.name)}
@@ -444,8 +419,9 @@ const ProfileManagerComponent: FC<ProfileManagerProps> = ({
                         {/* Name + Date */}
                         <VStack spacing={0} align="start" flex={1} minW={0}>
                           <Text
-                            fontSize="xs"
-                            fontWeight={isActive ? 700 : 500}
+                            fontSize="15px"
+                            fontFamily="var(--font-ui)"
+                            fontWeight={isActive ? 600 : 500}
                             color={chipNameColor}
                             lineHeight="short"
                             noOfLines={1}
@@ -453,7 +429,7 @@ const ProfileManagerComponent: FC<ProfileManagerProps> = ({
                             {profile.name}
                           </Text>
                           <Text
-                            fontSize="2xs"
+                            fontSize="13px"
                             color={chipDateColor}
                             lineHeight="short"
                           >
@@ -467,7 +443,7 @@ const ProfileManagerComponent: FC<ProfileManagerProps> = ({
                             w="5px"
                             h="5px"
                             borderRadius="full"
-                            bg="brand.400"
+                            bg="gold"
                             flexShrink={0}
                           />
                         )}
@@ -483,7 +459,7 @@ const ProfileManagerComponent: FC<ProfileManagerProps> = ({
                             icon={<Icon as={FaTrash} boxSize={2.5} />}
                             size="xs"
                             variant="ghost"
-                            colorScheme="red"
+                            color="onGlass"
                             borderRadius="full"
                             opacity={0}
                             _groupHover={{ opacity: 0.5 }}
@@ -543,10 +519,9 @@ const ProfileManagerComponent: FC<ProfileManagerProps> = ({
           onNameChange(e.target.value)
         }
         onClick={() => nameInputRef?.current?.select()}
-        rounded={50}
-        pl="44px"
-        textAlign="center"
+        pl="52px"
         color={inputColor}
+        fontSize="17px"
       />
     </InputGroup>
   );

@@ -1,37 +1,22 @@
-import {
-  Box,
-  Icon,
-  Flex,
-  Tooltip,
-  MdOutlineFeedback,
-  useColorModeValue
-} from 'components';
+import { Icon, Tooltip, MdOutlineFeedback } from 'components';
 import { useTranslations } from 'next-intl';
 import { openSurveyManually } from '@/hooks/useSurveyTrigger';
 
+/** Nút kính tròn "Góp ý & khảo sát" trên thanh công cụ */
 export const Feeacback = ({ isHeader = false }: { isHeader?: boolean }) => {
   const t = useTranslations('Feedback');
-  const hoverBg = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
-  const textColor = useColorModeValue('gray.700', 'whiteAlpha.900');
+  const label = t('tooltip', { email: 'bumlowkey@proton.me' });
 
   return (
-    <Box>
-      <Tooltip label={t('tooltip', { email: 'bumlowkey@proton.me' })} hasArrow>
-        <Flex
-          as="button"
-          onClick={openSurveyManually}
-          boxSize={10}
-          align="center"
-          justify="center"
-          rounded="full"
-          color={textColor}
-          _hover={{ bg: hoverBg }}
-          transition="all 0.2s"
-          aria-label={t('tooltip', { email: 'bumlowkey@proton.me' })}
-        >
-          <Icon as={MdOutlineFeedback} boxSize={5} />
-        </Flex>
-      </Tooltip>
-    </Box>
+    <Tooltip label={label} hasArrow>
+      <button
+        type="button"
+        onClick={openSurveyManually}
+        className="pr-gbtn pr-gbtn--round"
+        aria-label={label}
+      >
+        <Icon as={MdOutlineFeedback} boxSize={5} />
+      </button>
+    </Tooltip>
   );
 };

@@ -13,7 +13,6 @@ import {
   Input,
   Icon,
   Tooltip,
-  useColorModeValue,
   useToast,
   CloseIcon
 } from '@/components';
@@ -124,25 +123,20 @@ export const SurveyBanner: FC<SurveyBannerProps> = ({ page }) => {
   }, [isManualOpen, shouldShowSurvey]);
 
   // --- Colors ---
-  const bannerBg = useColorModeValue(
-    'rgba(255, 255, 255, 0.92)',
-    'rgba(26, 32, 44, 0.92)'
-  );
-  const bannerBorder = useColorModeValue('brand.200', 'brand.700');
-  const bannerShadow = useColorModeValue(
-    '0 -4px 24px rgba(221, 107, 32, 0.12)',
-    '0 -4px 24px rgba(221, 107, 32, 0.08)'
-  );
-  const titleColor = useColorModeValue('gray.800', 'white');
-  const subtitleColor = useColorModeValue('gray.500', 'gray.400');
-  const dotActive = useColorModeValue('brand.500', 'brand.400');
-  const dotInactive = useColorModeValue('gray.200', 'gray.600');
-  const emojiHoverBg = useColorModeValue('brand.50', 'whiteAlpha.100');
-  const emojiSelectedBg = useColorModeValue('brand.100', 'brand.900');
-  const optionBorder = useColorModeValue('gray.200', 'gray.600');
-  const optionSelectedBorder = useColorModeValue('brand.400', 'brand.400');
-  const textareaBg = useColorModeValue('gray.50', 'whiteAlpha.50');
-  const costSubtitleColor = useColorModeValue('orange.600', 'orange.300');
+  // Khảo sát trình bày như một "thư mời": nền giấy, viền vàng
+  const bannerBg = 'paper';
+  const bannerBorder = 'gold';
+  const bannerShadow = 'var(--shadow-glass)';
+  const titleColor = 'ink';
+  const subtitleColor = 'inkMuted';
+  const dotActive = 'claret';
+  const dotInactive = 'line';
+  const emojiHoverBg = 'paperDeep';
+  const emojiSelectedBg = 'paperDeep';
+  const optionBorder = 'line';
+  const optionSelectedBorder = 'claret';
+  const textareaBg = 'paperDeep';
+  const costSubtitleColor = 'claret';
 
   // --- Handlers ---
 

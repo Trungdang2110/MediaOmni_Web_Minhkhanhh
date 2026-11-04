@@ -7,6 +7,9 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/src/i18n/routing';
 
 import { Providers } from '@/app/providers';
+import '@/styles/design-system/tokens.css';
+import '@/styles/design-system/components.css';
+import '@/styles/pyra.css';
 import { getMessages, getTranslations } from 'next-intl/server';
 
 const baseUrl =
@@ -84,6 +87,16 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Cormorant+SC:wght@600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@600;700;900&display=swap"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

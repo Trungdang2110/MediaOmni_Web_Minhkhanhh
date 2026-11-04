@@ -1,5 +1,5 @@
 "use client";
-import { Box, HStack, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, HStack, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { PyraMascot } from "./PyraMascot";
 
@@ -11,10 +11,10 @@ interface StreamingIndicatorProps {
 }
 
 export function StreamingIndicator({ phase, t }: StreamingIndicatorProps) {
-  const bubbleBg = useColorModeValue("white", "gray.800");
-  const bubbleBorder = useColorModeValue("brand.200", "brand.700");
-  const dotColor = useColorModeValue("brand.400", "brand.300");
-  const textColor = useColorModeValue("gray.600", "gray.400");
+  const bubbleBg = 'paperDeep';
+  const bubbleBorder = 'line';
+  const dotColor = 'claret';
+  const textColor = 'inkMuted';
 
   const label =
     phase === "searching" ? t("searchingKnowledge") : t("generatingResponse");
@@ -34,10 +34,9 @@ export function StreamingIndicator({ phase, t }: StreamingIndicatorProps) {
       <Box
         p={4}
         bg={bubbleBg}
-        borderRadius="2xl"
+        borderRadius="var(--radius-md)"
         borderWidth={1}
         borderColor={bubbleBorder}
-        shadow="sm"
       >
         <HStack spacing={3}>
           <HStack spacing={1.5}>
@@ -54,7 +53,7 @@ export function StreamingIndicator({ phase, t }: StreamingIndicatorProps) {
               />
             ))}
           </HStack>
-          <Text fontSize="xs" color={textColor} fontWeight={500}>
+          <Text fontSize="14px" fontFamily="var(--font-ui)" color={textColor} fontWeight={500} m={0}>
             {label}
           </Text>
         </HStack>

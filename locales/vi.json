@@ -4,14 +4,16 @@
     "chat": "Chat AI"
   },
   "Home": {
-    "title": "Ứng Dụng Xem Nhân Số Học",
+    "title": "Thần Số Học",
     "subtitle": "Khám phá bản đồ số của bạn thông qua ngày sinh và tên — giải mã các chỉ số cuộc sống, sứ mệnh và tiềm năng ẩn giấu.",
     "chatNotice": "Trải nghiệm Nhân Số Học cùng Pyra Mascot",
     "chatBadgeLabel": "MỚI",
     "logoAlt": "Logo Nhân Số Học",
     "videoTitle": "Giải Mã Nhân Số Học",
     "videoCaption": "Xem video hướng dẫn cách đọc và hiểu các chỉ số Nhân Số Học của bạn",
-    "videoToggleLabel": "Ẩn/hiện video hướng dẫn"
+    "videoToggleLabel": "Ẩn/hiện video hướng dẫn",
+    "eyebrow": "Salon của những con số",
+    "heroFrameAlt": "Pyra, người hướng dẫn phòng tranh"
   },
   "Numerology": {
     "namePlaceholder": "Nhập họ tên đầy đủ, VD: 'Nguyễn Văn A'",
@@ -39,7 +41,30 @@
       "monthIndividual": "**Tháng cá nhân** cho bạn biết trọng tâm tháng này cần làm gì.\n\n**CÔNG THỨC:**\n*   Tháng cá nhân = Rút gọn(Năm cá nhân + Tháng hiện hành).\n\n> 💡 **Ví dụ minh họa (Ví dụ chạy tháng 4):**\n> Năm cá nhân hiện hành: 9.\n> Tháng coi: 4.\n> Cộng lại: 9 + 4 = 13. Rút gọn 1+3=4.\n> => **Tháng cá nhân: 4**.",
       "way": "Trong hệ thống Nhân số học Pythagoras chuẩn, thuật ngữ \"Chặng\" được gọi chính xác là **Bốn đỉnh cao của đời người** hay **Tổ hợp Kim tự tháp**.\n\nĐể tính toán các chặng này, bạn cần xác định 2 phần: **Độ tuổi đạt chặng** và **Giá trị (năng lượng) của chặng đó**. Dưới đây là công thức ngắn gọn và chuẩn xác nhất:\n\n### ⏳ 1. CÔNG THỨC TÍNH ĐỘ TUỔI ĐẠT 4 CHẶNG (ĐỈNH CAO)\nCon số 36 là một hằng số bí ẩn được lấy từ cấu trúc của Kim tự tháp Ai Cập cổ đại.\n*   **Tuổi đạt Chặng 1:** = **36 - Con số chủ đạo**.\n*   **Tuổi đạt Chặng 2:** = Tuổi Chặng 1 + 9 năm.\n*   **Tuổi đạt Chặng 3:** = Tuổi Chặng 2 + 9 năm.\n*   **Tuổi đạt Chặng 4:** = Tuổi Chặng 3 + 9 năm.\n\n### 🌟 2. CÔNG THỨC TÍNH GIÁ TRỊ CỦA 4 CHẶNG (ĐỈNH CAO)\n\n**📍 Bước Chuẩn bị: Tạo 3 \"Chân đế\"**\nRút gọn riêng lẻ Ngày sinh, Tháng sinh và Năm sinh (Dương lịch) của bạn về 1 chữ số (từ 1 đến 9).\n*   **Chân đế 1 (Trái):** Tháng sinh rút gọn.\n*   **Chân đế 2 (Giữa):** Ngày sinh rút gọn.\n*   **Chân đế 3 (Phải):** Năm sinh rút gọn.\n\n**📍 Bước Tính toán 4 Đỉnh:**\n*   **Chặng 1 (Đỉnh 1):** = Chân đế 1 + Chân đế 2 *(Tháng + Ngày)*.\n*   **Chặng 2 (Đỉnh 2):** = Chân đế 2 + Chân đế 3 *(Ngày + Năm)*.\n    👉 *Lưu ý cho Đỉnh 1 & 2: Cộng xong phải tiếp tục rút gọn để kết quả chỉ từ 1 đến 9.*\n*   **Chặng 3 (Đỉnh 3):** = Đỉnh 1 + Đỉnh 2 *(Cộng hai đỉnh đầu tiên)*.\n*   **Chặng 4 (Đỉnh 4):** = Chân đế 1 + Chân đế 3 *(Tháng + Năm - Cộng hai chân đế ngoài cùng)*.\n    👉 *Lưu ý ĐẶC BIỆT cho Đỉnh 3 & 4: Nếu kết quả cộng ra là **10** hoặc **11**, bạn ĐƯỢC QUYỀN GIỮ NGUYÊN.*\n\n> 💡 **Ví dụ minh họa (DƯƠNG VĂN NGHĨA - Đường đời 4, Sinh 11/06/1976):**\n> **Tuổi 4 chặng:** C1 = 36 - 4 = 32t. Các mức tuổi lần lượt là: **32t - 41t - 50t - 59t**.\n> **Chân đế:** Tháng(6), Ngày(11->2), Năm(1976->5).\n> - Đỉnh 1 = 6 + 2 = 8.\n> - Đỉnh 2 = 2 + 5 = 7.\n> - Đỉnh 3 = 8 + 7 = 15 -> **6**.\n> - Đỉnh 4 = 6 + 5 = **11** (Giữ nguyên).\n> => **Tổ hợp 4 Đỉnh: 8 - 7 - 6 - 11**.",
       "challenges": "**4 Thử thách** đi song hành để cân bằng với 4 Chặng.\n\n**CÔNG THỨC:**\n*   **Thử thách 1:** Lấy (Tháng sinh trừ Ngày sinh) tuyệt đối.\n*   **Thử thách 2:** Lấy (Ngày sinh trừ Năm sinh) tuyệt đối.\n*   **Thử thách 3:** Lấy (|Thử thách 1 - Thử thách 2|).\n*   **Thử thách 4:** Lấy (|Tháng sinh - Năm sinh|).\n\n> 💡 **Ví dụ minh họa:**\n> *Số gốc: Tháng=6, Ngày=11(giữ), Năm=5*\n> TT1: |6 - 11| = 5.\n> TT2: |11 - 5| = 6.\n> TT3: |5 - 6| = 1.\n> TT4: |6 - 5| = 1.\n> => **Dãy 4 Thử thách: 5 - 6 - 1 - 1**."
-    }
+    },
+    "nameLabel": "Họ và tên",
+    "birthLabel": "Ngày sinh",
+    "featuredHint": "Chỉ số quan trọng nhất — mời bạn bấm để khám phá",
+    "tapHint": "Bấm vào một thẻ để xem công thức",
+    "askClose": "Đóng",
+    "openFormula": "Xem công thức chỉ số {name}",
+    "group": {
+      "personal": "Cá nhân",
+      "potential": "Tiềm năng",
+      "support": "Bổ trợ",
+      "cycle": "Chu kỳ"
+    },
+    "groupLegend": {
+      "personal": "Chỉ số cá nhân",
+      "potential": "Tiềm năng & xu hướng",
+      "support": "Bổ trợ",
+      "cycle": "Thời gian & chu kỳ"
+    },
+    "collectionEyebrow": "Bộ sưu tập của bạn",
+    "askPyra": "Nhờ Pyra giải thích {metric} {value}",
+    "askDeeper": "Hỏi sâu hơn cùng Pyra",
+    "formulaEyebrow": "Công thức",
+    "reference": "Kết quả mang tính tham khảo và giải trí."
   },
   "InputDate": {
     "datePlaceholder": "Ngày sinh...",
@@ -54,12 +79,13 @@
     "yearRange": "Năm sinh phải từ {min} đến {max}"
   },
   "Disclaimer": {
-    "title": "📌 Tuyên bố miễn trừ trách nhiệm",
+    "title": "Tuyên bố miễn trừ trách nhiệm",
     "content": "Đây là ứng dụng chỉ mang tính chất tham khảo, giải trí. Không phục vụ mục đích bói toán, mê tín và trái với thuần phong mỹ tục."
   },
   "Donate": {
     "buyCoffee": "Mời tôi một ly cafe",
-    "copySuccess": "Sao chép thành công địa chỉ {name}"
+    "copySuccess": "Sao chép thành công địa chỉ {name}",
+    "support": "Ủng hộ"
   },
   "Feedback": {
     "tooltip": "Góp ý & Khảo sát (Email: {email})"
@@ -138,7 +164,9 @@
   "Footer": {
     "logoAlt": "logo Nhân Số Học",
     "sourceCode": "Mã nguồn",
-    "mode": "Chế độ {mode}"
+    "mode": "Chế độ {mode}",
+    "tagline": "Salon của những con số",
+    "toolbar": "Thanh công cụ"
   },
   "LanguageSwitcher": {
     "switchLocaleVi": "Chuyển sang Tiếng Việt",
@@ -182,7 +210,16 @@
     "arrowWill": "Ý chí (4-5-6)",
     "arrowAction": "Hành động (7-8-9)",
     "arrowDetermination": "Quyết tâm (1-5-9)",
-    "arrowSpirituality": "Tâm linh (3-5-7)"
+    "arrowSpirituality": "Tâm linh (3-5-7)",
+    "arrowComplete": "đủ số",
+    "arrowEmptyLabel": "trống",
+    "collapse": "Thu gọn",
+    "expand": "Mở rộng",
+    "regenerate": "Tạo lại",
+    "retry": "Thử lại",
+    "savedAt": "Đã lưu lúc {time}",
+    "showChart": "Hiện biểu đồ",
+    "hideChart": "Thu gọn biểu đồ"
   },
   "Profile": {
     "savedProfiles": "Hồ sơ",
@@ -199,7 +236,7 @@
     "loading": "Đang phân tích ý nghĩa...",
     "error": "Không thể tải ý nghĩa. Vui lòng thử lại.",
     "retry": "Thử lại",
-    "cachedBadge": "Từ bộ nhớ cache",
+    "cachedBadge": "Đã lưu · 7 ngày",
     "cachedTooltip": "Kết quả được lưu trong 7 ngày"
   },
   "Admin": {
@@ -297,5 +334,11 @@
     "thankYouTitle": "Chân thành cảm ơn!",
     "thankYouMessage": "Mọi ý kiến đóng góp của bạn đều là động lực to lớn giúp dự án phát triển tốt hơn.",
     "dismissTooltip": "Đóng khảo sát"
+  },
+  "NumerologyGroups": {
+    "personal": "Chỉ số cá nhân",
+    "potential": "Tiềm năng & xu hướng",
+    "support": "Bổ trợ",
+    "cycle": "Thời gian & chu kỳ"
   }
 }
