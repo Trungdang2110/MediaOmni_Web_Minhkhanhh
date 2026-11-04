@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "language": "vi",
+    "source": "pyra-original",
+    "system": "Pythagoras",
+    "license": "Nội dung gốc thuộc sở hữu dự án Pyra. Không chứa trích dẫn từ sách có bản quyền."
+  },
+  "indices": [
+    {
+      "key": "life_path",
+      "ten": "Đường đời",
+      "ten_khac": "Số chủ đạo, Life Path",
+      "nhom": "Chỉ số cá nhân",
+      "y_nghia": "Chỉ số quan trọng nhất. Mô tả con đường và bài học chính trong cả cuộc đời: bạn thường được thử thách và trưởng thành theo hướng nào.",
+      "cach_tinh": "Cộng tất cả chữ số của ngày, tháng, năm sinh; rút gọn nhưng giữ 10, 11, 22, 33.",
+      "cach_doc": "Đọc ý nghĩa cốt lõi của con số như 'chủ đề lớn' của cuộc đời. Đây là xu hướng, không phải số phận cố định.",
+      "mien": "2–11, 22, 33"
+    },
+    {
+      "key": "expression",
+      "ten": "Sứ mệnh",
+      "ten_khac": "Biểu đạt, Expression, Destiny",
+      "nhom": "Chỉ số cá nhân",
+      "y_nghia": "Tài năng và khả năng bẩm sinh bạn mang theo để đi trên Đường đời — những gì bạn làm tốt khi phát huy hết mình.",
+      "cach_tinh": "Quy đổi toàn bộ chữ cái trong họ tên khai sinh thành số, rút gọn từng từ rồi cộng lại.",
+      "cach_doc": "Đọc điểm mạnh của con số như 'bộ công cụ' của bạn. So với Đường đời: Đường đời là con đường, Sứ mệnh là đôi chân.",
+      "mien": "1–9, 11, 22, 33"
+    },
+    {
+      "key": "soul_urge",
+      "ten": "Linh hồn",
+      "ten_khac": "Nội tâm, Soul Urge, Heart's Desire",
+      "nhom": "Chỉ số cá nhân",
+      "y_nghia": "Mong muốn sâu kín nhất bên trong: điều khiến bạn thật sự thấy hạnh phúc và thỏa mãn, kể cả khi không nói ra.",
+      "cach_tinh": "Chỉ cộng các nguyên âm (A, E, I, O, U, Y) trong họ tên.",
+      "cach_doc": "Đọc con số như 'điều trái tim bạn cần'. Khi cuộc sống thiếu điều này, bạn dễ thấy trống rỗng dù bề ngoài vẫn ổn.",
+      "mien": "1–9, 11, 22, 33"
+    },
+    {
+      "key": "personality",
+      "ten": "Nhân cách",
+      "ten_khac": "Tính cách bên ngoài, Personality",
+      "nhom": "Chỉ số cá nhân",
+      "y_nghia": "Ấn tượng đầu tiên bạn tạo ra với người khác — 'lớp áo' bên ngoài, cách người lạ nhìn nhận bạn.",
+      "cach_tinh": "Chỉ cộng các phụ âm trong họ tên.",
+      "cach_doc": "Đọc con số như hình ảnh người khác thấy ở bạn. Nếu khác nhiều với Linh hồn, người khác có thể chưa hiểu hết con người bên trong của bạn.",
+      "mien": "1–9, 11, 22, 33"
+    },
+    {
+      "key": "hidden_passion",
+      "ten": "Đam mê",
+      "ten_khac": "Đam mê tiềm ẩn, Hidden Passion",
+      "nhom": "Tiềm năng & xu hướng",
+      "y_nghia": "Năng lực nổi trội và điều bạn bị cuốn hút một cách tự nhiên, thể hiện qua con số xuất hiện nhiều nhất trong tên.",
+      "cach_tinh": "Đếm xem số nào (1–9) lặp lại nhiều nhất khi quy đổi chữ cái trong họ tên. Có thể có nhiều số bằng nhau.",
+      "cach_doc": "Đọc từ khóa của con số như 'năng khiếu nổi trội'. Nếu có nhiều số, bạn có nhiều đam mê song song.",
+      "mien": "Một hoặc nhiều số 1–9"
+    },
+    {
+      "key": "maturity",
+      "ten": "Trưởng thành",
+      "ten_khac": "Maturity",
+      "nhom": "Tiềm năng & xu hướng",
+      "y_nghia": "Mục tiêu và phẩm chất sẽ hiện rõ dần khi bạn lớn tuổi, thường từ khoảng 35–40 tuổi trở đi.",
+      "cach_tinh": "Đường đời + Sứ mệnh (đều rút về 1 chữ số), rồi rút gọn.",
+      "cach_doc": "Đọc con số như 'phiên bản trưởng thành' bạn đang dần trở thành; càng về sau càng rõ.",
+      "mien": "1–9, 11"
+    },
+    {
+      "key": "rational_thought",
+      "ten": "Tư duy lý trí",
+      "ten_khac": "Rational Thought",
+      "nhom": "Tiềm năng & xu hướng",
+      "y_nghia": "Cách bạn suy nghĩ, phân tích và đưa ra quyết định khi cần bình tĩnh, lý trí.",
+      "cach_tinh": "Số của tên gọi (từ cuối trong họ tên) + ngày sinh (rút về 1 chữ số), rồi rút gọn.",
+      "cach_doc": "Đọc con số như 'phong cách tư duy': ví dụ số 4 nghĩ theo quy trình, số 7 nghĩ theo chiều sâu, số 3 nghĩ bằng hình ảnh và liên tưởng.",
+      "mien": "1–9, 11"
+    },
+    {
+      "key": "subconscious_self",
+      "ten": "Sức mạnh tiềm thức",
+      "ten_khac": "Tiềm thức, Subconscious Self",
+      "nhom": "Tiềm năng & xu hướng",
+      "y_nghia": "Mức độ tự tin và cách bạn phản ứng theo bản năng khi gặp tình huống bất ngờ, khẩn cấp.",
+      "cach_tinh": "9 trừ đi số lượng Số thiếu trong họ tên.",
+      "cach_doc": "Số càng cao, bạn càng có nhiều 'công cụ' để xoay xở. Xem mô tả riêng cho từng mức ở nhóm Tiềm thức.",
+      "mien": "Thường 3–9"
+    },
+    {
+      "key": "bridge",
+      "ten": "Kết nối",
+      "ten_khac": "Cầu nối, Bridge",
+      "nhom": "Bổ trợ",
+      "y_nghia": "Khoảng cách giữa hai mặt của bạn và cách thu hẹp nó. Có hai số: (1) giữa Đường đời và Sứ mệnh, (2) giữa Linh hồn và Nhân cách.",
+      "cach_tinh": "Hiệu số (luôn dương) giữa hai chỉ số, sau khi rút về 1 chữ số.",
+      "cach_doc": "Đọc con số như 'chiếc cầu' — phẩm chất bạn nên rèn để hai mặt hòa hợp. Số 0 nghĩa là hai mặt đã hài hòa sẵn.",
+      "mien": "0–8"
+    },
+    {
+      "key": "balance",
+      "ten": "Cân bằng",
+      "ten_khac": "Balance",
+      "nhom": "Bổ trợ",
+      "y_nghia": "Cách giúp bạn lấy lại thăng bằng khi gặp khó khăn, căng thẳng hoặc xung đột.",
+      "cach_tinh": "Cộng giá trị chữ cái đầu tiên của mỗi từ trong họ tên, rút về 1 chữ số.",
+      "cach_doc": "Đọc như 'lời khuyên khi khủng hoảng'. Xem mô tả riêng cho từng số ở nhóm Cân bằng.",
+      "mien": "1–9"
+    },
+    {
+      "key": "karmic_lessons",
+      "ten": "Số thiếu",
+      "ten_khac": "Bài học nghiệp, Karmic Lessons",
+      "nhom": "Bổ trợ",
+      "y_nghia": "Những con số không xuất hiện trong họ tên — các phẩm chất bạn chưa có sẵn và cần chủ động rèn luyện.",
+      "cach_tinh": "Liệt kê các số 1–9 không có trong bảng quy đổi chữ cái của họ tên.",
+      "cach_doc": "Mỗi số thiếu là một bài học, không phải khuyết điểm. Không có số thiếu cũng là bình thường.",
+      "mien": "Danh sách 1–9, có thể rỗng"
+    },
+    {
+      "key": "birthday",
+      "ten": "Ngày sinh",
+      "ten_khac": "Birthday",
+      "nhom": "Thời gian & chu kỳ",
+      "y_nghia": "Một năng khiếu đặc biệt 'tặng kèm' theo ngày bạn sinh ra, hỗ trợ cho Đường đời.",
+      "cach_tinh": "Ngày sinh trong tháng (1–31), rút gọn và giữ 11, 22.",
+      "cach_doc": "Đọc điểm mạnh của con số như 'món quà nhỏ' bạn dùng được hằng ngày.",
+      "mien": "1–9, 11, 22"
+    },
+    {
+      "key": "personal_year",
+      "ten": "Năm cá nhân",
+      "ten_khac": "Personal Year",
+      "nhom": "Thời gian & chu kỳ",
+      "y_nghia": "Chủ đề của năm hiện tại trong chu kỳ 9 năm của riêng bạn.",
+      "cach_tinh": "Ngày sinh + tháng sinh + năm đang xét, rút về 1 chữ số.",
+      "cach_doc": "Đọc mô tả năm 1–9 ở nhóm Năm cá nhân. Năm 1 mở chu kỳ mới, năm 9 khép lại chu kỳ cũ.",
+      "mien": "1–9"
+    },
+    {
+      "key": "personal_month",
+      "ten": "Tháng cá nhân",
+      "ten_khac": "Personal Month",
+      "nhom": "Thời gian & chu kỳ",
+      "y_nghia": "Sắc thái của từng tháng bên trong Năm cá nhân.",
+      "cach_tinh": "Năm cá nhân + tháng dương lịch hiện tại, rút về 1 chữ số.",
+      "cach_doc": "Dùng mô tả của Năm cá nhân cùng số, nhưng ở quy mô một tháng: nhẹ hơn và ngắn hạn hơn.",
+      "mien": "1–9"
+    },
+    {
+      "key": "pinnacle",
+      "ten": "Chặng",
+      "ten_khac": "Đỉnh cao, Pinnacles",
+      "nhom": "Thời gian & chu kỳ",
+      "y_nghia": "Bốn giai đoạn lớn của cuộc đời, mỗi giai đoạn có một chủ đề và cơ hội riêng.",
+      "cach_tinh": "Chặng 1 = tháng + ngày; Chặng 2 = ngày + năm; Chặng 3 = Chặng 1 + Chặng 2; Chặng 4 = tháng + năm. Chặng 1 kết thúc ở tuổi 36 − Đường đời, mỗi chặng sau kéo dài 9 năm, chặng 4 đến hết đời.",
+      "cach_doc": "Đọc mục 'trong chặng' của con số. Thời điểm chuyển chặng thường đi kèm thay đổi lớn về công việc, nơi ở hoặc quan điểm sống.",
+      "mien": "1–9, 11"
+    },
+    {
+      "key": "challenge",
+      "ten": "Thách thức",
+      "ten_khac": "Challenges",
+      "nhom": "Thời gian & chu kỳ",
+      "y_nghia": "Bài học khó khăn đi kèm từng Chặng — những điểm yếu cần vượt qua để trưởng thành.",
+      "cach_tinh": "Thách thức 1 = |tháng − ngày|; 2 = |ngày − năm|; 3 = |TT1 − TT2|; 4 = |tháng − năm| (các thành phần đều rút về 1 chữ số).",
+      "cach_doc": "Đọc mô tả ở nhóm Thách thức (0–8). Thách thức 3 thường là thách thức chính của cả đời.",
+      "mien": "0–8"
+    }
+  ]
+}

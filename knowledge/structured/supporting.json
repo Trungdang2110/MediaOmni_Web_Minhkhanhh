@@ -1,0 +1,161 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "language": "vi",
+    "source": "pyra-original",
+    "system": "Pythagoras",
+    "license": "Nội dung gốc thuộc sở hữu dự án Pyra. Không chứa trích dẫn từ sách có bản quyền."
+  },
+  "karmic_lessons": [
+    {
+      "so": 1,
+      "mo_ta": "Thiếu số 1: cần rèn sự tự tin và tính chủ động — dám lên tiếng, dám bắt đầu, dám đứng một mình khi cần."
+    },
+    {
+      "so": 2,
+      "mo_ta": "Thiếu số 2: cần rèn sự kiên nhẫn và tinh tế — lắng nghe, hợp tác và để ý đến cảm xúc của người khác."
+    },
+    {
+      "so": 3,
+      "mo_ta": "Thiếu số 3: cần rèn khả năng biểu đạt — nói ra cảm xúc, sáng tạo và cho phép mình vui vẻ hơn."
+    },
+    {
+      "so": 4,
+      "mo_ta": "Thiếu số 4: cần rèn tính kỷ luật và tổ chức — làm việc có kế hoạch, hoàn thành đến cùng."
+    },
+    {
+      "so": 5,
+      "mo_ta": "Thiếu số 5: cần rèn sự linh hoạt — bước ra vùng an toàn, đón nhận thay đổi và trải nghiệm mới."
+    },
+    {
+      "so": 6,
+      "mo_ta": "Thiếu số 6: cần rèn tinh thần trách nhiệm với gia đình và cộng đồng — cam kết và chăm sóc lâu dài."
+    },
+    {
+      "so": 7,
+      "mo_ta": "Thiếu số 7: cần rèn chiều sâu — dành thời gian học hỏi, suy ngẫm, đặt câu hỏi 'vì sao'."
+    },
+    {
+      "so": 8,
+      "mo_ta": "Thiếu số 8: cần rèn khả năng quản lý tiền bạc và sự quyết đoán trong công việc."
+    },
+    {
+      "so": 9,
+      "mo_ta": "Thiếu số 9: cần rèn lòng bao dung và tầm nhìn rộng — biết cho đi và buông bỏ."
+    }
+  ],
+  "subconscious_self": [
+    {
+      "so": 1,
+      "mo_ta": "Rất hiếm, chỉ gặp ở họ tên rất ngắn. Đọc như mức 3, kèm lưu ý: nên tính thêm với tên đầy đủ nếu có."
+    },
+    {
+      "so": 2,
+      "mo_ta": "Hiếm, thường gặp ở họ tên ngắn. Đọc như mức 3: dễ bị cuốn theo cảm xúc khi gặp chuyện bất ngờ, nên chuẩn bị trước và có người tin cậy để hỏi ý kiến."
+    },
+    {
+      "so": 3,
+      "mo_ta": "Dễ bị cuốn theo cảm xúc khi gặp chuyện bất ngờ. Nên có sẵn 'kịch bản' cho các tình huống quan trọng và một người tin cậy để hỏi ý kiến."
+    },
+    {
+      "so": 4,
+      "mo_ta": "Phản ứng còn lúng túng khi bị dồn ép. Hãy cho mình vài phút bình tĩnh và chia vấn đề thành từng việc nhỏ."
+    },
+    {
+      "so": 5,
+      "mo_ta": "Có thể xử lý được tình huống bất ngờ nhưng dễ căng thẳng. Hít thở, viết ra lựa chọn giúp bạn quyết định sáng suốt hơn."
+    },
+    {
+      "so": 6,
+      "mo_ta": "Thường ưu tiên trách nhiệm với người thân khi có sự cố; vững vàng hơn khi có người cần mình."
+    },
+    {
+      "so": 7,
+      "mo_ta": "Bình tĩnh quan sát và phân tích trước khi phản ứng; đôi khi cần nhắc mình hành động nhanh hơn."
+    },
+    {
+      "so": 8,
+      "mo_ta": "Tự tin, thực tế, có khả năng tổ chức và chỉ huy trong tình huống khó."
+    },
+    {
+      "so": 9,
+      "mo_ta": "Bao quát tốt, ít hoảng loạn; thường là người trấn an và dẫn dắt người khác lúc khẩn cấp."
+    }
+  ],
+  "balance": [
+    {
+      "so": 1,
+      "mo_ta": "Khi gặp khó, hãy tự đứng lên bằng sức mình nhưng đừng đẩy người khác ra xa; một lời nhờ giúp đúng lúc không làm bạn yếu đi."
+    },
+    {
+      "so": 2,
+      "mo_ta": "Hãy lắng nghe nhiều phía và tìm điểm chung; sự khéo léo và kiên nhẫn là vũ khí mạnh nhất của bạn."
+    },
+    {
+      "so": 3,
+      "mo_ta": "Đừng giấu nỗi buồn sau nụ cười; nói ra, viết ra hoặc sáng tạo giúp bạn nhẹ lòng và nhìn vấn đề rõ hơn."
+    },
+    {
+      "so": 4,
+      "mo_ta": "Quay lại kế hoạch và từng bước cụ thể; trật tự bên ngoài giúp lấy lại bình yên bên trong."
+    },
+    {
+      "so": 5,
+      "mo_ta": "Tránh quyết định bốc đồng; cho mình một khoảng nghỉ ngắn hoặc thay đổi không khí trước khi chọn."
+    },
+    {
+      "so": 6,
+      "mo_ta": "Chia sẻ trách nhiệm thay vì gánh hết; nhận sự giúp đỡ của người thân cũng là một cách yêu thương."
+    },
+    {
+      "so": 7,
+      "mo_ta": "Lùi lại một bước để suy ngẫm, nhưng đừng khép kín quá lâu; một người bạn tin cậy giúp bạn thấy góc nhìn khác."
+    },
+    {
+      "so": 8,
+      "mo_ta": "Dùng sự bình tĩnh và công bằng thay cho sức mạnh; đôi khi buông quyền kiểm soát lại mở ra lối thoát."
+    },
+    {
+      "so": 9,
+      "mo_ta": "Nhìn bức tranh lớn và tha thứ; lòng bao dung giúp bạn bước tiếp nhanh hơn việc tìm ai đúng ai sai."
+    }
+  ],
+  "bridge": [
+    {
+      "so": 0,
+      "mo_ta": "Hai mặt của bạn đã hài hòa tự nhiên. Bài học là giữ sự nhất quán đó và không ngừng phát triển."
+    },
+    {
+      "so": 1,
+      "mo_ta": "Cần thêm sự chủ động và tự tin: dám nói lên mong muốn thật của mình."
+    },
+    {
+      "so": 2,
+      "mo_ta": "Cần thêm sự nhạy cảm và hợp tác: lắng nghe để hai mặt của mình 'nói chuyện' với nhau."
+    },
+    {
+      "so": 3,
+      "mo_ta": "Cần thêm sự biểu đạt: chia sẻ cảm xúc, sáng tạo, để người khác thấy con người bên trong."
+    },
+    {
+      "so": 4,
+      "mo_ta": "Cần thêm kỷ luật và tổ chức: biến mong muốn thành kế hoạch cụ thể."
+    },
+    {
+      "so": 5,
+      "mo_ta": "Cần thêm sự linh hoạt: thử cách làm mới thay vì bám vào một khuôn mẫu."
+    },
+    {
+      "so": 6,
+      "mo_ta": "Cần thêm trách nhiệm và sự quan tâm: chăm sóc cả bản thân lẫn các mối quan hệ."
+    },
+    {
+      "so": 7,
+      "mo_ta": "Cần thêm sự tự vấn: dành thời gian hiểu điều mình thật sự muốn."
+    },
+    {
+      "so": 8,
+      "mo_ta": "Cần thêm sự cân bằng giữa vật chất và tinh thần, giữa tham vọng và cảm xúc."
+    }
+  ]
+}

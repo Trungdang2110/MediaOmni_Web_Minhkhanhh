@@ -1,0 +1,417 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "language": "vi",
+    "source": "pyra-original",
+    "system": "Pythagoras",
+    "license": "Nội dung gốc thuộc sở hữu dự án Pyra. Không chứa trích dẫn từ sách có bản quyền."
+  },
+  "zero": {
+    "so": 0,
+    "ten": "Số 0 (chỉ có ở Kết nối và Thách thức)",
+    "ban_chat": "Số 0 xuất hiện ở Thách thức và Kết nối. Ở Kết nối, 0 nghĩa là hai phần được so sánh đã hòa hợp tự nhiên. Ở Thách thức, 0 là 'thách thức của sự lựa chọn': không có một bài học cố định, mà bạn được tự do chọn hướng đi — và phải tự chịu trách nhiệm cho lựa chọn đó."
+  },
+  "numbers": [
+    {
+      "so": 1,
+      "ten": "Người tiên phong",
+      "tu_khoa": [
+        "độc lập",
+        "khởi đầu",
+        "ý chí",
+        "dẫn dắt"
+      ],
+      "ban_chat": "Số 1 là năng lượng của hạt giống vừa nảy mầm: muốn tự đứng lên, tự chọn hướng đi và tự chịu trách nhiệm. Người mang số 1 thường thấy thoải mái nhất khi được làm theo cách của mình và mở ra điều chưa ai làm.",
+      "diem_manh": [
+        "Chủ động, dám bắt đầu khi người khác còn chần chừ",
+        "Quyết đoán, nhìn ra mục tiêu rõ ràng",
+        "Tự lập, ít phụ thuộc vào sự công nhận",
+        "Có sức truyền lửa khi dẫn dắt nhóm"
+      ],
+      "thu_thach": [
+        "Dễ nóng vội, muốn kết quả ngay",
+        "Khó nhờ giúp đỡ hoặc lắng nghe góp ý",
+        "Có lúc cứng đầu, coi trọng 'cái tôi'",
+        "Cô đơn vì luôn muốn tự gánh vác"
+      ],
+      "goi_y": [
+        "Tập hỏi ý kiến một người tin cậy trước quyết định lớn",
+        "Chia mục tiêu dài thành từng bước nhỏ để giữ đà",
+        "Ghi nhận công sức của người đồng hành"
+      ],
+      "cong_viec": "Hợp với vai trò khởi xướng: lập dự án mới, kinh doanh riêng, quản lý, sáng tạo sản phẩm.",
+      "quan_he": "Cần một người tôn trọng không gian riêng và không kiểm soát. Học cách thể hiện sự quan tâm bằng lời, không chỉ bằng hành động.",
+      "trong_chang": "Giai đoạn rèn bản lĩnh tự lập: tự đưa ra lựa chọn, đứng vững trước áp lực, khẳng định chỗ đứng riêng."
+    },
+    {
+      "so": 2,
+      "ten": "Người kết nối",
+      "tu_khoa": [
+        "hợp tác",
+        "nhạy cảm",
+        "hòa giải",
+        "trực giác"
+      ],
+      "ban_chat": "Số 2 là năng lượng của cặp đôi và sự cân bằng. Người mang số 2 cảm nhận rất tinh những gì người khác chưa nói ra, và thường là chất keo giữ cho tập thể gắn bó.",
+      "diem_manh": [
+        "Lắng nghe tốt, thấu hiểu cảm xúc",
+        "Khéo léo, biết dung hòa mâu thuẫn",
+        "Kiên nhẫn với chi tiết và con người",
+        "Trực giác nhạy bén"
+      ],
+      "thu_thach": [
+        "Dễ tổn thương trước lời nói vô tình",
+        "Ngại từ chối, hay đặt người khác lên trước bản thân",
+        "Thiếu tự tin khi phải đứng một mình",
+        "Dễ do dự khi phải chọn"
+      ],
+      "goi_y": [
+        "Tập nói 'không' một cách nhẹ nhàng nhưng rõ ràng",
+        "Dành thời gian riêng để nạp lại năng lượng",
+        "Tin vào cảm nhận đầu tiên của mình"
+      ],
+      "cong_viec": "Hợp với vai trò hỗ trợ và gắn kết: tư vấn, nhân sự, chăm sóc khách hàng, ngoại giao, trợ lý, nghệ thuật cần sự tinh tế.",
+      "quan_he": "Rất tận tâm và chu đáo. Cần một người biết bày tỏ sự trân trọng để không cảm thấy mình 'vô hình'.",
+      "trong_chang": "Giai đoạn học hợp tác và kiên nhẫn: thành quả đến qua các mối quan hệ, sự phối hợp và chờ đúng thời điểm."
+    },
+    {
+      "so": 3,
+      "ten": "Người truyền cảm hứng",
+      "tu_khoa": [
+        "sáng tạo",
+        "biểu đạt",
+        "lạc quan",
+        "giao tiếp"
+      ],
+      "ban_chat": "Số 3 là năng lượng của niềm vui và sự biểu đạt. Người mang số 3 có nhu cầu được nói, viết, vẽ, kể chuyện — biến cảm xúc bên trong thành thứ người khác nhìn thấy được.",
+      "diem_manh": [
+        "Giàu ý tưởng, trí tưởng tượng phong phú",
+        "Ăn nói duyên dáng, dễ tạo thiện cảm",
+        "Lạc quan, mang lại không khí vui vẻ",
+        "Học nhanh, linh hoạt"
+      ],
+      "thu_thach": [
+        "Dễ phân tán, bắt đầu nhiều việc nhưng ít hoàn thành",
+        "Né tránh cảm xúc nặng nề bằng sự vui vẻ bề ngoài",
+        "Nhạy cảm với lời chê",
+        "Đôi khi nói nhiều hơn làm"
+      ],
+      "goi_y": [
+        "Chọn một dự án sáng tạo và đi đến cùng",
+        "Viết nhật ký để hiểu cảm xúc thật của mình",
+        "Đặt hạn chót cụ thể cho ý tưởng"
+      ],
+      "cong_viec": "Hợp với lĩnh vực biểu đạt: truyền thông, marketing, nội dung, thiết kế, giảng dạy, biểu diễn.",
+      "quan_he": "Vui vẻ, lãng mạn và cần được lắng nghe. Học cách chia sẻ cả những điều không vui để kết nối sâu hơn.",
+      "trong_chang": "Giai đoạn nở rộ khả năng biểu đạt: mở rộng giao lưu, sáng tạo, để tiếng nói của mình được lắng nghe."
+    },
+    {
+      "so": 4,
+      "ten": "Người xây nền",
+      "tu_khoa": [
+        "kỷ luật",
+        "ổn định",
+        "thực tế",
+        "bền bỉ"
+      ],
+      "ban_chat": "Số 4 là năng lượng của bốn góc nhà: vững chãi, có trật tự, đáng tin cậy. Người mang số 4 thích thấy kết quả cụ thể và sẵn sàng làm việc chăm chỉ, từng viên gạch một.",
+      "diem_manh": [
+        "Chăm chỉ, có trách nhiệm",
+        "Tổ chức tốt, làm việc có hệ thống",
+        "Trung thực, giữ lời hứa",
+        "Kiên trì với mục tiêu dài hạn"
+      ],
+      "thu_thach": [
+        "Cứng nhắc, khó thích nghi khi kế hoạch thay đổi",
+        "Quá khắt khe với bản thân và người khác",
+        "Lo lắng về an toàn, ngại rủi ro",
+        "Quên nghỉ ngơi"
+      ],
+      "goi_y": [
+        "Chừa 'khoảng trống linh hoạt' trong kế hoạch",
+        "Thử một điều mới nhỏ mỗi tháng",
+        "Ghi nhận cả tiến bộ nhỏ, không chỉ kết quả cuối"
+      ],
+      "cong_viec": "Hợp với công việc cần độ chính xác và quy trình: kỹ thuật, tài chính – kế toán, vận hành, xây dựng, quản lý dự án.",
+      "quan_he": "Chung thủy và thể hiện tình cảm bằng việc làm thiết thực. Nên học cách nói ra cảm xúc để người kia hiểu.",
+      "trong_chang": "Giai đoạn xây nền móng: làm việc chăm chỉ, tích lũy kỹ năng và tài sản, đặt kỷ luật cho bản thân."
+    },
+    {
+      "so": 5,
+      "ten": "Người tự do",
+      "tu_khoa": [
+        "tự do",
+        "thay đổi",
+        "trải nghiệm",
+        "thích nghi"
+      ],
+      "ban_chat": "Số 5 nằm giữa dãy 1–9, như ngã tư nơi mọi con đường gặp nhau. Người mang số 5 học bằng trải nghiệm: đi, thử, chạm vào cuộc sống bằng cả năm giác quan.",
+      "diem_manh": [
+        "Thích nghi nhanh với hoàn cảnh mới",
+        "Tò mò, ham học hỏi",
+        "Hoạt ngôn, có sức thuyết phục",
+        "Dám thay đổi khi cần"
+      ],
+      "thu_thach": [
+        "Dễ chán, khó gắn bó lâu dài",
+        "Bốc đồng trong chi tiêu hoặc quyết định",
+        "Sợ bị ràng buộc",
+        "Dễ sa đà vào thú vui"
+      ],
+      "goi_y": [
+        "Chọn sự tự do có trách nhiệm: thay đổi cách làm, không bỏ dở mục tiêu",
+        "Đặt giới hạn chi tiêu cho trải nghiệm mới",
+        "Duy trì một thói quen cố định để có điểm tựa"
+      ],
+      "cong_viec": "Hợp với môi trường năng động: kinh doanh, bán hàng, du lịch, báo chí, sự kiện, công việc đi lại nhiều.",
+      "quan_he": "Cuốn hút và vui vẻ. Cần người bạn đồng hành cùng khám phá, không giữ chặt. Học cách cam kết mà vẫn giữ được sự tươi mới.",
+      "trong_chang": "Giai đoạn mở rộng và thay đổi: di chuyển, đổi việc, gặp gỡ người mới; bài học là tự do đi kèm kỷ luật."
+    },
+    {
+      "so": 6,
+      "ten": "Người chăm sóc",
+      "tu_khoa": [
+        "yêu thương",
+        "trách nhiệm",
+        "gia đình",
+        "hài hòa"
+      ],
+      "ban_chat": "Số 6 là năng lượng của mái ấm. Người mang số 6 thấy ý nghĩa khi được chăm sóc, nâng đỡ và làm đẹp cho không gian, con người quanh mình.",
+      "diem_manh": [
+        "Ấm áp, giàu lòng trắc ẩn",
+        "Có trách nhiệm với gia đình và cộng đồng",
+        "Có gu thẩm mỹ, yêu cái đẹp",
+        "Đáng tin để người khác tìm đến"
+      ],
+      "thu_thach": [
+        "Ôm đồm, lo thay cho người khác",
+        "Cầu toàn, khó chấp nhận sự không hoàn hảo",
+        "Dễ hy sinh quá mức rồi mệt mỏi",
+        "Có lúc can thiệp vì 'muốn tốt cho bạn'"
+      ],
+      "goi_y": [
+        "Hỏi 'bạn có cần mình giúp không?' trước khi giúp",
+        "Chăm sóc bản thân như cách chăm sóc người khác",
+        "Chấp nhận 'đủ tốt' thay vì 'hoàn hảo'"
+      ],
+      "cong_viec": "Hợp với lĩnh vực chăm sóc và cái đẹp: giáo dục, y tế, tư vấn, thiết kế nội thất, ẩm thực, công tác xã hội.",
+      "quan_he": "Tận tụy, coi trọng gia đình. Cần cân bằng giữa cho đi và nhận lại để tình cảm không thành gánh nặng.",
+      "trong_chang": "Giai đoạn của trách nhiệm và gắn kết: gia đình, con cái, cộng đồng; học cách yêu thương mà không kiểm soát."
+    },
+    {
+      "so": 7,
+      "ten": "Người tìm chân lý",
+      "tu_khoa": [
+        "chiêm nghiệm",
+        "phân tích",
+        "nội tâm",
+        "hiểu biết"
+      ],
+      "ban_chat": "Số 7 là năng lượng của câu hỏi 'vì sao?'. Người mang số 7 muốn hiểu bản chất sự việc, cần những khoảng lặng riêng để suy nghĩ và học từ chính trải nghiệm của mình.",
+      "diem_manh": [
+        "Tư duy sâu, phân tích sắc bén",
+        "Ham học, thích nghiên cứu",
+        "Trực giác và đời sống nội tâm phong phú",
+        "Độc lập trong suy nghĩ"
+      ],
+      "thu_thach": [
+        "Khép kín, khó mở lòng",
+        "Hoài nghi, khó tin người",
+        "Dễ cô lập khi gặp chuyện buồn",
+        "Có lúc xa cách, lạnh lùng trong mắt người khác"
+      ],
+      "goi_y": [
+        "Chia sẻ suy nghĩ với một người bạn thân thay vì giữ một mình",
+        "Dành thời gian cho thiên nhiên, thiền hoặc đọc sách",
+        "Biến hiểu biết thành hành động cụ thể"
+      ],
+      "cong_viec": "Hợp với công việc cần chiều sâu: nghiên cứu, phân tích dữ liệu, công nghệ, viết lách, tâm lý, chuyên gia.",
+      "quan_he": "Chung thủy nhưng cần không gian riêng. Hợp với người tôn trọng sự im lặng và thích những cuộc trò chuyện sâu.",
+      "trong_chang": "Giai đoạn học và đi vào bên trong: nghiên cứu, chuyên sâu, chiêm nghiệm; thành quả đến từ sự hiểu biết."
+    },
+    {
+      "so": 8,
+      "ten": "Người làm chủ",
+      "tu_khoa": [
+        "thành tựu",
+        "quản lý",
+        "tài chính",
+        "bản lĩnh"
+      ],
+      "ban_chat": "Số 8 viết nằm ngang là dấu vô cực: vòng quay của cho và nhận. Người mang số 8 hướng đến thành tựu thực tế, có khả năng tổ chức nguồn lực và chịu được áp lực lớn.",
+      "diem_manh": [
+        "Tham vọng, định hướng kết quả",
+        "Khả năng quản lý con người và tiền bạc",
+        "Bản lĩnh, kiên cường trước khó khăn",
+        "Nhìn xa, tư duy chiến lược"
+      ],
+      "thu_thach": [
+        "Quá đặt nặng thành công vật chất",
+        "Thích kiểm soát, khó giao việc",
+        "Làm việc quá sức",
+        "Ngại thể hiện sự yếu đuối"
+      ],
+      "goi_y": [
+        "Đặt mục tiêu cho cả sức khỏe và gia đình, không chỉ công việc",
+        "Dùng thành công để nâng đỡ người khác",
+        "Học cách tin tưởng và giao quyền"
+      ],
+      "cong_viec": "Hợp với vai trò quản trị và kinh doanh: điều hành, đầu tư, ngân hàng, bất động sản, luật, khởi nghiệp.",
+      "quan_he": "Bảo bọc, muốn lo cho người thân đầy đủ. Cần nhớ rằng thời gian và sự hiện diện cũng quan trọng như vật chất.",
+      "trong_chang": "Giai đoạn gặt hái và quản lý: sự nghiệp, tài chính, vị thế; bài học là dùng quyền lực một cách công bằng."
+    },
+    {
+      "so": 9,
+      "ten": "Người nhân ái",
+      "tu_khoa": [
+        "bao dung",
+        "lý tưởng",
+        "phụng sự",
+        "hoàn thiện"
+      ],
+      "ban_chat": "Số 9 là con số cuối của dãy, chứa đựng một chút của tất cả các số trước. Người mang số 9 có tầm nhìn rộng, quan tâm đến điều lớn hơn bản thân và thường được nhớ đến vì lòng bao dung.",
+      "diem_manh": [
+        "Rộng lượng, giàu lòng trắc ẩn",
+        "Có lý tưởng sống, muốn đóng góp",
+        "Hiểu nhiều kiểu người, dễ cảm thông",
+        "Có khiếu nghệ thuật, giàu cảm xúc"
+      ],
+      "thu_thach": [
+        "Khó buông bỏ quá khứ",
+        "Dễ thất vọng khi thực tế không như lý tưởng",
+        "Cho đi quá nhiều rồi kiệt sức",
+        "Có lúc mơ hồ về mục tiêu cá nhân"
+      ],
+      "goi_y": [
+        "Tập kết thúc trọn vẹn một việc trước khi mở việc mới",
+        "Chọn một hoạt động thiện nguyện vừa sức",
+        "Viết ra mục tiêu cá nhân rõ ràng song song với lý tưởng"
+      ],
+      "cong_viec": "Hợp với công việc có ý nghĩa xã hội và nhân văn: giáo dục, y tế, tổ chức phi lợi nhuận, nghệ thuật, truyền thông vì cộng đồng.",
+      "quan_he": "Yêu bằng cả tấm lòng. Cần học cách nhận lại và chấp nhận người thương với những điểm chưa hoàn hảo.",
+      "trong_chang": "Giai đoạn hoàn tất và cho đi: khép lại chu kỳ cũ, phụng sự, chia sẻ những gì đã học được."
+    },
+    {
+      "so": 10,
+      "ten": "Người thích nghi (số chủ đạo 10)",
+      "tu_khoa": [
+        "linh hoạt",
+        "khởi đầu mới",
+        "may mắn",
+        "tự tin"
+      ],
+      "ban_chat": "Số 10 chỉ xuất hiện ở Đường đời theo cách tính Việt Nam. Nó mang năng lượng của số 1 (khởi đầu, tự lập) cộng thêm số 0 (tiềm năng mở rộng), nên người mang số 10 thường linh hoạt, dễ hòa nhập và có thể làm tốt nhiều vai trò khác nhau.",
+      "diem_manh": [
+        "Thích nghi nhanh, đi đâu cũng hòa nhập",
+        "Tự tin, có khả năng tự bắt đầu lại",
+        "Đa năng, học được nhiều lĩnh vực",
+        "Thường gặp cơ hội tốt khi chủ động"
+      ],
+      "thu_thach": [
+        "Dễ thay đổi mục tiêu theo hoàn cảnh",
+        "Có thể tự mãn khi mọi thứ thuận lợi",
+        "Khó tập trung vào một hướng dài hạn"
+      ],
+      "goi_y": [
+        "Chọn một giá trị cốt lõi làm 'la bàn' cho mọi thay đổi",
+        "Ghi lại thành tựu để thấy mình đã đi được bao xa",
+        "Dùng sự linh hoạt để giúp người khác thích nghi"
+      ],
+      "cong_viec": "Hợp với môi trường đa dạng, cần thích nghi: kinh doanh, quản lý dự án, sáng tạo, công việc kết nối nhiều bộ phận.",
+      "quan_he": "Dễ gần, vui vẻ. Cần chủ động giữ sự ổn định để người thương cảm thấy an tâm.",
+      "trong_chang": "Xem số 1."
+    },
+    {
+      "so": 11,
+      "ten": "Người soi đường (số Master 11)",
+      "tu_khoa": [
+        "trực giác",
+        "truyền cảm hứng",
+        "tâm linh",
+        "nhạy cảm"
+      ],
+      "ban_chat": "Số 11 là số Master đầu tiên: hai số 1 đứng cạnh nhau như hai cột trụ của một cánh cổng. Người mang số 11 có trực giác mạnh và khả năng truyền cảm hứng, nhưng cũng nhạy cảm gấp đôi. Số 11 mang cả bài học của số 2 (1 + 1).",
+      "diem_manh": [
+        "Trực giác rất nhạy, 'cảm' được điều người khác chưa thấy",
+        "Có sức truyền cảm hứng, nâng đỡ tinh thần người khác",
+        "Giàu lý tưởng và sáng tạo",
+        "Tinh tế trong cảm nhận nghệ thuật và con người"
+      ],
+      "thu_thach": [
+        "Dễ căng thẳng, lo âu vì cảm nhận quá nhiều",
+        "Kỳ vọng cao vào bản thân",
+        "Dao động giữa tự tin và nghi ngờ chính mình",
+        "Cần thời gian dài để 'trưởng thành' vào năng lượng của số"
+      ],
+      "goi_y": [
+        "Có thói quen giúp bình tâm: thiền, đi bộ, viết",
+        "Biến trực giác thành việc làm cụ thể, nhỏ và đều đặn",
+        "Khi quá tải, sống theo bài học của số 2: hợp tác, kiên nhẫn"
+      ],
+      "cong_viec": "Hợp với vai trò truyền cảm hứng: giảng dạy, tư vấn, nghệ thuật, viết, diễn thuyết, chữa lành.",
+      "quan_he": "Sâu sắc và giàu cảm xúc. Cần người bạn đời vững vàng, giúp mình 'tiếp đất'.",
+      "trong_chang": "Giai đoạn của trực giác và tầm ảnh hưởng tinh thần; dễ có bước ngoặt về nhận thức."
+    },
+    {
+      "so": 22,
+      "ten": "Người kiến tạo (số Master 22)",
+      "tu_khoa": [
+        "tầm nhìn lớn",
+        "kiến tạo",
+        "thực tế",
+        "di sản"
+      ],
+      "ban_chat": "Số 22 kết hợp tầm nhìn của số 11 với sự thực tế của số 4 (2 + 2). Người mang số 22 có khả năng biến ý tưởng lớn thành công trình cụ thể, có ích cho nhiều người — nhưng cũng chịu áp lực lớn tương ứng.",
+      "diem_manh": [
+        "Nhìn thấy bức tranh lớn và cả từng bước để đi tới",
+        "Tổ chức và quản lý dự án quy mô",
+        "Kiên định, thực tế",
+        "Muốn để lại giá trị lâu dài"
+      ],
+      "thu_thach": [
+        "Áp lực tự đặt ra rất lớn",
+        "Sợ thất bại nên chần chừ bắt đầu",
+        "Dễ kiểm soát hoặc làm việc quá sức",
+        "Có lúc thấy 'không ai hiểu tầm nhìn của mình'"
+      ],
+      "goi_y": [
+        "Chia tầm nhìn lớn thành cột mốc theo quý",
+        "Xây đội ngũ, không làm một mình",
+        "Khi quá tải, sống theo bài học của số 4: từng bước, đều đặn"
+      ],
+      "cong_viec": "Hợp với vai trò kiến tạo hệ thống: kiến trúc, kỹ thuật, quản lý cấp cao, khởi nghiệp, tổ chức xã hội.",
+      "quan_he": "Đáng tin cậy và bảo bọc. Cần dành thời gian thật sự cho người thân giữa những dự án lớn.",
+      "trong_chang": "Giai đoạn có thể làm nên công trình lớn; cần kỷ luật và đội ngũ."
+    },
+    {
+      "so": 33,
+      "ten": "Người thầy yêu thương (số Master 33)",
+      "tu_khoa": [
+        "yêu thương vô điều kiện",
+        "chữa lành",
+        "dạy dỗ",
+        "phụng sự"
+      ],
+      "ban_chat": "Số 33 hiếm gặp, mang năng lượng của số 6 (3 + 3) ở mức cao nhất: yêu thương, chăm sóc và dạy dỗ. Người mang số 33 thường muốn nâng đỡ người khác trưởng thành, đôi khi bằng cách hy sinh lợi ích của mình.",
+      "diem_manh": [
+        "Lòng trắc ẩn sâu sắc",
+        "Khả năng an ủi, chữa lành tinh thần",
+        "Truyền đạt bằng sự chân thành",
+        "Giàu sáng tạo và cảm xúc"
+      ],
+      "thu_thach": [
+        "Gánh vác quá nhiều vấn đề của người khác",
+        "Cầu toàn, tự trách khi không giúp được",
+        "Dễ kiệt sức về cảm xúc"
+      ],
+      "goi_y": [
+        "Đặt ranh giới để giữ năng lượng",
+        "Nhớ rằng giúp người khác tự đứng lên tốt hơn làm thay",
+        "Khi quá tải, sống theo bài học của số 6: hài hòa, chăm sóc bản thân"
+      ],
+      "cong_viec": "Hợp với giáo dục, chăm sóc sức khỏe tinh thần, nghệ thuật chữa lành, công tác cộng đồng.",
+      "quan_he": "Tận tụy và bao dung. Cần được yêu thương lại một cách ngang bằng.",
+      "trong_chang": "Xem số 6, với yêu cầu cao hơn về sự phụng sự."
+    }
+  ]
+}

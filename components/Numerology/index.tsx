@@ -44,6 +44,7 @@ import {
   Spinner
 } from '@/components';
 import { RenderItem } from './RenderItem';
+import { KnowledgeMeaning } from './KnowledgeMeaning';
 import {
   METRIC_GROUP,
   GROUP_ORDER,
@@ -818,6 +819,16 @@ ${birthChartData.grid
             <Box className="pyra-prose pyra-prose--glass pyra-glass-step">
               <ReactMarkdown>{contentFormula}</ReactMarkdown>
             </Box>
+
+            {/* Ý nghĩa lấy từ kho kiến thức Pyra: hiện ngay, không cần AI (chỉ có tiếng Việt) */}
+            {locale === 'vi' && selectedItem && (
+              <Box mt={5}>
+                <KnowledgeMeaning
+                  metricKey={selectedItem.key}
+                  value={selectedItem.value}
+                />
+              </Box>
+            )}
 
             {selectedItem && selectedItem.value !== undefined && (
               <Box mt={5}>

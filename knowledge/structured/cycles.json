@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "language": "vi",
+    "source": "pyra-original",
+    "system": "Pythagoras",
+    "license": "Nội dung gốc thuộc sở hữu dự án Pyra. Không chứa trích dẫn từ sách có bản quyền."
+  },
+  "personal_year": [
+    {
+      "so": 1,
+      "ten": "Năm khởi đầu",
+      "mo_ta": "Mở ra chu kỳ 9 năm mới. Thời điểm tốt để bắt đầu dự án, đổi hướng, gieo hạt giống cho những năm tới. Hãy chủ động, đặt mục tiêu rõ ràng và tin vào bản thân.",
+      "nen_lam": "Bắt đầu điều mới; đặt mục tiêu cho cả chu kỳ.",
+      "nen_tranh": "Chần chừ, chờ người khác cho phép."
+    },
+    {
+      "so": 2,
+      "ten": "Năm vun đắp",
+      "mo_ta": "Hạt giống cần thời gian nảy mầm. Năm của kiên nhẫn, hợp tác, các mối quan hệ và chi tiết. Mọi thứ có vẻ chậm nhưng đang âm thầm phát triển.",
+      "nen_lam": "Hợp tác, xây quan hệ, chăm chút chi tiết.",
+      "nen_tranh": "Nóng vội, ép kết quả đến sớm."
+    },
+    {
+      "so": 3,
+      "ten": "Năm biểu đạt",
+      "mo_ta": "Năng lượng vui vẻ, sáng tạo và giao lưu. Thời điểm tốt để thể hiện bản thân, học kỹ năng giao tiếp, mở rộng mạng lưới.",
+      "nen_lam": "Sáng tạo, giao lưu, chia sẻ ý tưởng.",
+      "nen_tranh": "Phân tán, chi tiêu cho vui quá mức."
+    },
+    {
+      "so": 4,
+      "ten": "Năm xây dựng",
+      "mo_ta": "Năm của làm việc chăm chỉ, kỷ luật và xây nền móng: sắp xếp tài chính, sức khỏe, công việc. Nỗ lực năm nay tạo sự vững chắc lâu dài.",
+      "nen_lam": "Lập kế hoạch, tiết kiệm, rèn thói quen.",
+      "nen_tranh": "Than mệt rồi bỏ dở giữa chừng."
+    },
+    {
+      "so": 5,
+      "ten": "Năm thay đổi",
+      "mo_ta": "Năm của chuyển động: cơ hội mới, đi lại, thay đổi công việc hoặc môi trường. Hãy linh hoạt nhưng vẫn giữ trách nhiệm.",
+      "nen_lam": "Thử điều mới, đi xa, mở rộng trải nghiệm.",
+      "nen_tranh": "Quyết định bốc đồng, thiếu tính toán."
+    },
+    {
+      "so": 6,
+      "ten": "Năm trách nhiệm",
+      "mo_ta": "Tâm điểm là gia đình, tình cảm, nhà cửa và cộng đồng. Thời điểm tốt để vun vén tổ ấm, chăm sóc người thân và chính mình.",
+      "nen_lam": "Chăm lo gia đình, hàn gắn quan hệ.",
+      "nen_tranh": "Ôm đồm việc của người khác."
+    },
+    {
+      "so": 7,
+      "ten": "Năm chiêm nghiệm",
+      "mo_ta": "Năm chậm lại để nhìn vào bên trong: học hỏi, nghiên cứu, nghỉ ngơi, xem lại hướng đi. Câu trả lời đến từ sự tĩnh lặng hơn là sự vội vã.",
+      "nen_lam": "Học sâu, đọc, nghỉ ngơi, tự vấn.",
+      "nen_tranh": "Khép kín, bi quan, ép mình phải bận rộn."
+    },
+    {
+      "so": 8,
+      "ten": "Năm gặt hái",
+      "mo_ta": "Năm của thành tựu, công việc, tài chính và vị thế. Những gì gieo trồng từ các năm trước có thể mang lại kết quả rõ rệt.",
+      "nen_lam": "Đẩy mạnh sự nghiệp, quản lý tài chính.",
+      "nen_tranh": "Tham công tiếc việc, xem nhẹ sức khỏe."
+    },
+    {
+      "so": 9,
+      "ten": "Năm hoàn tất",
+      "mo_ta": "Năm cuối chu kỳ: khép lại, buông bỏ điều không còn phù hợp, hoàn thành việc dang dở, cho đi. Dọn chỗ cho chu kỳ mới bắt đầu ở năm sau.",
+      "nen_lam": "Hoàn tất, dọn dẹp, tha thứ, thiện nguyện.",
+      "nen_tranh": "Bám giữ quá khứ, khởi động việc quá lớn."
+    }
+  ],
+  "challenge": [
+    {
+      "so": 0,
+      "mo_ta": "Thách thức của sự lựa chọn: bạn có nhiều tự do và tiềm năng, bài học là dám chọn một hướng và chịu trách nhiệm với lựa chọn đó thay vì chờ hoàn cảnh quyết định."
+    },
+    {
+      "so": 1,
+      "mo_ta": "Thách thức của sự tự tin: học cách đứng vững với ý kiến của mình mà không cần người khác xác nhận, đồng thời không trở nên áp đặt."
+    },
+    {
+      "so": 2,
+      "mo_ta": "Thách thức của sự nhạy cảm: học cách không để lời nói của người khác làm mình chao đảo, và đặt ranh giới rõ ràng."
+    },
+    {
+      "so": 3,
+      "mo_ta": "Thách thức của sự biểu đạt: vượt qua nỗi sợ bị đánh giá để nói ra, viết ra, thể hiện con người thật."
+    },
+    {
+      "so": 4,
+      "mo_ta": "Thách thức của kỷ luật: học cách kiên trì, tổ chức và hoàn thành công việc, nhưng không cứng nhắc."
+    },
+    {
+      "so": 5,
+      "mo_ta": "Thách thức của tự do: cân bằng giữa mong muốn trải nghiệm và trách nhiệm; tránh thay đổi chỉ vì chán."
+    },
+    {
+      "so": 6,
+      "mo_ta": "Thách thức của trách nhiệm: học cách chăm sóc mà không kiểm soát, chấp nhận người khác và bản thân không hoàn hảo."
+    },
+    {
+      "so": 7,
+      "mo_ta": "Thách thức của niềm tin: vượt qua sự hoài nghi và cô lập, mở lòng chia sẻ và tin vào điều mình chưa chứng minh được."
+    },
+    {
+      "so": 8,
+      "mo_ta": "Thách thức của quyền lực và vật chất: dùng tiền bạc, vị trí một cách công bằng, không để chúng định nghĩa giá trị của mình."
+    }
+  ]
+}

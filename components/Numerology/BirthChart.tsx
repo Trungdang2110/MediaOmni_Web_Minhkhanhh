@@ -9,7 +9,8 @@ import {
   Tooltip,
   MdArrowForward
 } from '@/components';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import birthChartKnowledge from '@/knowledge/structured/birth-chart.json';
 import { useBirthChart, type BirthChartArrow as ArrowData } from '@/hooks/useBirthChart';
 import { BirthChartCell } from './BirthChartCell';
 import { BirthChartArrow } from './BirthChartArrow';
@@ -28,6 +29,7 @@ const PLANE_LABELS: Record<number, string> = {
 
 const BirthChartComponent: FC<BirthChartProps> = ({ birthDate, onCellClick }) => {
   const tChart = useTranslations('BirthChart');
+  const locale = useLocale();
   const { grid, arrows } = useBirthChart(birthDate);
   const gridRef = useRef<HTMLDivElement>(null);
   const [cellSize, setCellSize] = useState(80);
@@ -74,13 +76,25 @@ const BirthChartComponent: FC<BirthChartProps> = ({ birthDate, onCellClick }) =>
 
   const totalGridSize = cellSize * 3 + gap * 2;
 
+  // Tên + mô tả mũi tên lấy từ kho kiến thức Pyra (tiếng Việt); tiếng Anh dùng nhãn cũ
+  const arrowLabel = (arrow: ArrowData): string => {
+    if (locale === 'vi') {
+      const info = (birthChartKnowledge.arrows as any[]).find(
+        (a) => a.id === arrow.numbers.join('-')
+      );
+      const side = arrow.type === 'strength' ? info?.day_so : info?.trong;
+      if (side?.ten) return `${side.ten}: ${side.mo_ta}`;
+    }
+    return `${arrow.numbers.join(' - ')} (${tChart(arrow.nameKey as any)})`;
+  };
+
   const renderArrowBadge = useCallback(
     (arrow: ArrowData) => {
       const isStrength = arrow.type === 'strength';
       return (
         <Tooltip
           key={arrow.id}
-          label={`${arrow.numbers.join(' - ')} (${tChart(arrow.nameKey as any)})`}
+          label={arrowLabel(arrow)}
           hasArrow
           fontSize="xs"
         >
@@ -91,7 +105,7 @@ const BirthChartComponent: FC<BirthChartProps> = ({ birthDate, onCellClick }) =>
         </Tooltip>
       );
     },
-    [tChart]
+    [tChart, locale]
   );
 
   return (

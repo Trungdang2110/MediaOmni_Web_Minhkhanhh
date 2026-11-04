@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "language": "vi",
+    "source": "pyra-original",
+    "system": "Pythagoras",
+    "license": "Nội dung gốc thuộc sở hữu dự án Pyra. Không chứa trích dẫn từ sách có bản quyền."
+  },
+  "arrows": [
+    {
+      "id": "1-2-3",
+      "day_so": {
+        "ten": "Mũi tên Kế hoạch",
+        "mo_ta": "Có khả năng sắp xếp, lập kế hoạch và tổ chức ý tưởng thành các bước rõ ràng. Thường là người 'lên lịch' cho cả nhóm."
+      },
+      "trong": null
+    },
+    {
+      "id": "4-5-6",
+      "day_so": {
+        "ten": "Mũi tên Ý chí",
+        "mo_ta": "Có ý chí mạnh mẽ và sức bền; đã quyết thì theo đến cùng."
+      },
+      "trong": {
+        "ten": "Mũi tên Uất ức",
+        "mo_ta": "dễ dồn nén cảm xúc, thất vọng khi mọi việc không như ý. Nên tập buông bớt kỳ vọng, chia sẻ cảm xúc và vận động thể chất để giải tỏa."
+      }
+    },
+    {
+      "id": "7-8-9",
+      "day_so": {
+        "ten": "Mũi tên Hành động",
+        "mo_ta": "Năng động, thích bắt tay vào làm, học tốt nhất qua thực hành."
+      },
+      "trong": {
+        "ten": "Mũi tên Thụ động",
+        "mo_ta": "dễ trì hoãn, cần động lực từ bên ngoài. Nên đặt mục tiêu nhỏ, có hạn chót và người cùng làm."
+      }
+    },
+    {
+      "id": "3-6-9",
+      "day_so": {
+        "ten": "Mũi tên Trí tuệ",
+        "mo_ta": "Trí nhớ và khả năng tư duy tốt, thích học hỏi và phân tích."
+      },
+      "trong": {
+        "ten": "Mũi tên Trí nhớ kém",
+        "mo_ta": "dễ quên chi tiết, khó tập trung lâu. Nên ghi chép, dùng sơ đồ và ôn lại đều đặn."
+      }
+    },
+    {
+      "id": "2-5-8",
+      "day_so": {
+        "ten": "Mũi tên Cân bằng cảm xúc",
+        "mo_ta": "Cảm xúc ổn định, biết cảm thông và giữ bình tĩnh trước áp lực."
+      },
+      "trong": {
+        "ten": "Mũi tên Nhạy cảm",
+        "mo_ta": "dễ tổn thương, khó bày tỏ cảm xúc. Nên tìm môi trường an toàn để chia sẻ và tập nhận diện cảm xúc của mình."
+      }
+    },
+    {
+      "id": "1-4-7",
+      "day_so": {
+        "ten": "Mũi tên Thực tế",
+        "mo_ta": "Khéo tay, thực tế, có sức khỏe thể chất và giỏi biến ý tưởng thành việc cụ thể."
+      },
+      "trong": {
+        "ten": "Mũi tên Thiếu thực tế",
+        "mo_ta": "dễ mơ mộng, xa rời việc cụ thể. Nên rèn kỹ năng thực hành và thói quen vận động."
+      }
+    },
+    {
+      "id": "1-5-9",
+      "day_so": {
+        "ten": "Mũi tên Quyết tâm",
+        "mo_ta": "Kiên định, kiên nhẫn theo đuổi mục tiêu; ít bỏ cuộc giữa chừng."
+      },
+      "trong": {
+        "ten": "Mũi tên Trì hoãn",
+        "mo_ta": "dễ chần chừ, khó bắt đầu. Nên dùng quy tắc 'làm ngay 5 phút' và chia nhỏ mục tiêu."
+      }
+    },
+    {
+      "id": "3-5-7",
+      "day_so": {
+        "ten": "Mũi tên Tâm linh",
+        "mo_ta": "Có niềm tin và đời sống tinh thần phong phú, giữ được sự bình an trước biến cố."
+      },
+      "trong": {
+        "ten": "Mũi tên Hoài nghi",
+        "mo_ta": "khó tin vào điều chưa chứng minh được, dễ băn khoăn về ý nghĩa cuộc sống. Nên tìm một thực hành tinh thần phù hợp như thiền, đọc sách, thiện nguyện."
+      }
+    }
+  ],
+  "numbers": [
+    {
+      "so": 1,
+      "chu_de": "Tự thể hiện",
+      "y_nghia": "Thể hiện cái tôi, khả năng nói lên suy nghĩ của mình.",
+      "theo_so_luong": "Một số 1: đôi khi khó diễn đạt cảm xúc bằng lời. Hai số 1: cân bằng, diễn đạt tốt. Từ ba số 1: nói nhiều, dễ bị hiểu nhầm là áp đặt; bốn số 1 trở lên: cần học cách lắng nghe nhiều hơn."
+    },
+    {
+      "so": 2,
+      "chu_de": "Trực giác và cảm nhận",
+      "y_nghia": "Độ nhạy cảm và trực giác.",
+      "theo_so_luong": "Một số 2: trực giác tốt, dễ cảm nhận người khác. Hai số 2: trực giác mạnh, cảm nhận nhanh. Từ ba số 2: rất nhạy cảm, dễ bị tổn thương, cần không gian riêng."
+    },
+    {
+      "so": 3,
+      "chu_de": "Trí nhớ và suy nghĩ",
+      "y_nghia": "Khả năng tư duy, trí nhớ và sáng tạo.",
+      "theo_so_luong": "Một số 3: trí nhớ tốt, suy nghĩ rõ ràng. Hai số 3: nhiều ý tưởng, sáng tạo. Từ ba số 3: suy nghĩ quá nhiều, dễ lo âu, cần biến ý tưởng thành hành động."
+    },
+    {
+      "so": 4,
+      "chu_de": "Thực tế và tổ chức",
+      "y_nghia": "Sự ngăn nắp, thực tế, khả năng làm việc tay chân.",
+      "theo_so_luong": "Một số 4: thực tế, ngăn nắp. Từ hai số 4: rất chi tiết, đôi khi cầu toàn và cứng nhắc."
+    },
+    {
+      "so": 5,
+      "chu_de": "Cảm xúc và sức mạnh ý chí",
+      "y_nghia": "Trung tâm của biểu đồ: sự cân bằng cảm xúc và động lực.",
+      "theo_so_luong": "Một số 5: cảm xúc cân bằng, có động lực. Hai số 5: quyết tâm mạnh, đôi khi nóng vội. Từ ba số 5: cảm xúc mãnh liệt, cần học cách điều tiết."
+    },
+    {
+      "so": 6,
+      "chu_de": "Sáng tạo và gia đình",
+      "y_nghia": "Tình yêu gia đình, sự chăm sóc và sáng tạo.",
+      "theo_so_luong": "Một số 6: yêu gia đình, sáng tạo. Hai số 6: lo lắng cho người thân nhiều, dễ căng thẳng. Từ ba số 6: hay lo âu, cần học cách buông bớt."
+    },
+    {
+      "so": 7,
+      "chu_de": "Học hỏi qua trải nghiệm",
+      "y_nghia": "Bài học đến từ trải nghiệm, đôi khi qua mất mát.",
+      "theo_so_luong": "Một số 7: học được nhiều từ trải nghiệm của bản thân. Hai số 7: trải qua bài học sâu sắc trong các lĩnh vực quan trọng. Từ ba số 7: hành trình nhiều thử thách, đổi lại là sự hiểu biết sâu."
+    },
+    {
+      "so": 8,
+      "chu_de": "Tinh tế và độc lập",
+      "y_nghia": "Sự chu đáo, tinh tế và khả năng tự lập.",
+      "theo_so_luong": "Một số 8: chu đáo, để ý chi tiết. Từ hai số 8: rất độc lập, đôi khi cầu toàn hoặc khó hài lòng."
+    },
+    {
+      "so": 9,
+      "chu_de": "Lý tưởng và trách nhiệm",
+      "y_nghia": "Tham vọng, lý tưởng và tinh thần trách nhiệm.",
+      "theo_so_luong": "Một số 9: có lý tưởng, có trách nhiệm. Hai số 9: tham vọng lớn, có thể chỉ trích người khác. Từ ba số 9: lý tưởng cao, dễ thất vọng khi thực tế không như mong đợi."
+    }
+  ],
+  "isolated": "Số cô lập là số có mặt trên biểu đồ nhưng không có số nào ở các ô kề bên (kể cả ô chéo). Năng lượng của số đó khó 'kết nối' với phần còn lại, nên người mang nó đôi khi khó thể hiện hoặc dùng trọn phẩm chất ấy. Lời khuyên: chủ động rèn các phẩm chất của những ô xung quanh để 'bắc cầu'. Ví dụ số 9 cô lập (các ô 5, 6, 8 trống): lý tưởng lớn nhưng khó biến thành hành động gần gũi — hãy bắt đầu từ việc nhỏ, cụ thể."
+}

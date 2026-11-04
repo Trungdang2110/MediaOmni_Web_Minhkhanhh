@@ -482,3 +482,27 @@ a {
 }
 .pyra-chat-tools { padding: 4px 6px; border-radius: var(--radius-pill) !important; }
 .pyra-chat-tools .pr-gbtn { background: transparent; border-color: transparent; }
+
+/* ---------- Ý nghĩa con số (từ kho kiến thức) ---------- */
+.pyra-knowledge h3 { font-size: 22px; color: var(--on-glass); margin-top: 18px; }
+.pyra-knowledge > h3:first-of-type { margin-top: 4px; }
+.pyra-knowledge h4 {
+  font-family: var(--font-caps);
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 14px 0 6px;
+}
+:root:not([data-theme="dark"]) .pyra-knowledge h4 { color: var(--peach); }
+.pyra-knowledge__read { color: var(--on-glass-muted); }
+.pyra-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 10px; }
+.pyra-chip {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--glass-stroke);
+  background: var(--glass-chip);
+  color: var(--on-glass);
+}

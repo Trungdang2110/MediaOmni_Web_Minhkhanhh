@@ -1,6 +1,6 @@
 # Plan website Thần số học (Pyra)
 
-Tài liệu đi kèm: `docs/use-cases.md` (đặc tả 16 use case UC01–UC16), `design-system/README.md` (giao diện Pyra Rococo + liquid glass).
+Tài liệu đi kèm: `docs/use-cases.md` (đặc tả 16 use case UC01–UC16), `design-system/README.md` (giao diện Pyra Rococo + liquid glass), `docs/numerology-spec.md` (công thức 16 chỉ số), `knowledge/` (kho kiến thức), `docs/ai-prompt.md` (hướng dẫn cho AI).
 
 ## 1. Kiến trúc tổng quan
 

@@ -8,7 +8,8 @@
     "clean": "rm -rf .next node_modules && pnpm install",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "test": "vitest run"
   },
   "dependencies": {
     "@ai-sdk/openai": "^1.0.0",
@@ -48,6 +49,7 @@
     "eslint-config-next": "latest",
     "husky": "9.1.7",
     "lint-staged": "^16.2.6",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vitest": "^5.1.0"
   }
 }
