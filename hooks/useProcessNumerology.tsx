@@ -1,195 +1,94 @@
 import { useMemo } from 'react';
-import dayjs from 'dayjs';
 import { NumerologyHookType } from '@/utils/types';
-import {
-  getSoul,
-  getBalance,
-  getMission,
-  getPassion,
-  sumAdjacent,
-  removeAccents,
-  getWalksOfLife,
-  getPersonality,
-  getMissingNumbers,
-  substractAdjacent,
-  getRationalThinking
-} from '@/functions';
+import { calculate } from '@/src/lib/numerology';
 
+/**
+ * Tính 16 chỉ số bằng module `src/lib/numerology` (đặc tả: docs/numerology-spec.md).
+ *
+ * Hook này chỉ làm "người phiên dịch": gọi module tính toán rồi đổi kết quả sang
+ * danh sách thẻ mà giao diện đang dùng (khóa `walksOfLife`, `mission`…).
+ * Mọi công thức nằm trong module, không viết lại ở đây.
+ *
+ * Trả về mảng rỗng nếu họ tên hoặc ngày sinh chưa hợp lệ.
+ */
 export const useProcessNumerology = (
   fullName: string,
   birthDay: string
 ): NumerologyHookType[] => {
   const data = useMemo(() => {
-    const date = dayjs(birthDay).format('DD');
-    const month = dayjs(birthDay).format('MM');
-    const year = dayjs(birthDay).format('YYYY');
-    const currentYear = dayjs().format('YYYY');
-    const currentMonth = dayjs().format('MM');
-    const txtName = fullName.trim();
-    const name = removeAccents(txtName.toLocaleUpperCase());
-    let completedName: string = '';
-    const arrStrName = name.split('');
-    arrStrName.map((char, index) => {
-      if ((char === ' ' && arrStrName?.[index + 1] !== ' ') || char !== ' ') {
-        completedName += char;
-      }
-    });
+    const parts = (birthDay ?? '').split('-').map(Number);
+    if (parts.length !== 3 || parts.some((n) => !Number.isFinite(n))) return [];
+    const [year, month, day] = parts;
 
-    const arrName = name.replace(/\s/g, '').split('');
+    let r;
+    try {
+      r = calculate(fullName ?? '', { day, month, year });
+    } catch {
+      return [];
+    }
 
-    const walksOfLife = getWalksOfLife(birthDay);
-    const mission = getMission(name);
-    const soul = getSoul(name);
-    const resumWalksOfLife = String(walksOfLife).split('');
-    const resumMission = String(mission).split('');
-    const connect = Math.abs(
-      sumAdjacent(resumWalksOfLife[0], resumWalksOfLife?.[1] ?? 0) -
-        sumAdjacent(resumMission[0], resumMission?.[1] ?? 0)
-      // walksOfLife - mission
-    );
-    const personality = getPersonality(arrName);
-    const passion = getPassion(arrName);
+    const list = (nums: number[]) => nums.join(' ');
+    const four = (periods: { value: number }[]) =>
+      ` ${periods.map((p) => p.value).join(' ')}`;
 
-    const mature = sumAdjacent(walksOfLife, mission, 'mature'); // walksOfLife + mission; 36 - walksOfLife = đỉnh đầu của chặng đầu tiên
-    const balance = getBalance(completedName);
-    const missingNumber = getMissingNumbers(arrName).map((item) => item.value);
-    const subconsciousPower = 9 - missingNumber.length;
-    const rationalThinking = getRationalThinking(completedName, date);
-
-    const reduceToSingleDigit = (num: number | string): number => {
-      let sum = Number(num);
-      while (sum > 9) {
-        sum = String(sum)
-          .split('')
-          .reduce((a, b) => a + Number(b), 0);
-      }
-      return sum;
-    };
-
-    const dateRoot = reduceToSingleDigit(date);
-    const monthRoot = reduceToSingleDigit(month);
-    const yearRoot = reduceToSingleDigit(year);
-    const currentYearRoot = reduceToSingleDigit(currentYear);
-
-    const calculatePeak = (sum: number, isPeak34: boolean) => {
-      let currentSum = sum;
-      while (currentSum >= 10) {
-        if (isPeak34 && (currentSum === 10 || currentSum === 11)) {
-          return currentSum;
-        }
-        currentSum = String(currentSum)
-          .split('')
-          .reduce((a, b) => a + Number(b), 0);
-      }
-      return currentSum;
-    };
-
-    const way1 = calculatePeak(monthRoot + dateRoot, false);
-    const way2 = calculatePeak(dateRoot + yearRoot, false);
-    const way3 = calculatePeak(way1 + way2, true);
-    const way4 = calculatePeak(monthRoot + yearRoot, true);
-    const way = ` ${way1} ${way2} ${way3} ${way4}`;
-
-    const challenge1 = substractAdjacent(month, date);
-    const challenge2 = substractAdjacent(year, date);
-    const challenge3 = Math.abs(challenge1 - challenge2);
-    const challenge4 = substractAdjacent(month, year);
-    const challenges = ` ${challenge1} ${challenge2} ${challenge3} ${challenge4}`;
-
-    const yearIndividual = reduceToSingleDigit(
-      currentYearRoot + dateRoot + monthRoot
-    );
-    const monthIndividual = reduceToSingleDigit(
-      yearIndividual + reduceToSingleDigit(currentMonth)
-    );
-    const dateOfBirth = sumAdjacent(date, 0);
     return [
-      {
-        key: 'walksOfLife',
-        value: walksOfLife,
-        name: 'Đường đời',
-        name_en: 'Path of life'
-      },
-      {
-        key: 'mission',
-        value: mission,
-        name: 'Sứ mệnh',
-        name_en: 'Mission'
-      },
-      { key: 'soul', value: soul, name: 'Linh hồn', name_en: 'Soul' },
+      { key: 'walksOfLife', value: r.lifePath, name: 'Đường đời', name_en: 'Path of life' },
+      { key: 'mission', value: r.expression, name: 'Sứ mệnh', name_en: 'Mission' },
+      { key: 'soul', value: r.soulUrge, name: 'Linh hồn', name_en: 'Soul' },
       {
         key: 'connect',
-        value: connect,
+        // Kết nối có 2 số: (Đường đời ↔ Sứ mệnh) và (Linh hồn ↔ Nhân cách)
+        value: `${r.bridges.lifePathExpression} · ${r.bridges.soulPersonality}`,
         name: 'Kết nối',
         name_en: 'Connection'
       },
-      {
-        key: 'personality',
-        value: personality,
-        name: 'Nhân cách',
-        name_en: 'Personality'
-      },
-      { key: 'passion', value: passion, name: 'Đam mê', name_en: 'Passion' },
-      {
-        key: 'mature',
-        value: mature,
-        name: 'Trưởng thành',
-        name_en: 'Mature'
-      },
-      {
-        key: 'balance',
-        value: balance,
-        name: 'Cân bằng',
-        name_en: 'Balance'
-      },
+      { key: 'personality', value: r.personality, name: 'Nhân cách', name_en: 'Personality' },
+      { key: 'passion', value: list(r.hiddenPassion), name: 'Đam mê', name_en: 'Passion' },
+      { key: 'mature', value: r.maturity, name: 'Trưởng thành', name_en: 'Mature' },
+      { key: 'balance', value: r.balance, name: 'Cân bằng', name_en: 'Balance' },
       {
         key: 'subconsciousPower',
-        value: subconsciousPower,
+        value: r.subconsciousSelf,
         name: 'Sức mạnh tiềm thức',
         name_en: 'Subconscious Power'
       },
       {
         key: 'missingNumbers',
-        value: missingNumber.toString().replace(/\,/g, ' '),
+        value: list(r.karmicLessons),
         name: 'Số thiếu',
         name_en: 'Missing Numbers'
       },
       {
         key: 'rationalThinking',
-        value: rationalThinking,
+        value: r.rationalThought,
         name: 'Tư duy lý trí',
         name_en: 'Rational Thinking'
       },
-      {
-        key: 'way',
-        value: way,
-        name: 'Chặng',
-        name_en: 'Way'
-      },
+      { key: 'way', value: four(r.pinnacles), name: 'Chặng', name_en: 'Way' },
       {
         key: 'challenges',
-        value: challenges,
+        value: four(r.challenges),
         name: 'Thách thức',
         name_en: 'Challenges'
       },
       {
         key: 'dateOfBirth',
-        value: dateOfBirth,
+        value: r.birthday.value,
         name: 'Ngày sinh',
         name_en: 'Date Of Birth'
       },
       {
         key: 'yearIndividual',
-        value: yearIndividual,
+        value: r.personalYear.value,
         name: 'Năm cá nhân',
         name_en: 'Individual Year'
       },
       {
         key: 'monthIndividual',
-        value: monthIndividual,
+        value: r.personalMonth.value,
         name: 'Tháng cá nhân',
         name_en: 'Individual Month'
-      },
+      }
     ];
   }, [fullName, birthDay]);
   return data;

@@ -106,22 +106,19 @@ function computeFrequencies(digits: number[]): Map<number, number> {
 }
 
 function detectIsolated(frequencies: Map<number, number>): number[] {
+  // Số cô lập (theo docs/numerology-spec.md): số CÓ mặt trên biểu đồ nhưng TẤT CẢ
+  // các ô kề bên (kể cả kề chéo) đều trống. Áp dụng cho mọi số, không chỉ số ở góc.
   const isolated: number[] = [];
-  const corners: Record<number, number[]> = {
-    1: [2, 4, 5],
-    3: [2, 6, 5],
-    7: [4, 8, 5],
-    9: [6, 8, 5]
-  };
-
-  for (const [corner, neighbors] of Object.entries(corners)) {
-    const cornerNum = Number(corner);
-    if ((frequencies.get(cornerNum) ?? 0) > 0) {
-      const hasAdjacent = neighbors.some((n) => (frequencies.get(n) ?? 0) > 0);
-      if (!hasAdjacent) {
-        isolated.push(cornerNum);
-      }
-    }
+  for (let num = 1; num <= 9; num++) {
+    if ((frequencies.get(num) ?? 0) === 0) continue;
+    const me = GRID_POSITIONS[num];
+    const hasAdjacent = Object.entries(GRID_POSITIONS).some(([other, pos]) => {
+      const o = Number(other);
+      if (o === num) return false;
+      const near = Math.abs(pos.row - me.row) <= 1 && Math.abs(pos.col - me.col) <= 1;
+      return near && (frequencies.get(o) ?? 0) > 0;
+    });
+    if (!hasAdjacent) isolated.push(num);
   }
   return isolated;
 }

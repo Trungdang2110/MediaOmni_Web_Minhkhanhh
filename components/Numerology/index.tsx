@@ -62,7 +62,7 @@ dayjs.extend(customParseFormat);
 
 // --- Meaning Cache Utilities ---
 
-const MEANING_CACHE_PREFIX = 'meaning-';
+const MEANING_CACHE_PREFIX = 'meaning-v2-'; // v2: công thức tính mới, bỏ giải thích AI đã lưu theo công thức cũ
 const MEANING_CACHE_TTL_DAYS = 7;
 const BIRTH_CHART_VISIBILITY_KEY = 'birth-chart-visible';
 
